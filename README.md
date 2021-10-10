@@ -4,7 +4,6 @@
 - Harrison Ma
 - Jiawen Xu
 - Jiyoung An
-- Justin Wu
 - Kevin An
 - Logan Ramos
 - Rudy Zhang
