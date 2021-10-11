@@ -1,6 +1,6 @@
-## Meeting Minutes  
+## Meeting Minutes - Kickoff Meeting 
 
-### 10/10/2021 (Sunday) 1:00 p.m.
+### 10/10/2021 (Sunday) 1:00 p.m. via Zoom
 
 ## Attendance
 
@@ -8,11 +8,12 @@
 - Yen-yun Wu
 - Arthur(Zhongyi) Wang
 - Qixuan "Harrison" MA
-
 - Jiawen Xu
 - Logan Ramos
 - Terry Zhang
 - Vivian Wu
+- Jiyoung An (absent)
+- Rudy Zhang (absent)
 
 ## Agenda
 
