@@ -1,6 +1,6 @@
 ## Meeting Minutes  
 
-### 10/10/2021 (Sunday) 1:00 a.m.
+### 10/10/2021 (Sunday) 1:00 p.m.
 
 ## Attendance
 
