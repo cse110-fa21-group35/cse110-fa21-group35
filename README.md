@@ -1,6 +1,7 @@
 # cse110-sp21-group35
 
 *Group members:* 
+- Yen-Yun Wu
 - Harrison Ma
 - Jiawen Xu
 - Jiyoung An
