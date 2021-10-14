@@ -8,7 +8,7 @@
 - Yen-yun Wu
 - Arthur(Zhongyi) Wang
 - Qixuan "Harrison" MA
-- Jiawen Xu
+- **Jiawen Xu (Scribe)**
 - Logan Ramos
 - Terry Zhang
 - Vivian Wu
