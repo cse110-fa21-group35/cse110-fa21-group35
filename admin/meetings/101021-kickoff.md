@@ -4,10 +4,10 @@
 
 ## Attendance
 
-- Keven An
+- Kevin An
 - Yen-yun Wu
 - Arthur(Zhongyi) Wang
-- Qixuan "Harrison" MA
+- Qixuan "Harrison" Ma
 - **Jiawen Xu (Scribe)**
 - Logan Ramos
 - Terry Zhang
