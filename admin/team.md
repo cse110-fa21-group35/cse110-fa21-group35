@@ -18,6 +18,14 @@
 #roster
 
 # Roster 
+## Kevin An
+## Yen-yun Wu
+## Arthur(Zhongyi) Wang
+## Qixuan "Harrison" Ma
+## Jiawen Xu
+## Logan Ramos
+## Terry Zhang
+
 ## Vivian Wu
 
 <img src="/admin/group-images/VivianWu.jpg" alt="Vivian Wu" width="150" height="150">
@@ -26,6 +34,9 @@ I’m a third year Computer Science major and Cognitive Science minor in Warren 
 
 Github Repo: [https://github.com/vrwu](https://github.com/vrwu)
 Github Portfolio: [https://vrwu.github.io/](https://vrwu.github.io/)
+
+## Jiyoung An
+## Rudy Zhang 
 
 
 
