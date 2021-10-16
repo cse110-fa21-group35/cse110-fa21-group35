@@ -1,6 +1,6 @@
 # Eggcellent
 
-<img src="/admin/branding/logos/Logo2.JPG" alt="Eggcellent team logo: an egg with team name" width="450" height="450">
+<img src="/admin/branding/logos/Logo2.JPG" alt="Eggcellent team logo: an egg with team name" width="450" height="430">
 Hello everyone! We are team Eggcellent. 
 
 
