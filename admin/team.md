@@ -1,22 +1,23 @@
-# Eggcellent
+# Group 35 - Eggcellent
 
+### Sections of this Page
+1. [Branding](#branding)
+2. [Values](#values)
+3. [Project](#project)
+4. [Roster](#roster)
+
+# Branding
+We chose to use the icon of an egg as our team mascot and named our team *Eggcellent*.
+ 
 <img src="/admin/branding/logos/Logo2.JPG" alt="Eggcellent team logo: an egg with team name" width="450" height="430">
-Hello everyone! We are team **Eggcellent**.
 
+# Values
+An egg is simple, yet delicious. This icon represents our vision for our finished product: simple, intuitive, yet effective. 
 
---------------------------------------------------------------------------------------------------------------
-#values
+# Project
+We are making a receipe manager. 
 
-
-
-
---------------------------------------------------------------------------------------------------------------
-#project
-
-
-
--------------------------------------------------------------------------------------------------------------
-# Roster 
+# Roster
 ## Kevin An
 
 <img src="/admin/group-images/KevinAn.jpg" alt="Kevin An" width="150" height="150">
@@ -77,7 +78,7 @@ Github Lab 1 Page: [https://zterryy.github.io/cse110/](https://zterryy.github.io
 
 <img src="/admin/group-images/VivianWu.jpg" alt="Vivian Wu" width="150" height="150">
 
-Hi! I’m a third year Computer Science major and Cognitive Science minor in Warren College. Some interests I have academically are Cloud Computing and Data Management. Other interests include playing Table Tennis, running, and knitting. My favorite way to eat an egg is poached! 
+Hi! I’m a third year Computer Science major and Cognitive Science minor in Warren College. Some interests I have academically are Cloud Computing and Data Management. Other interests include playing Table Tennis, running, and knitting. My favorite way to eat an egg is poached!
 
 Github Lab 1 Page: [https://vrwu.github.io/fa21-cse110-lab1/ ](https://vrwu.github.io/fa21-cse110-lab1/)
 
@@ -96,8 +97,3 @@ Github Lab 1 Page: [https://jy-a211.github.io/CSE110/](https://jy-a211.github.io
 Hi! I’m Rudy, a 3rd year computer engineering student from Sixth College. I’m currently really interested in Machine Learning. Outside of professional interests, I love watching and playing basketball, and I’m super excited that the season is starting. My favorite way to eat an egg is fried egg.
 
 Github Lab 1 Page: [https://github.com/RudyZhang2000](https://github.com/RudyZhang2000)
-
-
-
-
-
