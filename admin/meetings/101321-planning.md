@@ -4,7 +4,7 @@
 
 ## Attendance
 
-- Keven An
+- Kevin An
 - Yen-yun Wu
 - Arthur(Zhongyi) Wang
 - Qixuan "Harrison" Ma
