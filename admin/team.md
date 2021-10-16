@@ -92,7 +92,7 @@ Github Lab 1 Page: [https://jy-a211.github.io/CSE110/](https://jy-a211.github.io
 
 ## Rudy Zhang 
 
-<img src="/admin/group-images/RudyZhang.jpg" alt="RudyZhang" width="150" height="150">
+<img src="/admin/group-images/RudyZhang.png" alt="RudyZhang" width="150" height="150">
 
 Hi! I’m Rudy, a 3rd year computer engineering student from Sixth College. I’m currently really interested in Machine Learning. Outside of professional interests, I love watching and playing basketball, and I’m super excited that the season is starting. My favorite way to eat an egg is fried egg.
 
