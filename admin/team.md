@@ -19,13 +19,11 @@ Hello everyone! We are team Eggcellent.
 # Roster 
 ## Kevin An
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/KevinAn.jpg" alt="Kevin An" width="150" height="150">
 
-Bio
+Hi! I am a 4th year Math-CS student from Warren College. I am interested in Machine Learning and Web-Dev. When I am free, I love watching/playing soccer and baseball (also love going to the stadium). I am also a passionate gamer. My favorite way to eat an egg is sunny side up.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://kevinhojin.github.io/CSE110-Kevin-Lab1/](https://kevinhojin.github.io/CSE110-Kevin-Lab1/)
 
 ## Yen-yun Wu
 
@@ -33,19 +31,15 @@ Github Portfolio: []()
 
 Hello I’m Yen-Yun Wu, an international student from Taiwan. I’m a fourth year CS major student in Warren college. I’m interested in web development and cybersecurity. My favorite egg dish is Japanese steamed egg.
 
-Github Repos: [https://github.com/Yenyun035](https://github.com/Yenyun035)
-
-Github Portfolio: [https://yenyun035.github.io/CSE110/](https://yenyun035.github.io/CSE110/)
+Github Lab 1 Page: [https://yenyun035.github.io/CSE110/](https://yenyun035.github.io/CSE110/)
 
 ## Arthur(Zhongyi) Wang
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/ZhongyiWang.jpg" alt="Zhongyi Wang" width="150" height="150">
 
-Bio
+My name is Zhongyi Wang, and I am a junior in Revelle college. I major in Computer Science and minor in Mathematics. In my free time, I like playing tennis and soccer. My favorite egg cooking style is fried egg.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [(https://wangzhongyi0510.github.io/cse110/)](https://wangzhongyi0510.github.io/cse110/)
 
 ## Qixuan "Harrison" Ma
 
@@ -53,69 +47,55 @@ Github Portfolio: []()
 
 I'm a third year ERC student from China double majoring in Mathematics-Computer Science and Cognitive Science with a Specialization in Machine Learning and Neural Computation. Interested in bioinformatics and machine learning. I play Overwatch for UCSD Esports. Avid lover of scrambled eggs. 
 
-Github Repos: [https://github.com/Harrison-Q-Ma](https://github.com/Harrison-Q-Ma)
-
-Github Portfolio: [https://harrison-q-ma.github.io/](https://harrison-q-ma.github.io/)
+Github Lab 1 Page: [https://harrison-q-ma.github.io/GithubPages/](https://harrison-q-ma.github.io/GithubPages/)
 
 ## Jiawen Xu
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/JiawenXu.jpg" alt="Jiawen Xu" width="150" height="150">
 
-Bio
+I am a 4th year computer engineering student from Earl Warren College. I like playing video games like Final Fantasy XIV and League of Legends. I want to be a software hardware/hardware engineer in the future. My favorite way to eat an Egg is boiled egg.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://xujiawen1998.github.io/CSE110Project1/](https://xujiawen1998.github.io/CSE110Project1/)
 
 ## Logan Ramos
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/LoganRRamos.jpg" alt="Logan Ramos" width="150" height="150">
 
-Bio
+Heyo! I’m Logan Ramos and I am a 3rd-year majoring in mathematics-computer science. Summer of 2021 I interned on the API Services team at Disney Streaming in a small experimental group called the Fraud Squad, where I contributed to their automated fraud detection (service for Disney+, ESPN+, Star+, MLB TV, and soon Hulu). Recently I’ve been fascinated about category theory and its relationship to type classes (FP related). If I’m not working or contributing, I’m likely surfing or contemplating my life. Omelettes are amazing with bell peppers.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://tacotuesdayx.github.io/github-pfp/](https://tacotuesdayx.github.io/github-pfp/)
 
 ## Terry Zhang
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/TerryZhang.jpg" alt="Terry Zhang" width="150" height="150">
 
-Bio
+I'm a third year computer science student from Revelle college. I’m really interested in data science and computer science. I like my eggs scrambled.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://zterryy.github.io/cse110/](https://zterryy.github.io/cse110/)
 
 ## Vivian Wu
 
 <img src="/admin/group-images/VivianWu.jpg" alt="Vivian Wu" width="150" height="150">
 
-I’m a third year Computer Science major and Cognitive Science minor in Warren College. Some interests I have academically are Cloud Computing and Data Management. Other interests include playing Table Tennis, running, and knitting. My favorite way to eat an egg is poached! 
+Hi! I’m a third year Computer Science major and Cognitive Science minor in Warren College. Some interests I have academically are Cloud Computing and Data Management. Other interests include playing Table Tennis, running, and knitting. My favorite way to eat an egg is poached! 
 
-Github Repos: [https://github.com/vrwu](https://github.com/vrwu)
-
-Github Portfolio: [https://vrwu.github.io/](https://vrwu.github.io/)
+Github Lab 1 Page: [https://vrwu.github.io/fa21-cse110-lab1/ ](https://vrwu.github.io/fa21-cse110-lab1/)
 
 ## Jiyoung An
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/JiyoungAn.jpg" alt="Jiyoung An" width="150" height="150">
 
-Bio
+I am a 4th year computer science student from Thurgood Marshall college. I am an international student from South Korea, and I am interested in playing piano. My interests as a programmer are Computer vision and Web development. My favorite way to eat an Egg is sunny side up.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://jy-a211.github.io/CSE110/](https://jy-a211.github.io/CSE110/)
 
 ## Rudy Zhang 
 
-<img src="/admin/group-images/.jpg" alt="" width="150" height="150">
+<img src="/admin/group-images/RudyZhang.png" alt="RudyZhang" width="150" height="150">
 
-Bio
+Hi! I’m Rudy, a 3rd year computer engineering student from Sixth College. I’m currently really interested in Machine Learning. Outside of professional interests, I love watching and playing basketball, and I’m super excited that the season is starting. My favorite way to eat an egg is fried egg.
 
-Github Repos: []()
-
-Github Portfolio: []()
+Github Lab 1 Page: [https://github.com/RudyZhang2000](https://github.com/RudyZhang2000)
 
 
 
