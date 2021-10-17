@@ -45,7 +45,7 @@ Github Lab 1 Page: [https://yenyun035.github.io/CSE110/](https://yenyun035.githu
 
 My name is Zhongyi Wang, and I am a junior in Revelle college. I major in Computer Science and minor in Mathematics. In my free time, I like playing tennis and soccer. My favorite egg cooking style is fried egg.
 
-Github Lab 1 Page: [(https://wangzhongyi0510.github.io/cse110/)](https://wangzhongyi0510.github.io/cse110/)
+Github Lab 1 Page: [https://wangzhongyi0510.github.io/cse110/](https://wangzhongyi0510.github.io/cse110/)
 
 ## Qixuan "Harrison" Ma
 
