@@ -1,23 +1,28 @@
 # Group 35 - Eggcellent
 
 ### Sections of this Page
+
 1. [Branding](#branding)
 2. [Values](#values)
 3. [Project](#project)
 4. [Roster](#roster)
 
 # Branding
-We chose to use the icon of an egg as our team mascot and named our team *Eggcellent*.
- 
+
+We chose to use the icon of an egg as our team mascot and named our team _Eggcellent_.
+
 <img src="/admin/branding/logos/Logo2.JPG" alt="Eggcellent team logo: an egg with team name" width="450" height="430">
 
 # Values
-An egg is simple, yet delicious. This icon represents our vision for our finished product: simple, intuitive, yet effective. 
+
+An egg is simple, yet delicious. This icon represents our vision for our finished product: simple, intuitive, yet effective.
 
 # Project
-We are making a receipe manager. 
+
+Our project will offer simple and easy way to make your food. One of the problems we face daily is 'What I need to cook something' or 'How do I cook something'. We will provide basic intructions with ingredients to make your cooking life easier!
 
 # Roster
+
 ## Kevin An
 
 <img src="/admin/group-images/KevinAn.jpg" alt="Kevin An" width="150" height="150">
@@ -46,7 +51,7 @@ Github Lab 1 Page: [(https://wangzhongyi0510.github.io/cse110/)](https://wangzho
 
 <img src="/admin/group-images/HarrisonMa.jpg" alt="Harrison Ma" width="150" height="150">
 
-I'm a third year ERC student from China double majoring in Mathematics-Computer Science and Cognitive Science with a Specialization in Machine Learning and Neural Computation. Interested in bioinformatics and machine learning. I play Overwatch for UCSD Esports. Avid lover of scrambled eggs. 
+I'm a third year ERC student from China double majoring in Mathematics-Computer Science and Cognitive Science with a Specialization in Machine Learning and Neural Computation. Interested in bioinformatics and machine learning. I play Overwatch for UCSD Esports. Avid lover of scrambled eggs.
 
 Github Lab 1 Page: [https://harrison-q-ma.github.io/GithubPages/](https://harrison-q-ma.github.io/GithubPages/)
 
@@ -90,7 +95,7 @@ I am a 4th year computer science student from Thurgood Marshall college. I am an
 
 Github Lab 1 Page: [https://jy-a211.github.io/CSE110/](https://jy-a211.github.io/CSE110/)
 
-## Rudy Zhang 
+## Rudy Zhang
 
 <img src="/admin/group-images/RudyZhang.png" alt="RudyZhang" width="150" height="150">
 
