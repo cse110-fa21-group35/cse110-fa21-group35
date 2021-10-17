@@ -15,7 +15,7 @@ We chose to use the icon of an egg as our team mascot and named our team _Eggcel
 
 # Values
 
-An egg is simple, yet delicious. This icon represents our vision for our finished product: simple, intuitive, yet effective.
+An egg is simple, yet delicious. This icon represents our vision for our finished product: simple, intuitive, yet effective. Our values will focus on satisfying user's expectations with good UI/UX and functionality.
 
 # Project
 
