@@ -1,6 +1,5 @@
 # Firebase Data Model
-- Firebase persists data as JSON. We can think of the data in our domain as a collection of users keyed by an accountId,
-where each user has a name, recipeCount, and collection of recipes where each recipe is keyed by a recipeId.
+- Firebase persists data as JSON. We can think of the data in our domain as a collection of users keyed by an accountId, where each user has a name, recipeCount, and collection of recipes where each recipe is keyed by a recipeId.
 
 - User accountId's are constructed automatically by firebase, they will be a 28 character string.
 - Each user's recipeId is constructed using the accountId, and the user's total recipe creation count prior to insertion.
