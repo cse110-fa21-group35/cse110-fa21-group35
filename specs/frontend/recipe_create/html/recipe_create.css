@@ -1,0 +1,119 @@
+.card-header {
+    background-color: white;
+    border-color: white;
+    height: 50px;
+}
+
+.card-header:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.card {
+    border-width: 0;
+    position: absolute;
+    width: 70%;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+}
+
+.recipe-save-btn {
+    background-color: #405263;
+    padding-left: 3%;
+    padding-right: 3%;
+    font-size: medium;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+.recipe-browse-btn {
+    background-color: #405263;
+    padding-left: 25%;
+    padding-right: 25%;
+    font-size: medium;
+    border-radius: 15px;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.recipe-save-btn:hover, .recipe-browse-btn:hover {
+    background-color: #FDE79B;
+    color: #405263;
+    font-weight: bold;
+}
+
+.recipe-save-btn:focus, .recipe-browse-btn:focus {
+    background-color: #405263;
+    color:white
+}
+
+.recipe-card-header-space {
+    display: inline-block;
+    height: 100%;
+}
+
+#recipe-card-close-btn {
+    color: #405263;
+    font-size: 2rem;
+}
+
+.recipe-card-recipe-name {
+    background-color: #FDE79B;
+}
+
+#recipe-name-input {
+    border-color: white;
+}
+
+#recipe-name-input::placeholder {
+    text-align: center;
+}
+
+.recipe-card-input-recipe-name {
+    padding: 0 20% 0 20%;
+}
+
+.recipe-img-box {
+    background-color: #FDE79B;
+    width: 100%;
+    height: 12.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.recipe-img {
+    background-color: white;
+    border-radius: 15px;
+    text-align: center;
+ }
+
+#recipe-image-upload-icon {
+    font-size: 3rem;
+    margin-top: 1rem;
+}
+
+.drag-drop-text {
+    margin: 0 0 0.3rem 0;
+    font-size: smaller;
+}
+
+.recipe-content-right {
+    background-color: rgba(180, 180, 171, 0.71);
+}
+
+.recipe-name-time-input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0 0.7rem 0 0.7rem;
+}
+
+#recipe-chief-name-input, #recipe-time-input {
+    margin-left: 1rem;
+    width: 70%;
+}
