@@ -1,9 +1,9 @@
 name: "Cooking App"
 description: "recipe management for humans"
 
-on:
-  push:
-  pull_request:
+# Triggers the workflow on push or pull request events
+
+on: [push, pull_request]
 
 jobs:
   build:
