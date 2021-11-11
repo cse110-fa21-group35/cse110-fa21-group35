@@ -1,9 +1,11 @@
 # cse110-fa21-group35
-*Group Page*
+
+_Group Page_
 
 [Click Here for group page](admin/team.md)
 
-*Group members:* 
+_Group members:_
+
 - Yen-Yun Wu
 - Harrison Ma
 - Jiawen Xu

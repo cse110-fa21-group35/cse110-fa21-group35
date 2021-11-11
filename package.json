@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/cse110-sp21-group35/cse110-fa21-group35/issues"
   },
-  "homepage": "https://github.com/cse110-sp21-group35/cse110-fa21-group35#readme"
+  "homepage": "https://github.com/cse110-sp21-group35/cse110-fa21-group35#readme",
+  "devDependencies": {
+    "prettier": "2.4.1"
+  }
 }
