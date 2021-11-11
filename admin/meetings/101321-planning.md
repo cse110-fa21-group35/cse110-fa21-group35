@@ -1,4 +1,4 @@
-## Meeting Minutes - Planning Meeting 
+## Meeting Minutes - Planning Meeting
 
 ### 10/13/2021 (Wednesday) 8:00 p.m. via Zoom
 
@@ -13,7 +13,7 @@
 - Terry Zhang
 - **Vivian Wu (Scribe)**
 - Jiyoung An
-- Rudy Zhang 
+- Rudy Zhang
 
 ## Agenda
 
@@ -22,7 +22,7 @@
 3. Distribute work for Group Page
 4. Go over ideal Git practices for group project
 
-<!-- 
+<!--
 ## What went well
 
 ## What are we working on at the moment
@@ -30,7 +30,7 @@
 ## Blockers
 
 ## Feedback
---> 
+-->
 
 ## Ideas & Comments
 
@@ -40,9 +40,9 @@
       2. GOATS
       3. Tabby Cat
       4. Pro Team
-      5. Cook Team Names 
+      5. Cook Team Names
       6. etc
-      7. [Click here for team name suggestions + poll](https://strawpoll.com/u376ae7u9/r) 
+      7. [Click here for team name suggestions + poll](https://strawpoll.com/u376ae7u9/r)
          1. Egg-cellent
    2. Team Mascot
       1. Egg
@@ -64,7 +64,7 @@
       2. Team brand
       3. Values we think are important
       4. Github page
-      5. Bio 
+      5. Bio
    3. Format Ideas
       1. header: team name, Branding, menu (nav)
       2. (Our project —— recipe manager)?
@@ -87,4 +87,3 @@
 1.  Each member to fill out own roster information by EOD Thursday 10/14/2021
 2.  Each member to work on their delegated tasks by EOD Friday 10/15/2021
 3.  One person merge the Markdown file for team.md
-
