@@ -2,35 +2,32 @@
 //make sure every external css is imported
 
 let createRecipeBtn = document.getElementById("create-recipe-btn");
-createRecipeBtn.addEventListener("click", function() {
-    createOverlay();
-    
-    //create the panel container element
-    const recipeCreatePanelContainer = createElem("div");
-    createPanelContainer(recipeCreatePanelContainer);
+createRecipeBtn.addEventListener("click", function () {
+  createOverlay();
 
-    //create panel itself
-    const recipeCreatePanel = createElem("div");
-    recipeCreatePanel.className = "card";
+  //create the panel container element
+  const recipeCreatePanelContainer = createElem("div");
+  createPanelContainer(recipeCreatePanelContainer);
 
-    createPanelHeader(recipeCreatePanel);
-    
-    
+  //create panel itself
+  const recipeCreatePanel = createElem("div");
+  recipeCreatePanel.className = "card";
 
+  createPanelHeader(recipeCreatePanel);
 
-    recipeCreatePanelContainer.appendChild(recipeCreatePanel);
-    document.querySelector("body").appendChild(recipeCreatePanelContainer);
+  recipeCreatePanelContainer.appendChild(recipeCreatePanel);
+  document.querySelector("body").appendChild(recipeCreatePanelContainer);
 });
 
 function createElem(type) {
-    return document.createElement(type);
+  return document.createElement(type);
 }
 
 function createOverlay() {
-    //generate background overlay
-    const overlay = createElem("section");
-    const styleElem = createElem("style");
-    const overlayStyle = `
+  //generate background overlay
+  const overlay = createElem("section");
+  const styleElem = createElem("style");
+  const overlayStyle = `
     #overlay {
         position: fixed; 
         display: block;
@@ -43,16 +40,16 @@ function createOverlay() {
         background-color: rgba(0, 0, 0, 0.61);
         z-index: 2;
     }`;
-    overlay.id = "overlay";
-    styleElem.innerHTML = overlayStyle;
-    overlay.appendChild(styleElem);
-    document.querySelector("html").appendChild(overlay);
+  overlay.id = "overlay";
+  styleElem.innerHTML = overlayStyle;
+  overlay.appendChild(styleElem);
+  document.querySelector("html").appendChild(overlay);
 }
 
 function createPanelContainer(recipeCreatePanelContainer) {
-    recipeCreatePanelContainer.id = "recipe-create-edit-panel";
-    const panelStyleElem = createElem("style");
-    const panelStyle = `
+  recipeCreatePanelContainer.id = "recipe-create-edit-panel";
+  const panelStyleElem = createElem("style");
+  const panelStyle = `
     .card-header {
         background-color: white;
         border-color: white;
@@ -228,39 +225,43 @@ function createPanelContainer(recipeCreatePanelContainer) {
     .step-input {
         height: 210px;
     }
-    `
-    panelStyleElem.innerHTML = panelStyle;
-    recipeCreatePanelContainer.appendChild(panelStyleElem);
-    recipeCreatePanelContainer.className = "container-fluid recipe-create-panel";
+    `;
+  panelStyleElem.innerHTML = panelStyle;
+  recipeCreatePanelContainer.appendChild(panelStyleElem);
+  recipeCreatePanelContainer.className = "container-fluid recipe-create-panel";
 }
 
 function createPanelHeader(recipeCreatePanel) {
-    //create panel header
-    const panelHeader = createElem("div");
-    panelHeader.className = "card-header";
-    //inner space of header
-    const headerSpan = createElem("div");
-    headerSpan.className = "d-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space";
-    //save btn
-    const saveBtn = createElem("button");
-    saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
-    saveBtn.innerHTML = "Save";
-    //close btn (X)
-    const closeBtn = createElem("button");
-    closeBtn.className = "close-recipe-btn";
-    closeBtn.onclick = function() { 
-        document.querySelector("body").removeChild(document.getElementById("recipe-create-edit-panel"));
-        document.querySelector("html").removeChild(document.getElementById("overlay"));
-    };
-    //closeBtn icon
-    const closeBtnIcon = createElem("i");
-    closeBtnIcon.className = "material-icons";
-    closeBtnIcon.id = "recipe-card-close-btn";
-    closeBtnIcon.innerHTML = "close";
-    closeBtn.appendChild(closeBtnIcon);
-    headerSpan.appendChild(saveBtn);
-    headerSpan.appendChild(closeBtn);
-    panelHeader.appendChild(headerSpan);
-    recipeCreatePanel.appendChild(panelHeader);
+  //create panel header
+  const panelHeader = createElem("div");
+  panelHeader.className = "card-header";
+  //inner space of header
+  const headerSpan = createElem("div");
+  headerSpan.className =
+    "d-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space";
+  //save btn
+  const saveBtn = createElem("button");
+  saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
+  saveBtn.innerHTML = "Save";
+  //close btn (X)
+  const closeBtn = createElem("button");
+  closeBtn.className = "close-recipe-btn";
+  closeBtn.onclick = function () {
+    document
+      .querySelector("body")
+      .removeChild(document.getElementById("recipe-create-edit-panel"));
+    document
+      .querySelector("html")
+      .removeChild(document.getElementById("overlay"));
+  };
+  //closeBtn icon
+  const closeBtnIcon = createElem("i");
+  closeBtnIcon.className = "material-icons";
+  closeBtnIcon.id = "recipe-card-close-btn";
+  closeBtnIcon.innerHTML = "close";
+  closeBtn.appendChild(closeBtnIcon);
+  headerSpan.appendChild(saveBtn);
+  headerSpan.appendChild(closeBtn);
+  panelHeader.appendChild(headerSpan);
+  recipeCreatePanel.appendChild(panelHeader);
 }
-

@@ -1,83 +1,92 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../css/recipe_create.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../css/recipe_create.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- JS to render Recipe Create Panel -->
     <script src="../scripts/recipe_create.js" type="module"></script>
 
     <title>Eggcellent Create/Edit Recipe</title>
   </head>
-  <body>
-      <header>
-          <style>
-                header{
-                    background-color: #FDE79B;
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                }
-                header img{
-                    width: 14em;
-                    height: 4.5em;
-                }
-                .nav{
-                    background-color: #405262;
-                    display: flex;
-                    justify-content: space-evenly;
-                    align-items: center;
-                    height: 30px;
-                }
-                .nav a{
-                    color: white;
-                    font-family: 'Roboto', sans-serif;
-                    text-decoration: none;
-                }
-                main{
-                    background-color: #8c8c7d;
-                    display: flex;
-                    flex-wrap: wrap;
-                    justify-content: center;
-                    gap: 30px;
-                }
-                .nav a:hover{
-                    color: #FDE79B;
-                }
-                .nav img{
-                    height: 15px;
-                    width: 20px;
-                }
-          </style>
-          <div>
-            <a href="recipe_create.html"><img src="../images/eggcellent-logo-header.png"></a>
+  <body style="background-color: #e5e5e5">
+    <header>
+      <style>
+        header {
+          background-color: #fde79b;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        header img {
+          width: 14em;
+          height: 4.5em;
+        }
+        .nav {
+          background-color: #405262;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 30px;
+        }
+        .nav a {
+          color: white;
+          font-family: "Roboto", sans-serif;
+          text-decoration: none;
+        }
+        main {
+          background-color: #8c8c7d;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 30px;
+        }
+        .nav a:hover {
+          color: #fde79b;
+        }
+        .nav img {
+          height: 15px;
+          width: 20px;
+        }
+      </style>
+      <div>
+        <a href="recipe_create.html"
+          ><img src="../images/eggcellent-logo-header.png"
+        /></a>
+      </div>
+    </header>
+    <section>
+      <div class="nav">
+        <div class="All">
+          <a href="">All Recipes</a>
         </div>
-      </header>
-      <body style="background-color: #E5E5E5;">
-        <section>
-            <div class="nav">
-                <div class="All">
-                    <a href="">All Recipes</a>
-                </div>
-                <div class="My-Recipes">
-                    <a href="">My Recipes</a>
-                </div>
-                <div class="Account">
-                    <a href="">Account</a>
-                </div>
-            </div>
-        </section>
-        <section>
-            <button id="create-recipe-btn" class="btn btn-warning">Create Recipe</button>
-        </section>
+        <div class="My-Recipes">
+          <a href="">My Recipes</a>
+        </div>
+        <div class="Account">
+          <a href="">Account</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <button id="create-recipe-btn" class="btn btn-warning">
+        Create Recipe
+      </button>
+    </section>
   </body>
 </html>
