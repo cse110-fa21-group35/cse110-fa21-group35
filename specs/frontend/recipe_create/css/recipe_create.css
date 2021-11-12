@@ -9,18 +9,26 @@
     border-top-right-radius: 20px;
 }
 
+.recipe-create-panel {
+    margin: 0 100px 0 100px;
+}
+
 .card {
+    top: 10px;
     border-width: 0;
     position: absolute;
-    width: 70%;
+    width: 65%;
     border-radius: 20px;
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     z-index: 100;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .recipe-save-btn {
     background-color: #405263;
+    border-width: 0;
     padding-left: 3%;
     padding-right: 3%;
     font-size: medium;
@@ -159,4 +167,9 @@
 
 .steps {
     margin: 0 0 1vw 0;
+    height: 210px;
+}
+
+.step-input {
+    height: 210px;
 }
