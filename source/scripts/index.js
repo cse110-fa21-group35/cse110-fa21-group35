@@ -53,7 +53,7 @@ function signUp() {
 
       // push to DB
       firebaseRef.child("users").child(uid).child("details").set(data);
-      
+
       window.location.replace("../components/template_1.html");
       alert("Successful Sign Up");
     })
@@ -83,7 +83,6 @@ function signIn() {
 
 // createRecipe is the backend function for the Creation of Recipes
 function createRecipe() {
-
   // checks for authentication persistence
   let user = auth.currentUser;
   var uid;
@@ -129,7 +128,7 @@ function createRecipe() {
       .child("recipes")
       .child(recipeName)
       .set(data);
-      alert("Successfully Created Recipe");
+    alert("Successfully Created Recipe");
   } catch (error) {
     alert(error.message);
   }
