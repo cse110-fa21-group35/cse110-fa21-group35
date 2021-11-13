@@ -26,7 +26,10 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
+const storage = firebase.storage();
 // const analytics = getAnalytics(app);
+
+var uid = int(0);
 
 function signUp() {
   var userEmail = document.getElementById("email").value;
@@ -46,7 +49,7 @@ function signUp() {
         Email: userEmail,
       };
       firebaseRef.child("users").child(uid).child("details").set(data);
-      window.location.replace("home.html");
+      window.location.replace("../components/template_1.html");
       alert("Successful Sign Up");
     })
     .catch((error) => {
@@ -55,6 +58,7 @@ function signUp() {
 }
 
 function signIn() {
+  var uid;
   var userSignInEmail = document.getElementById("email").value;
   var userSignInPassword = document.getElementById("pass").value;
 
@@ -62,11 +66,55 @@ function signIn() {
     .signInWithEmailAndPassword(userSignInEmail, userSignInPassword)
     .then((userCredential) => {
       const user = userCredential.user;
-      var uid = user.uid;
-      window.location.replace("home.html");
+      uid = user.uid;
+      window.location.replace("../components/template_1.html");
       alert("Successful Sign In");
     })
     .catch((error) => {
       alert(error.message);
     });
+}
+
+function createRecipe() {
+  let user = auth.currentUser;
+  var uid;
+  if (user != null) {
+    uid = user.uid;
+  }
+
+  var recipeName = document.getElementById("recipe-name-input").value;
+  var recipeBy = document.getElementById("recipe-chief-name-input").value;
+  var cookingTime = document.getElementById("recipe-time-input").value;
+  var servings = document.getElementById("recipe-servings-input").value;
+  var ingredients = document.getElementById("ingred-input").value;
+  var steps = document.getElementById("step-input").value;
+  // var photo = document.getElementById('file-input').value;
+
+  // var picture = str(photo);
+  // var link;
+
+  // if (picture == "<FileStorage: '' ('application/octet-stream')>") {
+  //     link = "";
+  // }
+  // else {
+  //   storage.child("images/" + picture).put(photo)
+  //   link = storage.child('images/' + picture).get_url(None)
+  // }
+
+  var firebaseRef = database.ref();
+  data = {
+    "Recipe Name": recipeName,
+    "Recipe By": recipeBy,
+    "Cooking Time": cookingTime,
+    Servings: servings,
+    Ingredients: ingredients,
+    Steps: steps,
+    // "Recipe Image": link,
+  };
+  firebaseRef
+    .child("users")
+    .child(uid)
+    .child("recipes")
+    .child(recipeName)
+    .set(data);
 }
