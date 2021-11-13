@@ -96,16 +96,16 @@ function createRecipe() {
   var servings = document.getElementById("recipe-servings-input").value;
   var ingredients = document.getElementById("ingred-input").value;
   var steps = document.getElementById("step-input").value;
-  var file = document.getElementById("file-input").files[0]
+  var file = document.getElementById("file-input").files[0];
 
- // var picture = photo.toString();
+  // var picture = photo.toString();
   var storageRef = storage.ref();
 
-  var thisRef = storageRef.child('images/' + file.name);
+  var thisRef = storageRef.child("images/" + file.name);
 
   //put request upload file to firebase storage
-  thisRef.put(file).then(function(snapshot) {
-     console.log('Uploaded image!');
+  thisRef.put(file).then(function (snapshot) {
+    console.log("Uploaded image!");
   });
   var link = thisRef.getDownloadURL();
   console.log("link is" + link);
