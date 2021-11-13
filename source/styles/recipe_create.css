@@ -126,23 +126,9 @@
 
 #recipe-chief-name-input,
 #recipe-time-input,
-#recipe-servings-input,
-.ingred-quantity {
+#recipe-servings-input {
   margin-left: 1vw;
   width: 70%;
-}
-
-#units {
-  padding-left: 0.4vw;
-}
-
-#unit-list {
-  width: auto;
-}
-
-.ingred-item {
-  display: flex;
-  margin: 0 0 1vw 0;
 }
 
 .img-input {
@@ -154,27 +140,13 @@
   background-color: white;
 }
 
-.add-steps-ingred-btn {
-  background-color: transparent;
-  border: 0px;
-  display: flex;
-}
-
-#add-step-ingred-icon {
-  font-size: 2vw;
-}
-
-.add-step-ingred-text {
-  padding: 1.2% 0 0 0;
-  font-size: 16px;
-  margin-bottom: auto;
-}
-
-.steps {
+.steps,
+.ingredients {
   margin: 0 0 1vw 0;
   height: 210px;
 }
 
-.step-input {
+#step-input,
+#ingred-input {
   height: 210px;
 }

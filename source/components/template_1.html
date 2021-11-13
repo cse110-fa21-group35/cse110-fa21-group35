@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="../css/recipe_create.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/recipe_create.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -66,7 +66,7 @@
       </style>
       <div>
         <a href="recipe_create.html"
-          ><img src="../images/eggcellent-logo-header.png"
+          ><img src="../icons/eggcellent-logo-header.png"
         /></a>
       </div>
     </header>
@@ -141,13 +141,12 @@
                     type="file"
                     accept="img/jpeg, img/png, img/jpg"
                   />Browse
-                  <!-- JS to display file name after selecting a file -->
                 </label>
               </div>
             </div>
             <div
               class="recipe-nutrition"
-              style="background-color: #e5e5e5; height: 69%; margin-top: 1vw"
+              style="background-color: #e5e5e5; height: 69.8%; margin-top: 1vw"
             ></div>
           </div>
           <div class="recipe-content-right col-7">
@@ -180,105 +179,26 @@
             </div>
             <div class="recipe-ingredient">
               <p class="fw-bold"><br />Ingredients</p>
-              <div class="ingred-list">
-                <div class="ingred-item">
-                  <input
-                    type="text"
-                    placeholder="ingredient name"
-                    class="ingred-name form-control"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="quantity"
-                    class="ingred-quantity form-control"
-                  />
-                  <div class="ingredient-units form-floating">
-                    <form id="units">
-                      <select class="form-select" id="unit-list">
-                        <option value="unit" disabled selected>unit</option>
-                        <option value="no-unit">---</option>
-                        <option value="gram">g</option>
-                        <option value="ounce">oc</option>
-                        <option value="ml">ml</option>
-                        <option value="cup">cup</option>
-                        <option value="teaspoon">tsp</option>
-                        <option value="teatablespoon">tbp</option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
-                <div class="ingred-item">
-                  <input
-                    type="text"
-                    placeholder="ingredient name"
-                    class="ingred-name form-control"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="quantity"
-                    class="ingred-quantity form-control"
-                  />
-                  <div class="ingredient-units form-floating">
-                    <form id="units">
-                      <select class="form-select" id="unit-list">
-                        <option value="unit" disabled selected>unit</option>
-                        <option value="no-unit">---</option>
-                        <option value="gram">g</option>
-                        <option value="ounce">oc</option>
-                        <option value="ml">ml</option>
-                        <option value="cup">cup</option>
-                        <option value="teaspoon">tsp</option>
-                        <option value="teatablespoon">tbp</option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
-                <div class="ingred-item">
-                  <input
-                    type="text"
-                    placeholder="ingredient name"
-                    class="ingred-name form-control"
-                  />
-                  <input
-                    type="number"
-                    min="0"
-                    placeholder="quantity"
-                    class="ingred-quantity form-control"
-                  />
-                  <div class="ingredient-units form-floating">
-                    <form id="units">
-                      <select class="form-select" id="unit-list">
-                        <option value="unit" disabled selected>unit</option>
-                        <option value="no-unit">---</option>
-                        <option value="gram">g</option>
-                        <option value="ounce">oc</option>
-                        <option value="ml">ml</option>
-                        <option value="cup">cup</option>
-                        <option value="teaspoon">tsp</option>
-                        <option value="teatablespoon">tbp</option>
-                      </select>
-                    </form>
-                  </div>
-                </div>
+              <div class="form-floating ingredients">
+                <textarea
+                  class="form-control"
+                  placeholder="Ingredients"
+                  id="ingred-input"
+                ></textarea>
+                <label for="ingred-input" class="text-black-50"
+                  >Your Ingredients</label
+                >
               </div>
-              <button class="add-steps-ingred-btn">
-                <i class="material-icons" id="add-step-ingred-icon">add</i>
-                <p class="add-step-ingred-text">Add New Ingredients</p>
-              </button>
             </div>
             <div class="recipe-steps">
-              <p class="fw-bold"><br />Steps</p>
+              <p class="fw-bold">Steps</p>
               <div class="form-floating steps">
                 <textarea
-                  class="form-control step-input"
+                  class="form-control"
                   placeholder="Step"
-                  id="single-step1"
+                  id="step-input"
                 ></textarea>
-                <label for="single-step1" class="text-black-50"
-                  >Your Steps</label
-                >
+                <label for="step-input" class="text-black-50">Your Steps</label>
               </div>
             </div>
           </div>
