@@ -35,6 +35,8 @@ function signUp() {
   var userEmail = document.getElementById("email").value;
   var userPassword = document.getElementById("pass").value;
   var userName = document.getElementById("name").value;
+
+  // Try to Sign Up
   auth
     .createUserWithEmailAndPassword(userEmail, userPassword)
     .then((userCredential) => {
@@ -48,7 +50,10 @@ function signUp() {
         Name: userName,
         Email: userEmail,
       };
+
+      // push to DB
       firebaseRef.child("users").child(uid).child("details").set(data);
+      
       window.location.replace("../components/template_1.html");
       alert("Successful Sign Up");
     })
@@ -62,6 +67,7 @@ function signIn() {
   var userSignInEmail = document.getElementById("email").value;
   var userSignInPassword = document.getElementById("pass").value;
 
+  // Try Sign In
   auth
     .signInWithEmailAndPassword(userSignInEmail, userSignInPassword)
     .then((userCredential) => {
@@ -75,7 +81,10 @@ function signIn() {
     });
 }
 
+// createRecipe is the backend function for the Creation of Recipes
 function createRecipe() {
+
+  // checks for authentication persistence
   let user = auth.currentUser;
   var uid;
   if (user != null) {
@@ -111,10 +120,17 @@ function createRecipe() {
     Steps: steps,
     // "Recipe Image": link,
   };
-  firebaseRef
-    .child("users")
-    .child(uid)
-    .child("recipes")
-    .child(recipeName)
-    .set(data);
+
+  // push to DB
+  try {
+    firebaseRef
+      .child("users")
+      .child(uid)
+      .child("recipes")
+      .child(recipeName)
+      .set(data);
+      alert("Successfully Created Recipe");
+  } catch (error) {
+    alert(error.message);
+  }
 }
