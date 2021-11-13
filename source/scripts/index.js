@@ -29,7 +29,7 @@ const database = firebase.database();
 const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
-var uid = int(0);
+var uid = 0;
 
 function signUp() {
   var userEmail = document.getElementById("email").value;
@@ -96,18 +96,19 @@ function createRecipe() {
   var servings = document.getElementById("recipe-servings-input").value;
   var ingredients = document.getElementById("ingred-input").value;
   var steps = document.getElementById("step-input").value;
-  // var photo = document.getElementById('file-input').value;
+  var file = document.getElementById("file-input").files[0]
 
-  // var picture = str(photo);
-  // var link;
+ // var picture = photo.toString();
+  var storageRef = storage.ref();
 
-  // if (picture == "<FileStorage: '' ('application/octet-stream')>") {
-  //     link = "";
-  // }
-  // else {
-  //   storage.child("images/" + picture).put(photo)
-  //   link = storage.child('images/' + picture).get_url(None)
-  // }
+  var thisRef = storageRef.child('images/' + file.name);
+
+  //put request upload file to firebase storage
+  thisRef.put(file).then(function(snapshot) {
+     console.log('Uploaded image!');
+  });
+  var link = thisRef.getDownloadURL();
+  console.log("link is" + link);
 
   var firebaseRef = database.ref();
   data = {
