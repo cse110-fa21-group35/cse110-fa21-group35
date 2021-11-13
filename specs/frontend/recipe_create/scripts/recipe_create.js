@@ -217,12 +217,12 @@ function createPanelContainer(recipeCreatePanelContainer) {
         margin-bottom: auto;
     }
     
-    .steps {
+    .steps, .ingredients {
         margin: 0 0 1vw 0;
         height: 210px;
     }
 
-    .step-input {
+    .step-input, .ingred-input {
         height: 210px;
     }
     `;
