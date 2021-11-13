@@ -17,5 +17,5 @@
 ## Additional Useful Notes
 
 - act usage notes can be found [here](https://github.com/nektos/act#example-commands)
-- If you see something along the lines of: FAILURE, style/formatting check. Make sure you format the code on your branch with [prettier](https://prettier.io/docs/en/install.html).
+- If you see something along the lines of: FAILURE, style/formatting check. Make sure you format the code on your branch with [prettier](https://prettier.io/docs/en/install.html). Simply run `npx prettier --write .` to format all .md, .yml, .html, .css, .js files, and you can also check if files are formatted with `--check` instead of write.
 - Slack @TacoTuesdayX if you're lost, please, I don't bite.
