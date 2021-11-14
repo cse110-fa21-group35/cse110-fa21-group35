@@ -55,7 +55,7 @@ function signUp() {
       // push to DB
       firebaseRef.child(uid).set(data);
 
-      window.location.replace("../components/template_1.html");
+      window.location.replace("../components/recipe_create.html");
       alert("Successful Sign Up");
     })
     .catch((error) => {
@@ -74,7 +74,7 @@ function signIn() {
     .then((userCredential) => {
       const user = userCredential.user;
       uid = user.uid;
-      window.location.replace("../components/template_1.html");
+      window.location.replace("../components/recipe_create.html");
       alert("Successful Sign In");
     })
     .catch((error) => {
