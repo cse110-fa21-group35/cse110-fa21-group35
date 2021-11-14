@@ -14,6 +14,8 @@ createRecipeBtn.addEventListener("click", function () {
   recipeCreatePanel.className = "card";
 
   createPanelHeader(recipeCreatePanel);
+  createRecipeNameInput(recipeCreatePanel);
+  createRecipeContent(recipeCreatePanel);
 
   recipeCreatePanelContainer.appendChild(recipeCreatePanel);
   document.querySelector("body").appendChild(recipeCreatePanelContainer);
@@ -241,4 +243,172 @@ function createPanelHeader(recipeCreatePanel) {
   headerSpan.appendChild(closeBtn);
   panelHeader.appendChild(headerSpan);
   recipeCreatePanel.appendChild(panelHeader);
+}
+
+function createRecipeNameInput(recipeCreatePanel) {
+  const rNameDiv = createElem("div");
+  rNameDiv.className = "card-body recipe-card-recipe-name";
+  const inputDiv = createElem("div");
+  inputDiv.className = "recipe-card-input-recipe-name";
+  const input = createElem("input");
+  input.type = "text";
+  input.id = "recipe-name-input";
+  input.className = "form-control";
+  input.placeholder = "Recipe Name";
+  inputDiv.appendChild(input);
+  rNameDiv.appendChild(inputDiv);
+  recipeCreatePanel.appendChild(rNameDiv);
+}
+
+function createRecipeContent(recipeCreatePanel) {
+  const contentContainer = createElem("div");
+  contentContainer.className =
+    "card-body recipe-content row justify-content-center";
+
+  const left = createElem("div");
+  left.className = "recipe-content-left col-4";
+  createImgBox(left);
+  createNutritionLabel(left);
+
+  const right = createElem("div");
+  right.className = "recipe-content-right col-7";
+  createRightContent(right);
+
+  contentContainer.appendChild(left);
+  contentContainer.appendChild(right);
+  recipeCreatePanel.appendChild(contentContainer);
+}
+
+function createImgBox(left) {
+  const imgBox = createElem("div");
+  imgBox.className = "recipe-img-box";
+
+  const img = createElem("div");
+  img.className = "recipe-img col-11";
+
+  const uploadIcon = createElem("i");
+  uploadIcon.className = "material-icons";
+  uploadIcon.id = "recipe-image-upload-icon";
+  uploadIcon.innerHTML = "cloud_upload";
+
+  const dragDropText = createElem("p");
+  dragDropText.className = "drag-drop-text";
+  dragDropText.innerHTML = "Drag and Drop Image<br />Or";
+
+  const iconLabel = createElem("label");
+  iconLabel.className = "btn btn-primary btn-sm recipe-browse-btn";
+  iconLabel.innerHTML = "Browse";
+  const fileInput = createElem("input");
+  fileInput.className = "img-input";
+  fileInput.type = "file";
+  fileInput.accept = "img/jpeg, img/png, img/jpg";
+
+  img.appendChild(uploadIcon);
+  img.appendChild(dragDropText);
+  img.appendChild(iconLabel);
+  img.appendChild(fileInput);
+  imgBox.appendChild(img);
+  left.appendChild(imgBox);
+}
+
+//not completed. Need to consider how to get the label via some apis
+function createNutritionLabel(left) {
+  const nutr = createElem("div");
+  nutr.className = "recipe-nutrition";
+  nutr.style = "background-color: #e5e5e5; height: 69.8%; margin-top: 1vw";
+  left.appendChild(nutr);
+}
+
+function createRightContent(right) {
+  createNameTimeServing(right);
+  createIngred(right);
+  createStep(right);
+}
+
+function createNameTimeServing(right) {
+  const nameTimeContainer = createElem("div");
+  nameTimeContainer.className = "recipe-name-time";
+  let str = ["Recipe By", "Cooking Time", "Servings"];
+  let id = [
+    "recipe-chief-name-input",
+    "recipe-time-input",
+    "recipe-servings-input",
+  ];
+  for (let i = 0; i < 3; i++) {
+    const name = createElem("div");
+    name.className = "recipe-name-time-input";
+    const nameText = createElem("span");
+    nameText.className = "text-md-start";
+    nameText.innerHTML = str[i];
+
+    const nameInput = createElem("input");
+    if (i < 2) {
+      nameInput.type = "text";
+    } else {
+      nameInput.type = "number";
+      nameInput.min = "1";
+    }
+    nameInput.id = id[i];
+    nameInput.className = "form-control";
+    name.appendChild(nameText);
+    name.appendChild(nameInput);
+    nameTimeContainer.appendChild(name);
+  }
+  right.appendChild(nameTimeContainer);
+}
+
+function createIngred(right) {
+  const ingred = createElem("div");
+  ingred.className = "recipe-ingredient";
+
+  const ingredText = createElem("p");
+  ingredText.className = "fw-bold";
+  ingredText.innerHTML = "<br />Ingredients";
+
+  const ingredBox = createElem("div");
+  ingredBox.className = "form-floating ingredients";
+
+  const ingredArea = createElem("textarea");
+  ingredArea.className = "form-control";
+  ingredArea.placeholder = "Ingredients";
+  ingredArea.id = "ingred-input";
+
+  const label = createElem("label");
+  label.className = "text-black-50";
+  label.for = "ingred-input";
+  label.innerHTML = "Your Ingredients";
+
+  ingredBox.appendChild(ingredArea);
+  ingredBox.appendChild(label);
+  ingred.appendChild(ingredText);
+  ingred.appendChild(ingredBox);
+  right.appendChild(ingred);
+}
+
+function createStep(right) {
+  const stepContainer = createElem("div");
+  stepContainer.className = "recipe-steps";
+
+  const stepText = createElem("p");
+  stepText.className = "fw-bold";
+  stepText.innerHTML = "Steps";
+
+  const stepBox = createElem("div");
+  stepBox.className = "form-floating steps";
+
+  const stepArea = createElem("textarea");
+  stepArea.className = "form-control";
+  stepArea.placeholder = "Step";
+  stepArea.id = "step-input";
+
+  const label = createElem("label");
+  label.for = "step-input";
+  label.className = "text-black-50";
+  label.innerHTML = "Your Steps";
+
+  stepBox.appendChild(stepArea);
+  stepBox.appendChild(label);
+  stepContainer.appendChild(stepText);
+  stepContainer.appendChild(stepBox);
+  right.appendChild(stepContainer);
 }
