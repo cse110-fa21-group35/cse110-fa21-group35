@@ -70,3 +70,27 @@ function signIn() {
       alert(error.message);
     });
 }
+
+function deleteRecipe(recipeId) {
+  let user = auth.currentUser;
+  if (user != null) {
+    var userId = user.uid;
+  }
+  //issue delete
+  fetch(`https://eggcellent-330922-default-rtdb.firebaseio.com/${userId}/recipes/${recipeId}.json`, {
+    method: 'DELETE'
+  }).then(function (response) {
+    // The API call was successful!
+    if (response.ok) {
+      return response.json();
+    } else {
+      return Promise.reject(response);
+    }
+  }).then(function (data) {
+    // This is the JSON from our response
+    console.log(data);
+  }).catch(function (err) {
+    // There was an error
+    console.warn('Something went wrong.', err);
+  });
+}
