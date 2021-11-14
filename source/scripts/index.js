@@ -47,12 +47,13 @@ function signUp() {
       }
       var firebaseRef = database.ref();
       data = {
-        Name: userName,
-        Email: userEmail,
+        name: userName,
+        email: userEmail,
+        recipeCount: 0,
       };
 
       // push to DB
-      firebaseRef.child("users").child(uid).child("details").set(data);
+      firebaseRef.child(uid).set(data);
 
       window.location.replace("../components/template_1.html");
       alert("Successful Sign Up");
@@ -90,45 +91,91 @@ function createRecipe() {
     uid = user.uid;
   }
 
-  var recipeName = document.getElementById("recipe-name-input").value;
-  var recipeBy = document.getElementById("recipe-chief-name-input").value;
-  var cookingTime = document.getElementById("recipe-time-input").value;
-  var servings = document.getElementById("recipe-servings-input").value;
-  var ingredients = document.getElementById("ingred-input").value;
-  var steps = document.getElementById("step-input").value;
-  var file = document.getElementById("file-input").files[0];
-
-  // var picture = photo.toString();
-  var storageRef = storage.ref();
-
-  var thisRef = storageRef.child("images/" + file.name);
-
-  //put request upload file to firebase storage
-  thisRef.put(file).then(function (snapshot) {
-    console.log("Uploaded image!");
-  });
-  var link = thisRef.getDownloadURL();
-  console.log("link is" + link);
-
-  var firebaseRef = database.ref();
-  data = {
-    "Recipe Name": recipeName,
-    "Recipe By": recipeBy,
-    "Cooking Time": cookingTime,
-    Servings: servings,
-    Ingredients: ingredients,
-    Steps: steps,
-    // "Recipe Image": link,
-  };
-
-  // push to DB
   try {
-    firebaseRef
-      .child("users")
-      .child(uid)
-      .child("recipes")
-      .child(recipeName)
-      .set(data);
+    var firebaseRef = database.ref();
+
+    var recipeName = document.getElementById("recipe-name-input").value;
+    var recipeBy = document.getElementById("recipe-chief-name-input").value;
+    var cookingTime = document.getElementById("recipe-time-input").value;
+    var servings = document.getElementById("recipe-servings-input").value;
+    var ingredients = document.getElementById("ingred-input").value;
+    var steps = document.getElementById("step-input").value;
+    var file = document.getElementById("file-input").files[0];
+
+    // update recipeCount
+    var newRecipeCount;
+    var databaseRef = firebaseRef.child(uid).child("recipeCount");
+    databaseRef.on(
+      "value",
+      function (snapshot) {
+        newRecipeCount = snapshot.val() + 1;
+      },
+      function (error) {
+        console.log("Error: " + error.code);
+      }
+    );
+
+    // var newRecipeCount;
+    // databaseRef.transaction(function(recipeCount) {
+    //   if (recipeCount) {
+    //     recipeCount = recipeCount + 1;
+    //     newRecipeCount = recipeCount;
+    //   }
+    //   return (recipeCount);
+    // });
+
+    // get today's date
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+
+    // var storageRef = storage.ref();
+    // var thisRef = storageRef.child("images/" + file.name);
+    // // put request upload file to firebase storage
+    // thisRef.put(file).then(function (snapshot) {
+    //   console.log("Uploaded image!");
+    // });
+    // var link = thisRef.getDownloadURL();
+    // console.log(link);
+
+    var uniqueRecipe = String(uid + "-" + newRecipeCount);
+
+    // set the new recipeCount
+    firebaseRef.child(uid).child("recipeCount").set(newRecipeCount);
+
+    // Recipe Data information to push to database
+    recipeData = {
+      public: false,
+      "@context": "https://schema.org",
+      "@type": "Recipe",
+      author: recipeBy,
+      cookTime: cookingTime,
+      datePublished: date,
+      // todo: add description
+      description: "",
+      // todo: fix the image link
+      image: "",
+      recipeIngredient: ingredients,
+      name: recipeName,
+      // todo: add nutrition
+      // "nutrition": {
+      //   "@type": "NutritionInformation",
+      //   "calories": "1200 calories",
+      //   "carbohydrateContent": "12 carbs",
+      //   "proteinContent": "9 grams of protein",
+      //   "fatContent": "9 grams fat"
+      // },
+      prepTime: "",
+      recipeInstructions: steps,
+      recipeYield: servings,
+    };
+
+    // push to DB
+    firebaseRef.child(uid).child("recipes").child(uniqueRecipe).set(recipeData);
     alert("Successfully Created Recipe");
   } catch (error) {
     alert(error.message);
