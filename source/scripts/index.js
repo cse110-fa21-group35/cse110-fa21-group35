@@ -102,28 +102,6 @@ function createRecipe() {
     var steps = document.getElementById("step-input").value;
     var file = document.getElementById("file-input").files[0];
 
-    // update recipeCount
-    var newRecipeCount;
-    var databaseRef = firebaseRef.child(uid).child("recipeCount");
-    databaseRef.on(
-      "value",
-      function (snapshot) {
-        newRecipeCount = snapshot.val() + 1;
-      },
-      function (error) {
-        console.log("Error: " + error.code);
-      }
-    );
-
-    // var newRecipeCount;
-    // databaseRef.transaction(function(recipeCount) {
-    //   if (recipeCount) {
-    //     recipeCount = recipeCount + 1;
-    //     newRecipeCount = recipeCount;
-    //   }
-    //   return (recipeCount);
-    // });
-
     // get today's date
     var today = new Date();
     var date =
@@ -133,50 +111,58 @@ function createRecipe() {
       "-" +
       today.getDate();
 
-    // var storageRef = storage.ref();
-    // var thisRef = storageRef.child("images/" + file.name);
-    // // put request upload file to firebase storage
-    // thisRef.put(file).then(function (snapshot) {
-    //   console.log("Uploaded image!");
-    // });
-    // var link = thisRef.getDownloadURL();
-    // console.log(link);
+    // get recipeCount
+    var databaseRef = firebaseRef.child(uid).child("recipeCount");
+    databaseRef.once("value").then(
+      function (snapshot) {
+        var recipeCount = snapshot.val();
+        var newRecipeCount = recipeCount + 1;
 
-    var uniqueRecipe = String(uid + "-" + newRecipeCount);
+        // the unique recipe
+        var uniqueRecipe = String(uid + "-" + newRecipeCount);
 
-    // set the new recipeCount
-    firebaseRef.child(uid).child("recipeCount").set(newRecipeCount);
+        // set the new recipeCount
+        firebaseRef.child(uid).child("recipeCount").set(newRecipeCount);
 
-    // Recipe Data information to push to database
-    recipeData = {
-      public: false,
-      "@context": "https://schema.org",
-      "@type": "Recipe",
-      author: recipeBy,
-      cookTime: cookingTime,
-      datePublished: date,
-      // todo: add description
-      description: "",
-      // todo: fix the image link
-      image: "",
-      recipeIngredient: ingredients,
-      name: recipeName,
-      // todo: add nutrition
-      // "nutrition": {
-      //   "@type": "NutritionInformation",
-      //   "calories": "1200 calories",
-      //   "carbohydrateContent": "12 carbs",
-      //   "proteinContent": "9 grams of protein",
-      //   "fatContent": "9 grams fat"
-      // },
-      prepTime: "",
-      recipeInstructions: steps,
-      recipeYield: servings,
-    };
+        // Recipe Data information to push to database
+        recipeData = {
+          public: false,
+          "@context": "https://schema.org",
+          "@type": "Recipe",
+          author: recipeBy,
+          cookTime: cookingTime,
+          datePublished: date,
+          // todo: add description
+          description: "",
+          // todo: fix the image link
+          image: "",
+          recipeIngredient: ingredients,
+          name: recipeName,
+          // todo: add nutrition
+          // "nutrition": {
+          //   "@type": "NutritionInformation",
+          //   "calories": "1200 calories",
+          //   "carbohydrateContent": "12 carbs",
+          //   "proteinContent": "9 grams of protein",
+          //   "fatContent": "9 grams fat"
+          // },
+          prepTime: "",
+          recipeInstructions: steps,
+          recipeYield: servings,
+        };
 
-    // push to DB
-    firebaseRef.child(uid).child("recipes").child(uniqueRecipe).set(recipeData);
-    alert("Successfully Created Recipe");
+        // push to DB
+        firebaseRef
+          .child(uid)
+          .child("recipes")
+          .child(uniqueRecipe)
+          .set(recipeData);
+        alert("Successfully Created Recipe");
+      },
+      function (error) {
+        console.log("Error: " + error.code);
+      }
+    );
   } catch (error) {
     alert(error.message);
   }
