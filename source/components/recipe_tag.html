@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      .sidebar {
+        height: 100%;
+        width: 0;
+        overflow-x: hidden;
+        transition: 0.5s;
+        padding-top: 60px;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: white;
+      }
+
+      button {
+        background-color: #405262;
+        color: white;
+        padding: 10px 25px;
+        border-radius: 30px;
+        font-size: 15px;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #fbe598;
+        color: #405262;
+      }
+
+      h1 {
+        color: #405262;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        text-align: center;
+      }
+
+      h4 {
+        color: #405262;
+        margin-top: 50px;
+        margin-bottom: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+
+      hr {
+        margin: 0px 0px 0px 0px;
+        padding: 0px 0px 0px 0px;
+      }
+
+      .sidebar .closebutton {
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+        margin-left: 50px;
+        color: #405262;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebutton" onclick="closeNav()"
+        >&times;</a
+      >
+      <h1>Categories</h1>
+
+      <h4>Ingredient</h4>
+      <hr />
+      <button id="1" onclick="changeColor1()">Shrimp</button>
+      <button id="2" onclick="changeColor2()">Pork</button>
+      <button id="3" onclick="changeColor3()">Beef</button>
+      <button id="4" onclick="changeColor4()">Shrimp</button>
+      <h4>Cooking Time</h4>
+      <hr />
+      <button id="5" onclick="changeColor5()">< 15 min</button>
+      <button id="6" onclick="changeColor6()">< 30 min</button>
+      <button id="7" onclick="changeColor7()">< 45 min</button>
+      <button id="8" onclick="changeColor8()">< 60 min</button>
+      <h4>Nutrition</h4>
+      <hr />
+      <button id="9" onclick="changeColor9()">Shrimp</button>
+      <button id="10" onclick="changeColor10()"></button>
+      <button id="11" onclick="changeColor11()">Keto</button>
+      <h4>Vegan</h4>
+      <hr />
+      <button id="12" onclick="changeColor12()">100%</button>
+      <button id="13" onclick="changeColor13()">Egg</button>
+      <button id="14" onclick="changeColor14()">Fish</button>
+    </div>
+
+    <div id="main">
+      <span style="font-size: 30px" onclick="show()">&#9776;All recipes</span>
+    </div>
+
+    <script>
+      counter1 = 1;
+      counter2 = 1;
+      counter3 = 1;
+      counter4 = 1;
+      counter5 = 1;
+      counter6 = 1;
+      counter7 = 1;
+      counter8 = 1;
+      counter9 = 1;
+      counter10 = 1;
+      counter11 = 1;
+      counter12 = 1;
+      counter13 = 1;
+      counter14 = 1;
+
+      function changeColor1() {
+        counter1 += 1;
+        let but = document.getElementById("1");
+
+        if (counter1 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor2() {
+        counter2 += 1;
+        let but = document.getElementById("2");
+
+        if (counter2 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor3() {
+        counter3 += 1;
+        let but = document.getElementById("3");
+
+        if (counter3 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor4() {
+        counter4 += 1;
+        let but = document.getElementById("4");
+
+        if (counter4 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor5() {
+        counter5 += 1;
+        let but = document.getElementById("5");
+
+        if (counter5 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor6() {
+        counter6 += 1;
+        let but = document.getElementById("6");
+
+        if (counter6 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor7() {
+        counter7 += 1;
+        let but = document.getElementById("7");
+
+        if (counter7 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor8() {
+        counter8 += 1;
+        let but = document.getElementById("8");
+
+        if (counter8 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor9() {
+        counter9 += 1;
+        let but = document.getElementById("9");
+
+        if (counter9 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor10() {
+        counter10 += 1;
+        let but = document.getElementById("10");
+
+        if (counter10 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor11() {
+        counter11 += 1;
+        let but = document.getElementById("11");
+
+        if (counter11 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor12() {
+        counter12 += 1;
+        let but = document.getElementById("12");
+
+        if (counter12 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor13() {
+        counter13 += 1;
+        let but = document.getElementById("13");
+
+        if (counter13 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+      function changeColor14() {
+        counter14 += 1;
+        let but = document.getElementById("14");
+
+        if (counter14 % 2 == 0) {
+          but.style.backgroundColor = "#FBE598";
+          but.style.color = "#405262";
+        } else {
+          but.style.backgroundColor = "#405262";
+          but.style.color = "white";
+        }
+      }
+
+      function show() {
+        let sidebar = document.getElementById("mySidebar");
+        sidebar.style.width = "245px";
+        let mainpage = document.getElementById("main");
+        mainpage.style.marginLeft = "245px";
+      }
+
+      function closeNav() {
+        let sidebar = document.getElementById("mySidebar");
+        sidebar.style.width = "0";
+        let mainpage = document.getElementById("main");
+        mainpage.style.marginLeft = "0";
+      }
+    </script>
+  </body>
+</html>
