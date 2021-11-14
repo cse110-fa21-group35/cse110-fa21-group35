@@ -22,13 +22,7 @@
         "datePublished": "2015-05-18",
         "description": "Your recipe description goes here",
         "image": "http://www.example.com/images.jpg",
-        "recipeIngredient": {
-          "ingredient 1": "banana",
-          "ingredient 2": "bread crumbs",
-          "ingredient 3": "pudding",
-          "ingredient 4": "brown sugar",
-          "ingredient 5": "flour"
-        },
+        "ingredients": "Your ingredients go here",
         "name": "Rand's Cookies",
         "nutrition": {
           "@type": "NutritionInformation",
