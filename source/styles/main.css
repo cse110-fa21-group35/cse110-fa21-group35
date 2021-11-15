@@ -1,6 +1,14 @@
 body {
   margin: 0;
-  background-color: #e5e5e5;
+  background: linear-gradient(
+    to right,
+    #e5e5e5 0,
+    #e5e5e5 10%,
+    #8c8c7d 10%,
+    #8c8c7d 90%,
+    #e5e5e5 90%,
+    #e5e5e5 100%
+  );
 }
 
 header {
@@ -31,10 +39,6 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: #8c8c7d;
 }
 .nav a:hover {
   color: #fde79b;

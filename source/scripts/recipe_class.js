@@ -24,8 +24,11 @@ class Recipe extends HTMLElement {
                 height: 150px;
                 object-fit: cover;
                 position: relative;
-                left: 8px;
                 top: 50px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 90%;
                 border-radius: 5px;
             }
             article{
