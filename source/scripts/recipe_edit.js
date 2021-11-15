@@ -1,15 +1,16 @@
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
-var recipeInfo = {"name": "Kung Pao Chicken", 
-"author": "David Newton", 
-"cooking-time": "1 hour", 
-"serving": 3, 
-"ingredients": "garlic, onion, chicken, cilantro",
-"steps": "some steps"
+var recipeInfo = {
+  name: "Kung Pao Chicken",
+  author: "David Newton",
+  "cooking-time": "1 hour",
+  serving: 3,
+  ingredients: "garlic, onion, chicken, cilantro",
+  steps: "some steps",
 };
 editBtn.addEventListener("click", function () {
-  editBtn.setAttribute('class', "btn btn-warning");
-  createRecipeBtn.setAttribute('class', "btn btn-secondary");
+  editBtn.setAttribute("class", "btn btn-warning");
+  createRecipeBtn.setAttribute("class", "btn btn-secondary");
   //get name, image, label, recipe by, cooking time, servings,
   //ingredients, and steps from the recipe to be edited
   createOverlay();
@@ -28,7 +29,6 @@ editBtn.addEventListener("click", function () {
 
   recipeCreatePanelContainer.appendChild(recipeCreatePanel);
   document.querySelector("body").appendChild(recipeCreatePanelContainer);
-
 });
 
 function createElem(type) {
@@ -232,7 +232,7 @@ function createPanelHeader(recipeCreatePanel) {
   const saveBtn = createElem("button");
   saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
   saveBtn.innerHTML = "Save";
-  saveBtn.onclick = function(){
+  saveBtn.onclick = function () {
     let name = document.getElementById("recipe-name-input");
     let author = document.getElementById("recipe-chief-name-input");
     let time = document.getElementById("recipe-time-input");
@@ -242,7 +242,7 @@ function createPanelHeader(recipeCreatePanel) {
     recipeInfo["name"] = name.value;
     recipeInfo["author"] = author.value;
     recipeInfo["cooking-time"] = time.value;
-    recipeInfo["serving"] = serving.value; 
+    recipeInfo["serving"] = serving.value;
     recipeInfo["ingredients"] = ingredients.value;
     recipeInfo["steps"] = steps.value;
     console.log(recipeInfo);
@@ -369,13 +369,13 @@ function createNameTimeServing(right) {
     nameText.innerHTML = str[i];
 
     const nameInput = createElem("input");
-    if(i == 0){
+    if (i == 0) {
       nameInput.value = recipeInfo["author"];
     }
-    if(i == 1){
+    if (i == 1) {
       nameInput.value = recipeInfo["cooking-time"];
     }
-    if(i == 2){
+    if (i == 2) {
       nameInput.value = recipeInfo["serving"];
     }
     if (i < 2) {
@@ -414,7 +414,7 @@ function createIngred(right) {
   label.className = "text-black-50";
   label.for = "ingred-input";
   label.innerHTML = "Your Ingredients";
-  
+
   ingredBox.appendChild(ingredArea);
   ingredBox.appendChild(label);
   ingred.appendChild(ingredText);

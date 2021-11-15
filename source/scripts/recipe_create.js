@@ -3,8 +3,8 @@
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
 createRecipeBtn.addEventListener("click", function () {
-  createRecipeBtn.setAttribute('class', "btn btn-warning");
-  editBtn.setAttribute('class', "btn btn-secondary");
+  createRecipeBtn.setAttribute("class", "btn btn-warning");
+  editBtn.setAttribute("class", "btn btn-secondary");
   createOverlay();
 
   //create the panel container element
