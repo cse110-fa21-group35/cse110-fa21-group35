@@ -8,6 +8,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin: 0px;
 }
 header img {
   width: 14em;
@@ -38,6 +39,7 @@ main {
 .nav a:hover {
   color: #fde79b;
 }
+
 .nav img {
   height: 15px;
   width: 20px;
