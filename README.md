@@ -26,9 +26,9 @@ _Group members:_
 
 _Dev Notes:_
 
-[How to Get Started](admin/docs/development-workflow.md)
-[Run CI-pipeline Locally](admin/docs/actions-ci/act.md)
-[Structure of Our Data](https://github.com/cse110-fa21-group35/cse110-fa21-group35/blob/main/admin/docs/data/datamodel.md)
+- [How to Get Started](admin/docs/development-workflow.md)
+- [Run CI-pipeline Locally](admin/docs/actions-ci/act.md)
+- [Structure of Our Data](https://github.com/cse110-fa21-group35/cse110-fa21-group35/blob/main/admin/docs/data/datamodel.md)
 
 - No branch protection rules so please do not push to main, even for 1 line changes make a branch called `NO-TICKET` and create a pull request.
 - Do NOT merge a pull request if: it fails our CI checks, or is a major feature without any approvals.
