@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/recipe_create.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="../styles/recipe-content.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JS to render Recipe Create Panel -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="/source/scripts/recipe_class.js" type="module"></script>
+
+    <title>Eggcellent Recipe Content</title>
+  </head>
+  <body>
+    <div
+      id="recipe-create-edit-panel"
+      class="container-fluid recipe-create-panel"
+    >
+      <div class="card">
+        <div class="card-header">
+          <div
+            class="
+              d-grid
+              gap-2
+              d-md-flex
+              justify-content-md-end
+              recipe-card-header-space
+            "
+          >
+            <button class="close-recipe-btn">
+              <!-- see js for onclick(), this is not the version I use for final js -->
+              <i
+                id="recipe-card-close-btn"
+                class="material-icons"
+                onclick="closePanel()"
+                >close</i
+              >
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

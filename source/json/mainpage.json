@@ -11,7 +11,7 @@
         "cookTime": "PT2H",
         "datePublished": "2015-05-18",
         "description": "Your recipe description goes here",
-        "image": "source/images/recipes/recipe1.JPG",
+        "image": "/source/images/recipes/recipe1.JPG",
         "recipeIngredient": {
           "ingredient 1": "banana",
           "ingredient 2": "bread crumbs",
@@ -39,7 +39,7 @@
         "cookTime": "PT2H",
         "datePublished": "2015-05-18",
         "description": "Your recipe description goes here",
-        "image": "source/images/recipes/recipe2.JPG",
+        "image": "/source/images/recipes/recipe2.JPG",
         "recipeIngredient": {
           "ingredient 1": "banana",
           "ingredient 2": "bread crumbs",
@@ -67,7 +67,7 @@
         "cookTime": "PT2H",
         "datePublished": "2015-05-18",
         "description": "Your recipe description goes here",
-        "image": "source/images/recipes/recipe3.JPG",
+        "image": "/source/images/recipes/recipe3.JPG",
         "recipeIngredient": {
           "ingredient 1": "banana",
           "ingredient 2": "bread crumbs",
