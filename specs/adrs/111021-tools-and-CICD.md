@@ -13,4 +13,5 @@
 
 ## Decision Outcome
 1.HTML, CSS, JS: Required; Firebase: Store user data so it can be accessed across multiple devices (not required but is a nice feature); Food API: Get nutrition facts/other recipe items (not required but helps for the features)
+
 2.Github actions for CI, there’s a nifty tutorial and it’s the only true open source solution for github rn.
