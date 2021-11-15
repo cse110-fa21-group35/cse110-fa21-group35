@@ -22,7 +22,7 @@
 3. Distribute work for Group Page
 4. Go over ideal Git practices for group project
 
-<!-- 
+<!--
 ## What went well
 
 ## What are we working on at the moment
