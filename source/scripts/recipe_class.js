@@ -4,7 +4,6 @@ class Recipe extends HTMLElement{
         this.attachShadow({mode:'open'});
     }
     set data(data){
-        console.log(data);
         const style_element = document.createElement('style');
         const styles = `
             a.name {
@@ -46,7 +45,7 @@ class Recipe extends HTMLElement{
         var recipe_img = document.createElement('img');
         var recipe_name = document.createElement('a');
         recipe_name.setAttribute("class", "name");
-        recipe_img.setAttribute("src", "assets/images/recipes/recipe1.JPG");
+        recipe_img.setAttribute("src", "source/images/recipes/recipe1.JPG");
         recipe_name.setAttribute("href", "");
         recipe_name.textContent = "Recipe Name";
         recipe_img_link.setAttribute("class", "img");
@@ -59,8 +58,9 @@ class Recipe extends HTMLElement{
     }
 }
 customElements.define('recipe-main', Recipe);
-const recipe_path = "spike.json";
+const recipe_path = "source/json/mainpage.json";
 const recipe_data = {};
+var recipe_length = 0;
 window.addEventListener('DOMContentLoaded', init);
 function init(){
     fetch_recipe();
@@ -73,8 +73,13 @@ async function fetch_recipe(){
     .then(function(data){
         recipe_data[recipe_path] = data;
         console.log(recipe_data[recipe_path]);
-        }
-    )
+    })
+    .then(() =>{
+        console.log(recipe_data[recipe_path]);      
+        recipe_length = get(recipe_data[recipe_path], "recipeCount");
+        console.log(get(recipe_data[recipe_path], "recipeCount"));
+        console.log(recipe_length);
+    })
 }
 
 function createRecipeCards(){
@@ -90,12 +95,12 @@ function createRecipeCards(){
 function get(object, key) {
     var result;
     Object.keys(object).some(function (key_in_object) {
-      if (k === key) {
-        result = object[k];
+      if (key_in_object === key) {
+        result = object[key_in_object];
         return true;
       }
-      if (object[k] && typeof object[k] === 'object') {
-        result = searchForKey(object[k], key);
+      if (object[key_in_object] && typeof object[key_in_object] === 'object') {
+        result = get(object[key_in_object], key);
         return result !== undefined;
       }
     });
