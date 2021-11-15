@@ -1,10 +1,17 @@
-//Render the Recipe Create/Edit Panel
-//make sure every external css is imported
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
-createRecipeBtn.addEventListener("click", function () {
-  createRecipeBtn.setAttribute('class', "btn btn-warning");
-  editBtn.setAttribute('class', "btn btn-secondary");
+var recipeInfo = {"name": "Kung Pao Chicken", 
+"author": "David Newton", 
+"cooking-time": "1 hour", 
+"serving": 3, 
+"ingredients": "garlic, onion, chicken, cilantro",
+"steps": "some steps"
+};
+editBtn.addEventListener("click", function () {
+  editBtn.setAttribute('class', "btn btn-warning");
+  createRecipeBtn.setAttribute('class', "btn btn-secondary");
+  //get name, image, label, recipe by, cooking time, servings,
+  //ingredients, and steps from the recipe to be edited
   createOverlay();
 
   //create the panel container element
@@ -21,6 +28,7 @@ createRecipeBtn.addEventListener("click", function () {
 
   recipeCreatePanelContainer.appendChild(recipeCreatePanel);
   document.querySelector("body").appendChild(recipeCreatePanelContainer);
+
 });
 
 function createElem(type) {
@@ -224,6 +232,21 @@ function createPanelHeader(recipeCreatePanel) {
   const saveBtn = createElem("button");
   saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
   saveBtn.innerHTML = "Save";
+  saveBtn.onclick = function(){
+    let name = document.getElementById("recipe-name-input");
+    let author = document.getElementById("recipe-chief-name-input");
+    let time = document.getElementById("recipe-time-input");
+    let serving = document.getElementById("recipe-servings-input");
+    let ingredients = document.getElementById("ingred-input");
+    let steps = document.getElementById("step-input");
+    recipeInfo["name"] = name.value;
+    recipeInfo["author"] = author.value;
+    recipeInfo["cooking-time"] = time.value;
+    recipeInfo["serving"] = serving.value; 
+    recipeInfo["ingredients"] = ingredients.value;
+    recipeInfo["steps"] = steps.value;
+    console.log(recipeInfo);
+  };
   //close btn (X)
   const closeBtn = createElem("button");
   closeBtn.className = "close-recipe-btn";
@@ -256,7 +279,9 @@ function createRecipeNameInput(recipeCreatePanel) {
   input.type = "text";
   input.id = "recipe-name-input";
   input.className = "form-control";
+  input.value = recipeInfo["name"];
   input.placeholder = "Recipe Name";
+
   inputDiv.appendChild(input);
   rNameDiv.appendChild(inputDiv);
   recipeCreatePanel.appendChild(rNameDiv);
@@ -344,6 +369,15 @@ function createNameTimeServing(right) {
     nameText.innerHTML = str[i];
 
     const nameInput = createElem("input");
+    if(i == 0){
+      nameInput.value = recipeInfo["author"];
+    }
+    if(i == 1){
+      nameInput.value = recipeInfo["cooking-time"];
+    }
+    if(i == 2){
+      nameInput.value = recipeInfo["serving"];
+    }
     if (i < 2) {
       nameInput.type = "text";
     } else {
@@ -372,14 +406,15 @@ function createIngred(right) {
 
   const ingredArea = createElem("textarea");
   ingredArea.className = "form-control";
-  ingredArea.placeholder = "Ingredients";
+  ingredArea.value = recipeInfo["ingredients"];
   ingredArea.id = "ingred-input";
+  ingredArea.placeholder = "Ingredients";
 
   const label = createElem("label");
   label.className = "text-black-50";
   label.for = "ingred-input";
   label.innerHTML = "Your Ingredients";
-
+  
   ingredBox.appendChild(ingredArea);
   ingredBox.appendChild(label);
   ingred.appendChild(ingredText);
@@ -400,6 +435,7 @@ function createStep(right) {
 
   const stepArea = createElem("textarea");
   stepArea.className = "form-control";
+  stepArea.value = recipeInfo["steps"];
   stepArea.placeholder = "Step";
   stepArea.id = "step-input";
 
