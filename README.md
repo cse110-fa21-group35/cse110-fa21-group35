@@ -1,4 +1,5 @@
 # cse110-fa21-group35
+
 ---
 
 _Group Page_
@@ -32,4 +33,3 @@ _Dev Notes:_
 - No branch protection rules so please do not push to main, even for 1 line changes make a branch called `NO-TICKET` and create a pull request.
 - Do NOT merge a pull request if: it fails our CI checks, or is a major feature without any approvals.
 - Additionally, try not to merge someone else's PR unless you were given permission (may not be done, plz don't break main).
-
