@@ -10,9 +10,8 @@ class Recipe extends HTMLElement{
             a.name {
                 background-color: #FDE79B;
                 position: relative;
-                left: 8px;
                 top: 30px;
-                width: 283px;
+                width: 100%;
                 height: 25px;
                 color: #405262;
                 display: flex;
@@ -20,6 +19,7 @@ class Recipe extends HTMLElement{
                 justify-content: center;
                 font-family: 'Roboto', sans-serif;
                 font-weight: bold;
+                text-decoration: none;
             }
             a.img > img{
                 height: 150px;
@@ -80,7 +80,7 @@ async function fetch_recipe(){
 function createRecipeCards(){
     var cards = [];
     var main = document.querySelector("main");
-    for(let i = 0; i < 8; i++){
+    for(let i = 0; i <9; i++){
         cards.push(document.createElement('recipe-main'));
         cards[i].data = recipe_data[recipe_path];
         main.appendChild(cards[i]);

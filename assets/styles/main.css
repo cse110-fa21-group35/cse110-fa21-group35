@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 header{
     background-color: #FDE79B;
     display: flex;
@@ -18,6 +22,7 @@ header img{
 .nav a{
     color: white;
     font-family: 'Roboto', sans-serif;
+    text-decoration: none;
 }
 main{
     background-color: #8c8c7d;
