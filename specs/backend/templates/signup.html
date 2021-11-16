@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="../index.js"></script>
+  </head>
+  <header>
+    <h3>Create an Account</h3>
+    <a href="signin.html">Already have an account?</a>
+    <br />
+  </header>
+
+  <body>
+    <div id="form-container">
+      <p>
+        Email:<input type="email" name="email" id="email" /> Password:<input
+          type="password"
+          name="pass"
+          id="pass"
+        />
+      </p>
+      <p>
+        Name: <input type="name" name="name" id="name" />
+        <button id="signUp" onclick="signUp()">Sign Up</button>
+      </p>
+    </div>
+  </body>
+</html>
