@@ -159,6 +159,7 @@ function createPanelContainer(recipeCreatePanelContainer) {
   #recipe-image-upload-icon {
     font-size: 4vw;
     margin-top: 1vw;
+    color:#405263;
   }
   
   .drag-drop-text {
@@ -229,11 +230,12 @@ function createPanelContainer(recipeCreatePanelContainer) {
   }
 
   .add-ingred-btn:hover > p, .remove-ingred-btn:hover > p {
-    text-decor ation: underline;
+    text-decoration: underline;
   }
 
-  #add-ingred-icon, .remove-ingred-icon {
+  #add-ingred-icon, #remove-ingred-icon {
     font-size: 2vw;
+    color:#405263;
   }
 
   .add-ingred-text{

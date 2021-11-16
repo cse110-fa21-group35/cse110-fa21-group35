@@ -108,6 +108,7 @@
 #recipe-image-upload-icon {
   font-size: 4vw;
   margin-top: 1vw;
+  color: #405263;
 }
 
 .drag-drop-text {
@@ -184,8 +185,9 @@
 }
 
 #add-ingred-icon,
-.remove-ingred-icon {
+#remove-ingred-icon {
   font-size: 2vw;
+  color: #405263;
 }
 
 .add-ingred-text {
