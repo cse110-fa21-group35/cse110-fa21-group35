@@ -1,12 +1,14 @@
+html > body {
+  font-family: "Roboto", sans-serif;
+}
+
 body {
   background: #dbdcd7;
 }
 
 div.card {
   margin-top: 10px;
-  margin-bottom: 10px;
   width: 80%;
-  font-family: "Roboto", "sans-serif";
   border-radius: 20px;
   border-width: 0;
   box-shadow: 3px 3px 10px 0px #405262;
