@@ -103,9 +103,10 @@ function createRecipe() {
 
     var ingredients = document.getElementsByClassName("ingred-item");
     var ingredientsName = document.getElementsByClassName("ingred-name");
-    var ingredientsQuantity = document.getElementsByClassName("ingred-quantity");
-    var ingredientsUnit = document.getElementsByClassName("ingred-units"); 
-    
+    var ingredientsQuantity =
+      document.getElementsByClassName("ingred-quantity");
+    var ingredientsUnit = document.getElementsByClassName("ingred-units");
+
     var ingredientsData = {};
     console.log(ingredients.length);
     for (let i = 0; i < ingredients.length; i++) {
@@ -113,10 +114,13 @@ function createRecipe() {
       console.log(ingredientsQuantity[i].value);
       console.log(ingredientsUnit[i].value);
       console.log(ingredientsName[i].value);
-      var val = String(ingredientsQuantity[i].value) + String(ingredientsUnit[i].value) + " " + String(ingredientsName[i].value);
+      var val =
+        String(ingredientsQuantity[i].value) +
+        String(ingredientsUnit[i].value) +
+        " " +
+        String(ingredientsName[i].value);
       ingredientsData["ingredient " + ingredNumber] = val;
     }
-
 
     // get today's date
     var today = new Date();
