@@ -71,6 +71,11 @@ const recipe_ids = [
   "Br6v40acvTTGoMvvdbLLRBPplHF3-97",
   "Br6v40acvTTGoMvvdbLLRBPplHF3-98",
   "Br6v40acvTTGoMvvdbLLRBPplHF3-99",
+  "Br6v40acvTTGoMvvdbLLRBPplHF3-100",
+  "Br6v40acvTTGoMvvdbLLRBPplHF3-101",
+  "Br6v40acvTTGoMvvdbLLRBPplHF3-102",
+  "Br6v40acvTTGoMvvdbLLRBPplHF3-103",
+  "Br6v40acvTTGoMvvdbLLRBPplHF3-104",
 ];
 window.addEventListener("DOMContentLoaded", init);
 async function init() {
