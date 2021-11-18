@@ -266,6 +266,10 @@ function createPanelHeader(recipeCreatePanel) {
   const saveBtn = createElem("button");
   saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
   saveBtn.innerHTML = "Save";
+  saveBtn.onclick = function () {
+    createRecipe();
+  };
+
   //close btn (X)
   const closeBtn = createElem("button");
   closeBtn.className = "close-recipe-btn";
@@ -523,7 +527,7 @@ function createIngredInput() {
   let unitForm = createElem("form");
   unitForm.id = "units";
   let unitItems = createElem("select");
-  unitItems.className = "form-select";
+  unitItems.className = "form-select ingred-units";
   unitItems.id = "unit-list";
 
   for (let j = 0; j < unitList.length; j++) {
