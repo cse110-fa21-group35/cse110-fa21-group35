@@ -50,8 +50,34 @@
               recipe-card-header-space
             "
           >
+            <button class="edit-recipe-btn btns">
+              <i
+                id="recipe-card-edit-btn"
+                class="material-icons"
+                onclick="editRecipe()"
+                >edit</i
+              >
+              <span class="header-label"> Edit </span>
+            </button>
+            <button class="delete-recipe-btn btns">
+              <i
+                id="recipe-card-delete-btn"
+                class="material-icons"
+                onclick="deleteRecipe()"
+                >delete</i
+              >
+              <span class="header-label"> Delete </span>
+            </button>
+            <button class="add-recipe-btn btns">
+              <i
+                id="recipe-card-add-btn"
+                class="material-icons"
+                onclick="addRecipe()"
+                >favorite_border</i
+              >
+              <span class="my-recipe-label"> Add to My Recipe </span>
+            </button>
             <button class="close-recipe-btn">
-              <!-- see js for onclick(), this is not the version I use for final js -->
               <i
                 id="recipe-card-close-btn"
                 class="material-icons"
@@ -59,6 +85,46 @@
                 >close</i
               >
             </button>
+          </div>
+        </div>
+        <div class="card-body recipe-name">
+          <span> Recipe Name </span>
+        </div>
+        <div class="card-body recipe-body row justify-content-center">
+          <div class="content-left col-4">
+            <img src="/source/images/recipes/recipe1.JPG" class="recipe-img" />
+            <img src="/source/images/nutritionFacts.png" class="nutr-label" />
+          </div>
+          <div class="content-right col-7">
+            <div class="recipe-info-box">
+              <span class="fs-4">RECIPE INFO</span>
+              <hr />
+              <p class="recipe-info">
+                Recipe By: <br />
+                Cooking Time: <br />
+                Servings: <br />
+              </p>
+            </div>
+            <div class="ingred-list">
+              <span class="fs-4">INGREDIENTS</span>
+              <hr />
+              <div class="ingreds">
+                <ul>
+                  <li>Egg 1</li>
+                  <li>Salt 5g</li>
+                </ul>
+              </div>
+            </div>
+            <div class="step-list">
+              <span class="fs-4">STEPS</span>
+              <hr />
+              <div class="steps">
+                <p class="step-box">
+                  This is a long paragraph.<br />
+                  It is determined by user input.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
