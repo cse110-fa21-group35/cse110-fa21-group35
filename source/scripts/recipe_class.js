@@ -50,6 +50,13 @@ class Recipe extends HTMLElement {
     // creating a recipe cutomized object
     const recipe = document.createElement("article");
 
+    // creating recipe name element for recipe
+    let recipe_name = document.createElement("a");
+    recipe_name.setAttribute("class", "name");
+    recipe_name.setAttribute("href", "");
+    recipe_name.textContent = data["name"];
+    recipe.appendChild(recipe_name);
+
     // creating image element for recipe
     let recipe_img_link = document.createElement("a");
     let recipe_img = document.createElement("img");
@@ -58,13 +65,6 @@ class Recipe extends HTMLElement {
     recipe_img_link.setAttribute("href", "");
     recipe_img_link.appendChild(recipe_img);
     recipe.appendChild(recipe_img_link);
-
-    // creating recipe name element for recipe
-    let recipe_name = document.createElement("a");
-    recipe_name.setAttribute("class", "name");
-    recipe_name.setAttribute("href", "");
-    recipe_name.textContent = data["name"];
-    recipe.appendChild(recipe_name);
 
     // adding customized recipe and CSS style to main
     this.shadowRoot.appendChild(style_element);
