@@ -1,100 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link
-      rel="icon"
-      href="computer-icons-favicon-science-iconfinder-png-favpng-Fsyg7qgB3QwTWmHEThnpi3qza.jpeg"
-    />
-    <link rel="stylesheet" type="text/css" href="/source/styles/style.css" />
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>recipe content page</title>
-    <script src="/scripts/expose.js"></script>
-    <style>
-      body {
-        background-color: white;
-      }
-    </style>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Sofia"
+      type="text/css"
+      href="/source/styles/bootstrap.min.css"
     />
-    <style>
-      body {
-        font-family: "Roboto", sans-serif;
-      }
-    </style>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/recipe_create.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JS to render Recipe Create Panel -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="/source/scripts/recipe_class.js"></script>
+    <script src="/source/scripts/recipe_class.js"></script>
+    <title>Eggcellent Recipe</title>
   </head>
-  <body>
-    <div class="buttons">
-      <button class="isMyRecipe">Edit</button>
-      <button class="isMyRecipe">Delete</button>
-      <button class="Myrecipes" style="float: right">Add to My Recipes</button>
-    </div>
-
-    <header style="text-align: center">Recipe Name</header>
-    <!-- <h2 style="text-align: center;">Recipe Name</h2> -->
-    <main>
-      <!-- <div class="frame" >
-            <img class = 'img1' src="./recipeImg.png" alt="recipeImg">
-            <img class = 'img2' src="./nutritionFacts.png" alt="nutritionFacts">
-        </div> -->
-      <div id="main">
-        <div id="imgs">
-          <img
-            class="img1"
-            src="/source/images/recipeImg.png"
-            alt="recipeImg"
-          />
-          <img
-            class="img2"
-            src="/source/images/nutritionFacts.png"
-            alt="nutritionFacts"
-          />
-        </div>
-        <div id="text">
-          <h4>
-            reciepe by "eggcellent" <br />
-            cooking time: 30 min
-          </h4>
-
-          <div class="ingrediants">
-            <h2>ingrediants</h2>
-            <hr />
-            <p>
-              butter 1g <br />
-              banana 1 <br />
-              grapes 100g <br />
-              honey 2T <br />
-              sugar 2g <br />
-            </p>
-          </div>
-          <div class="recipe">
-            <h2>Recipe</h2>
-            <hr />
-            <p>
-              Step 1:... <br />
-              Step 2:... <br />
-              ... <br />
-              ... <br />
-              ... <br />
-            </p>
-          </div>
-        </div>
-      </div>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet"
-      />
-
-      <script src="source/scripts/contact.js" type="module"></script>
-      <script src="source/scripts/recipe_class.js" type="module"></script>
-    </main>
-    <!-- <body>
+  <body style="background-color: #e5e5e5">
     <header>
-      <a href="/index.html"><img src="/source/images/logo.JPG" /></a>
+      <style>
+        body {
+          margin: 0;
+          font-family: "Roboto", sans-serif;
+          background: linear-gradient(
+            to right,
+            #dbdcd7 0,
+            #dbdcd7 10%,
+            #8c8c7d 10%,
+            #8c8c7d 90%,
+            #dbdcd7 90%,
+            #dbdcd7 100%
+          );
+        }
+
+        header {
+          background-color: #fde79b;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 0px;
+        }
+
+        header img {
+          width: 100%;
+          height: 70px;
+        }
+
+        header > div > a {
+          width: 0;
+          height: 0;
+        }
+
+        .nav {
+          background-color: #405262;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 32px;
+        }
+
+        .nav a {
+          color: white;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 17px;
+        }
+
+        main {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 30px;
+        }
+
+        .nav a:hover > i,
+        .nav a:hover,
+        footer > a:hover {
+          color: #fde79b;
+        }
+
+        i.material-icons {
+          color: white;
+          margin-right: 3px;
+          font-size: 30px;
+        }
+
+        footer {
+          background-color: #405262;
+          text-align: center;
+          position: fixed;
+          bottom: 0;
+          width: 100%;
+          height: 5%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        footer > a {
+          font-size: 18px;
+          color: white;
+          text-decoration: none;
+        }
+      </style>
+      <div>
+        <a href="/index.html"><img src="/source/images/logo.JPG" /></a>
+      </div>
     </header>
     <section>
       <div class="nav">
@@ -116,53 +149,9 @@
             Account
           </a>
         </div>
-      </div> -->
-
-    <!-- <footer>
-        <h1>wrap up</h1>
-        <form onsubmit="alert('sucess')">
-            <fieldset>
-                <legend>basic informations</legend>
-                <input type="text" placeholder="enter phone number">
-                <input type="text" placeholder="enter email address">
-                <button>submit</button>
-            </fieldset>
-            
-        </form>
-        
-
-        <form onsubmit="alert('sucess')">
-            <label for="time">Choose a <span style="color:blue;font-weight:bold">meeting</span> time:</label>
-            <select id="time">
-                <option value="Monday">Monday</option>
-                <option value="Wendnesday">Wendnesday</option>
-                <option value="Friday">Friday</option>
-            </select>
-            <input type="submit">
-          </form>
-        
-
-        <form onsubmit="alert('sucess')">
-            <label for="comments">additional comments:</label>
-            <textarea id="comments" name="commeents" rows="4" cols="50">
-                
-            </textarea>
-            <button>submit</button>
-            
-        </form>
-
-        <form onsubmit="alert('sucess')">
-            <label for="browser">Choose your browser from the list:</label>
-            <input list="browsers" name="browser" id="browser">
-            <datalist id="browsers">
-              <option value="Firefox">
-              <option value="Chrome">
-              <option value="Safari">
-            </datalist>
-            <input type="submit">
-          </form>
-       
-    </footer> -->
+      </div>
+    </section>
+    <main></main>
   </body>
   <footer>
     <!-- Feel free to use onclick="showContact() in contact.js -->

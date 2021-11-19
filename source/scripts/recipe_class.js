@@ -103,6 +103,27 @@ async function fetch_recipe() {
   });
 }
 
+async function fetchCall() {
+  return new Promise((resolve, reject) => {
+    fetch(
+      `https://api.spoonacular.com/recipes/random?apiKey=48efb642c0b24eb586a3ba1d81ee738e&number=3`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        //process data to parse them in recipe content card
+        console.log(data);
+      })
+      .then(() => {
+        resolve(true);
+      })
+      .catch((err) => {
+        reject(true);
+      });
+  });
+}
+
 function createRecipeCards() {
   var cards = [];
   var main = document.querySelector("main");

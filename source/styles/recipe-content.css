@@ -41,6 +41,11 @@ html {
   background-color: #fde79b;
 }
 
+#recipe-card-added-btn {
+  color: crimson;
+  font-size: 2vw;
+}
+
 .header-label {
   color: white;
 }
