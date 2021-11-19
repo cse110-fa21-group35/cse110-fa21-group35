@@ -1,10 +1,18 @@
-//Render the Recipe Create/Edit Panel
-//make sure every external css is imported
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
-createRecipeBtn.addEventListener("click", function () {
-  createRecipeBtn.setAttribute("class", "btn btn-warning");
-  editBtn.setAttribute("class", "btn btn-secondary");
+var recipeInfo = {
+  name: "Kung Pao Chicken",
+  author: "David Newton",
+  "cooking-time": "1 hour",
+  serving: 3,
+  ingredients: "garlic, onion, chicken, cilantro",
+  steps: "some steps",
+};
+editBtn.addEventListener("click", function () {
+  editBtn.setAttribute("class", "btn btn-warning");
+  createRecipeBtn.setAttribute("class", "btn btn-secondary");
+  //get name, image, label, recipe by, cooking time, servings,
+  //ingredients, and steps from the recipe to be edited
   createOverlay();
 
   //create the panel container element
@@ -87,7 +95,6 @@ function createPanelContainer(recipeCreatePanelContainer) {
     border-width: 0;
     padding-left: 3%;
     padding-right: 3%;
-    margin-top: 3px;
     font-size: medium;
     border-radius: 10px;
     font-weight: bold;
@@ -161,7 +168,6 @@ function createPanelContainer(recipeCreatePanelContainer) {
   #recipe-image-upload-icon {
     font-size: 4vw;
     margin-top: 1vw;
-    color:#405263;
   }
   
   .drag-drop-text {
@@ -184,8 +190,7 @@ function createPanelContainer(recipeCreatePanelContainer) {
   
   #recipe-chief-name-input,
   #recipe-time-input,
-  #recipe-servings-input,
-  .ingred-quantity {
+  #recipe-servings-input {
     margin-left: 1vw;
     width: 70%;
   }
@@ -199,57 +204,16 @@ function createPanelContainer(recipeCreatePanelContainer) {
     background-color: white;
   }
   
-  .steps {
+  .steps,
+  .ingredients {
     margin: 0 0 1vw 0;
     height: 210px;
   }
   
-  #step-input {
+  #step-input,
+  #ingred-input {
     height: 210px;
-  }
-  
-  #units {
-    padding-left: 0.4vw;
-  }
-  
-  #unit-list {
-    width: auto;
-  }
-  
-  .ingred-item {
-    display: flex;
-    margin: 0 0 1vw 0;
-  }
-  
-  .add-ingred-btn, .remove-ingred-btn {
-    background-color: transparent;
-    border: 0px;
-    display: flex;
-  }
-
-  .hidden {
-    display: none;
-  }
-
-  .add-ingred-btn:hover > p, .remove-ingred-btn:hover > p {
-    text-decoration: underline;
-  }
-
-  #add-ingred-icon, #remove-ingred-icon {
-    font-size: 2vw;
-    color:#405263;
-  }
-
-  .add-ingred-text{
-    padding: 1.2% 0 0 0;
-    font-size: 16px;
-    margin-bottom: auto;
-  }
-
-  .remove-ingred-text {
-    font-size: 16px;
-    margin-bottom: auto;
-  }
+  }  
     `;
   panelStyleElem.innerHTML = panelStyle;
   recipeCreatePanelContainer.appendChild(panelStyleElem);
@@ -269,9 +233,20 @@ function createPanelHeader(recipeCreatePanel) {
   saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
   saveBtn.innerHTML = "Save";
   saveBtn.onclick = function () {
-    createRecipe();
+    let name = document.getElementById("recipe-name-input");
+    let author = document.getElementById("recipe-chief-name-input");
+    let time = document.getElementById("recipe-time-input");
+    let serving = document.getElementById("recipe-servings-input");
+    let ingredients = document.getElementById("ingred-input");
+    let steps = document.getElementById("step-input");
+    recipeInfo["name"] = name.value;
+    recipeInfo["author"] = author.value;
+    recipeInfo["cooking-time"] = time.value;
+    recipeInfo["serving"] = serving.value;
+    recipeInfo["ingredients"] = ingredients.value;
+    recipeInfo["steps"] = steps.value;
+    console.log(recipeInfo);
   };
-
   //close btn (X)
   const closeBtn = createElem("button");
   closeBtn.className = "close-recipe-btn";
@@ -304,7 +279,9 @@ function createRecipeNameInput(recipeCreatePanel) {
   input.type = "text";
   input.id = "recipe-name-input";
   input.className = "form-control";
+  input.value = recipeInfo["name"];
   input.placeholder = "Recipe Name";
+
   inputDiv.appendChild(input);
   rNameDiv.appendChild(inputDiv);
   recipeCreatePanel.appendChild(rNameDiv);
@@ -349,22 +326,14 @@ function createImgBox(left) {
   iconLabel.className = "btn btn-primary btn-sm recipe-browse-btn";
   iconLabel.innerHTML = "Browse";
   const fileInput = createElem("input");
-  fileInput.id = "img-upload";
   fileInput.className = "img-input";
   fileInput.type = "file";
   fileInput.accept = "img/jpeg, img/png, img/jpg";
-  fileInput.onchange = function (event) {
-    let browseBtn = document.querySelector("label.recipe-browse-btn");
-    browseBtn.innerHTML = browseBtn.innerHTML.replace(
-      "Browse",
-      event.srcElement.files[0].name
-    );
-  };
 
-  iconLabel.appendChild(fileInput);
   img.appendChild(uploadIcon);
   img.appendChild(dragDropText);
   img.appendChild(iconLabel);
+  img.appendChild(fileInput);
   imgBox.appendChild(img);
   left.appendChild(imgBox);
 }
@@ -373,7 +342,7 @@ function createImgBox(left) {
 function createNutritionLabel(left) {
   const nutr = createElem("div");
   nutr.className = "recipe-nutrition";
-  nutr.style = "background-color: #e5e5e5; height: 72.8%; margin-top: 1vw";
+  nutr.style = "background-color: #e5e5e5; height: 69.8%; margin-top: 1vw";
   left.appendChild(nutr);
 }
 
@@ -400,6 +369,15 @@ function createNameTimeServing(right) {
     nameText.innerHTML = str[i];
 
     const nameInput = createElem("input");
+    if (i == 0) {
+      nameInput.value = recipeInfo["author"];
+    }
+    if (i == 1) {
+      nameInput.value = recipeInfo["cooking-time"];
+    }
+    if (i == 2) {
+      nameInput.value = recipeInfo["serving"];
+    }
     if (i < 2) {
       nameInput.type = "text";
     } else {
@@ -424,58 +402,23 @@ function createIngred(right) {
   ingredText.innerHTML = "<br />Ingredients";
 
   const ingredBox = createElem("div");
-  ingredBox.className = "ingred-list";
+  ingredBox.className = "form-floating ingredients";
 
-  const addIngredBtn = createElem("button");
-  addIngredBtn.className = "add-ingred-btn";
-  addIngredBtn.onclick = function () {
-    document.querySelector("div.ingred-list").appendChild(createIngredInput());
-    document
-      .querySelector("button.remove-ingred-btn")
-      .classList.remove("hidden");
-  };
-  const addIcon = createElem("i");
-  addIcon.className = "material-icons";
-  addIcon.id = "add-ingred-icon";
-  addIcon.innerHTML = "add";
-  const addText = createElem("p");
-  addText.className = "add-ingred-text";
-  addText.innerHTML = "Add New Ingredient";
-  addIngredBtn.appendChild(addIcon);
-  addIngredBtn.appendChild(addText);
+  const ingredArea = createElem("textarea");
+  ingredArea.className = "form-control";
+  ingredArea.value = recipeInfo["ingredients"];
+  ingredArea.id = "ingred-input";
+  ingredArea.placeholder = "Ingredients";
 
-  const removeIngredBtn = createElem("button");
-  removeIngredBtn.className = "hidden remove-ingred-btn";
-  removeIngredBtn.onclick = function () {
-    let ingredList = document.querySelector("div.ingred-list");
-    let ingredItems = document.querySelectorAll("div.ingred-item");
-    if (ingredItems.length == 6) {
-      document
-        .querySelector("button.remove-ingred-btn")
-        .classList.add("hidden");
-    }
-    if (ingredItems.length > 5) {
-      ingredList.removeChild(ingredItems[ingredItems.length - 1]);
-    }
-  };
-  const removeIcon = createElem("i");
-  removeIcon.className = "material-icons";
-  removeIcon.id = "remove-ingred-icon";
-  removeIcon.innerHTML = "remove";
-  const removeText = createElem("p");
-  removeText.className = "remove-ingred-text";
-  removeText.innerHTML = "Remove Ingredient";
-  removeIngredBtn.appendChild(removeIcon);
-  removeIngredBtn.appendChild(removeText);
+  const label = createElem("label");
+  label.className = "text-black-50";
+  label.for = "ingred-input";
+  label.innerHTML = "Your Ingredients";
 
-  //default 5.
-  for (let i = 0; i < 5; i++) {
-    ingredBox.appendChild(createIngredInput());
-  }
+  ingredBox.appendChild(ingredArea);
+  ingredBox.appendChild(label);
   ingred.appendChild(ingredText);
   ingred.appendChild(ingredBox);
-  ingred.appendChild(addIngredBtn);
-  ingred.appendChild(removeIngredBtn);
   right.appendChild(ingred);
 }
 
@@ -485,13 +428,14 @@ function createStep(right) {
 
   const stepText = createElem("p");
   stepText.className = "fw-bold";
-  stepText.innerHTML = "<br />Steps";
+  stepText.innerHTML = "Steps";
 
   const stepBox = createElem("div");
   stepBox.className = "form-floating steps";
 
   const stepArea = createElem("textarea");
   stepArea.className = "form-control";
+  stepArea.value = recipeInfo["steps"];
   stepArea.placeholder = "Step";
   stepArea.id = "step-input";
 
@@ -505,49 +449,4 @@ function createStep(right) {
   stepContainer.appendChild(stepText);
   stepContainer.appendChild(stepBox);
   right.appendChild(stepContainer);
-}
-
-function createIngredInput() {
-  let unitList = ["unit", "---", "g", "oc", "ml", "cup", "tsp", "tbp"];
-  let unitValueList = ["unit", "no-unit", "g", "oc", "ml", "cup", "tsp", "tbp"];
-  let ingredItem = createElem("div");
-  ingredItem.className = "ingred-item";
-
-  let ingredName = createElem("input");
-  ingredName.className = "ingred-name form-control";
-  ingredName.type = "text";
-  ingredName.placeholder = "ingredient name";
-
-  let ingredQuant = createElem("input");
-  ingredQuant.type = "number";
-  ingredQuant.min = "0";
-  ingredQuant.placeholder = "quantity";
-  ingredQuant.className = "ingred-quantity form-control";
-
-  let ingredUnitBox = createElem("div");
-  ingredUnitBox.className = "ingredient-units form-floating";
-  let unitForm = createElem("form");
-  unitForm.id = "units";
-  let unitItems = createElem("select");
-  unitItems.className = "form-select ingred-units";
-  unitItems.id = "unit-list";
-
-  for (let j = 0; j < unitList.length; j++) {
-    let option = createElem("option");
-    option.value = unitValueList[j];
-    if (j == 0) {
-      option.disabled = true;
-      option.selected = true;
-    }
-    option.innerHTML = unitList[j];
-    unitItems.appendChild(option);
-  }
-
-  unitForm.appendChild(unitItems);
-  ingredUnitBox.appendChild(unitForm);
-  ingredItem.appendChild(ingredName);
-  ingredItem.appendChild(ingredQuant);
-  ingredItem.appendChild(ingredUnitBox);
-
-  return ingredItem;
 }
