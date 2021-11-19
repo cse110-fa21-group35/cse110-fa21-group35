@@ -107,6 +107,7 @@ async function init() {
     console.log("Recipe fetch unsuccessful");
     return;
   }
+  fetchCall();
   createRecipeCards();
 }
 
