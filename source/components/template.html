@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="../styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="../styles/recipe_create.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JS to render Recipe Create Panel -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="../scripts/index.js"></script>
+    <script src="../scripts/recipe_create.js" type="module"></script>
+    <title>Eggcellent Create/Edit Recipe</title>
+  </head>
+  <body style="background-color: #e5e5e5">
+    <header>
+      <style>
+        header {
+          background-color: #fde79b;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+        header img {
+          width: 14em;
+          height: 4.5em;
+        }
+        .nav {
+          background-color: #405262;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          height: 30px;
+        }
+        .nav a {
+          color: white;
+          font-family: "Roboto", sans-serif;
+          text-decoration: none;
+        }
+        main {
+          background-color: #8c8c7d;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 30px;
+        }
+        .nav a:hover {
+          color: #fde79b;
+        }
+        .nav img {
+          height: 15px;
+          width: 20px;
+        }
+      </style>
+      <div>
+        <a href="/index.html"
+          ><img src="../icons/eggcellent-logo-header.png"
+        /></a>
+      </div>
+    </header>
+    <section>
+      <div class="nav">
+        <div class="All">
+          <a href="">All Recipes</a>
+        </div>
+        <div class="My-Recipes">
+          <a href="">My Recipes</a>
+        </div>
+        <div class="Account">
+          <a href="signin.html">Account</a>
+        </div>
+      </div>
+    </section>
+    <section>
+      <button id="create-recipe-btn" class="btn btn-warning">
+        Create Recipe
+      </button>
+    </section>
+    <div
+      id="recipe-create-edit-panel"
+      class="container-fluid recipe-create-panel"
+    >
+      <div class="card">
+        <div class="card-header">
+          <div
+            class="
+              d-grid
+              gap-2
+              d-md-flex
+              justify-content-md-end
+              recipe-card-header-space
+            "
+          >
+            <button class="btn btn-primary btn-sm me-md-3 recipe-save-btn">
+              Save
+            </button>
+            <button class="close-recipe-btn">
+              <!-- see js for onclick(), this is not the version I use for final js -->
+              <i
+                id="recipe-card-close-btn"
+                class="material-icons"
+                onclick="closePanel()"
+                >close</i
+              >
+            </button>
+          </div>
+        </div>
+        <div class="card-body recipe-card-recipe-name">
+          <div class="recipe-card-input-recipe-name">
+            <input
+              type="text"
+              id="recipe-name-input"
+              class="form-control"
+              placeholder="Recipe Name"
+            />
+          </div>
+        </div>
+        <div class="card-body recipe-content row justify-content-center">
+          <div class="recipe-content-left col-4">
+            <div class="recipe-img-box">
+              <div class="recipe-img col-11">
+                <i id="recipe-image-upload-icon" class="material-icons"
+                  >cloud_upload</i
+                >
+                <p class="drag-drop-text">Drag and Drop Image<br />Or</p>
+                <label class="btn btn-primary btn-sm recipe-browse-btn">
+                  <input
+                    id="img-upload"
+                    class="img-input"
+                    type="file"
+                    accept="img/jpeg, img/png, img/jpg"
+                  />Browse
+                </label>
+              </div>
+            </div>
+            <div
+              class="recipe-nutrition"
+              style="background-color: #e5e5e5; height: 69.8%; margin-top: 1vw"
+            ></div>
+          </div>
+          <div class="recipe-content-right col-7">
+            <div class="recipe-name-time">
+              <div class="recipe-name-time-input">
+                <span class="text-md-start">Recipe By</span>
+                <input
+                  type="text"
+                  id="recipe-chief-name-input"
+                  class="form-control"
+                />
+              </div>
+              <div class="recipe-name-time-input">
+                <span class="text-md-start">Cooking Time</span>
+                <input
+                  type="text"
+                  id="recipe-time-input"
+                  class="form-control"
+                />
+              </div>
+              <div class="recipe-name-time-input">
+                <span class="text-md-start">Servings</span>
+                <input
+                  type="number"
+                  min="1"
+                  id="recipe-servings-input"
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="recipe-ingredient">
+              <p class="fw-bold"><br />Ingredients</p>
+              <div class="ingred-list">
+                <div class="ingred-item">
+                  <input
+                    type="text"
+                    placeholder="ingredient name"
+                    class="ingred-name form-control"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="quantity"
+                    class="ingred-quantity form-control"
+                  />
+                  <div class="ingredient-units form-floating">
+                    <form id="units">
+                      <select class="form-select" id="unit-list">
+                        <option value="unit" disabled selected>unit</option>
+                        <option value="no-unit">---</option>
+                        <option value="g">g</option>
+                        <option value="oc">oc</option>
+                        <option value="ml">ml</option>
+                        <option value="cup">cup</option>
+                        <option value="tsp">tsp</option>
+                        <option value="tbp">tbp</option>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+                <div class="ingred-item">
+                  <input
+                    type="text"
+                    placeholder="ingredient name"
+                    class="ingred-name form-control"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="quantity"
+                    class="ingred-quantity form-control"
+                  />
+                  <div class="ingredient-units form-floating">
+                    <form id="units">
+                      <select class="form-select" id="unit-list">
+                        <option value="unit" disabled selected>unit</option>
+                        <option value="no-unit">---</option>
+                        <option value="gram">g</option>
+                        <option value="ounce">oc</option>
+                        <option value="ml">ml</option>
+                        <option value="cup">cup</option>
+                        <option value="teaspoon">tsp</option>
+                        <option value="teatablespoon">tbp</option>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+                <div class="ingred-item">
+                  <input
+                    type="text"
+                    placeholder="ingredient name"
+                    class="ingred-name form-control"
+                  />
+                  <input
+                    type="number"
+                    min="0"
+                    placeholder="quantity"
+                    class="ingred-quantity form-control"
+                  />
+                  <div class="ingredient-units form-floating">
+                    <form id="units">
+                      <select class="form-select" id="unit-list">
+                        <option value="unit" disabled selected>unit</option>
+                        <option value="no-unit">---</option>
+                        <option value="gram">g</option>
+                        <option value="ounce">oc</option>
+                        <option value="ml">ml</option>
+                        <option value="cup">cup</option>
+                        <option value="teaspoon">tsp</option>
+                        <option value="teatablespoon">tbp</option>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <button class="add-ingred-btn">
+                <i class="material-icons" id="add-ingred-icon">add</i>
+                <p class="add-ingred-text">Add New Ingredient</p>
+              </button>
+              <!-- hidden class removed here -->
+              <button class="remove-ingred-btn">
+                <i class="material-icons" id="remove-ingred-icon">remove</i>
+                <p class="remove-ingred-text">Remove Ingredient</p>
+              </button>
+            </div>
+            <div class="recipe-steps">
+              <p class="fw-bold"><br />Steps</p>
+              <div class="form-floating steps">
+                <textarea
+                  class="form-control step-input"
+                  placeholder="Step"
+                  id="step-input"
+                ></textarea>
+                <label for="step-input" class="text-black-50">Your Steps</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

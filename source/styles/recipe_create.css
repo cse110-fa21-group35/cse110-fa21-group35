@@ -31,6 +31,7 @@
   border-width: 0;
   padding-left: 3%;
   padding-right: 3%;
+  margin-top: 3px;
   font-size: medium;
   border-radius: 10px;
   font-weight: bold;
@@ -38,12 +39,15 @@
 
 .recipe-browse-btn {
   background-color: #405263;
+  /* text-align: center; */
+  font-size: medium;
   padding-left: 25%;
   padding-right: 25%;
-  font-size: medium;
   border-radius: 15px;
   font-weight: bold;
   margin-bottom: 1vw;
+  /* width: 80%;
+  height: auto; */
 }
 
 .recipe-save-btn:hover,
@@ -104,6 +108,7 @@
 #recipe-image-upload-icon {
   font-size: 4vw;
   margin-top: 1vw;
+  color: #405263;
 }
 
 .drag-drop-text {
@@ -126,7 +131,8 @@
 
 #recipe-chief-name-input,
 #recipe-time-input,
-#recipe-servings-input {
+#recipe-servings-input,
+.ingred-quantity {
   margin-left: 1vw;
   width: 70%;
 }
@@ -140,13 +146,57 @@
   background-color: white;
 }
 
-.steps,
-.ingredients {
+.steps {
   margin: 0 0 1vw 0;
   height: 210px;
 }
 
-#step-input,
-#ingred-input {
+#step-input {
   height: 210px;
+}
+
+#units {
+  padding-left: 0.4vw;
+}
+
+#unit-list {
+  width: auto;
+}
+
+.ingred-item {
+  display: flex;
+  margin: 0 0 1vw 0;
+}
+
+.add-ingred-btn,
+.remove-ingred-btn {
+  background-color: transparent;
+  border: 0px;
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+.add-ingred-btn:hover > p,
+.remove-ingred-btn:hover > p {
+  text-decoration: underline;
+}
+
+#add-ingred-icon,
+#remove-ingred-icon {
+  font-size: 2vw;
+  color: #405263;
+}
+
+.add-ingred-text {
+  padding: 1.2% 0 0 0;
+  font-size: 16px;
+  margin-bottom: auto;
+}
+
+.remove-ingred-text {
+  font-size: 16px;
+  margin-bottom: auto;
 }

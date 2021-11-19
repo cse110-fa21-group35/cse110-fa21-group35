@@ -26,7 +26,7 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
-const storage = firebase.storage();
+//const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
 var uid = 0;
@@ -98,9 +98,29 @@ function createRecipe() {
     var recipeBy = document.getElementById("recipe-chief-name-input").value;
     var cookingTime = document.getElementById("recipe-time-input").value;
     var servings = document.getElementById("recipe-servings-input").value;
-    var ingredients = document.getElementById("ingred-input").value;
     var steps = document.getElementById("step-input").value;
-    var file = document.getElementById("file-input").files[0];
+    //var file = document.getElementById("file-input").files[0];
+
+    var ingredients = document.getElementsByClassName("ingred-item");
+    var ingredientsName = document.getElementsByClassName("ingred-name");
+    var ingredientsQuantity =
+      document.getElementsByClassName("ingred-quantity");
+    var ingredientsUnit = document.getElementsByClassName("ingred-units");
+
+    var ingredientsData = {};
+    console.log(ingredients.length);
+    for (let i = 0; i < ingredients.length; i++) {
+      var ingredNumber = i + 1;
+      console.log(ingredientsQuantity[i].value);
+      console.log(ingredientsUnit[i].value);
+      console.log(ingredientsName[i].value);
+      var val =
+        String(ingredientsQuantity[i].value) +
+        String(ingredientsUnit[i].value) +
+        " " +
+        String(ingredientsName[i].value);
+      ingredientsData["ingredient " + ingredNumber] = val;
+    }
 
     // get today's date
     var today = new Date();
@@ -136,7 +156,7 @@ function createRecipe() {
           description: "",
           // todo: fix the image link
           image: "",
-          recipeIngredient: ingredients,
+          recipeIngredient: ingredientsData,
           name: recipeName,
           // todo: add nutrition
           // "nutrition": {
