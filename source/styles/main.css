@@ -47,10 +47,12 @@ header > a {
 }
 
 main {
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 50px;
+  margin-left: 10%;
 }
 
 .nav a:hover > i,
