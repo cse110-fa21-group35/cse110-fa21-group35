@@ -26,7 +26,7 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
-//const storage = firebase.storage();
+var storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
 var uid = 0;
@@ -82,9 +82,16 @@ function signIn() {
     });
 }
 
+function convertImageToDataURL(file) {
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  return reader.result;
+}
+
 // createRecipe is the backend function for the Creation of Recipes
 function createRecipe() {
   // checks for authentication persistence
+  // needed for every function!!
   let user = auth.currentUser;
   var uid;
   if (user != null) {
@@ -92,6 +99,7 @@ function createRecipe() {
   }
 
   try {
+    // always make a firebase ref
     var firebaseRef = database.ref();
 
     var recipeName = document.getElementById("recipe-name-input").value;
@@ -99,7 +107,34 @@ function createRecipe() {
     var cookingTime = document.getElementById("recipe-time-input").value;
     var servings = document.getElementById("recipe-servings-input").value;
     var steps = document.getElementById("step-input").value;
-    //var file = document.getElementById("file-input").files[0];
+    var files = document.getElementById("img-upload").files;
+    var link = "";
+    if (files.length > 0) {
+      link = getBase64(files[0]);
+    }
+    // getBase64(file).then(
+    //   data => console.log(data)
+    // );
+    //var link = convertImageToDataURL(file);
+
+    //var fileName = String(file);
+    //var storageRef = storage.ref();
+    // var photoBytes = btoa(file);
+    // var decodedImageData = atob(photoBytes);
+
+    // if (file == "") {
+    //   var link = "";
+    // }
+
+    // else {
+    //   //torageRef.child("images/" + fileName).put(file);
+    //   var thisRef = storageRef.child("images/" + fileName);
+    //   // put request upload file to firebase storage
+    //   thisRef.put(file).then(function (snapshot) {
+    //   console.log("Uploaded image!");
+    //   });
+    //   var link = thisRef.getDownloadURL();
+    // }
 
     var ingredients = document.getElementsByClassName("ingred-item");
     var ingredientsName = document.getElementsByClassName("ingred-name");
@@ -110,15 +145,15 @@ function createRecipe() {
     var ingredientsData = {};
     console.log(ingredients.length);
     for (let i = 0; i < ingredients.length; i++) {
+      if (
+        ingredientsName[i].value == "" ||
+        ingredientsQuantity[i].value == ""
+      ) {
+        continue;
+      }
       var ingredNumber = i + 1;
-      console.log(ingredientsQuantity[i].value);
-      console.log(ingredientsUnit[i].value);
-      console.log(ingredientsName[i].value);
-      var val =
-        String(ingredientsQuantity[i].value) +
-        String(ingredientsUnit[i].value) +
-        " " +
-        String(ingredientsName[i].value);
+      var val = String(ingredientsQuantity[i].value) + " ";
+      String(ingredientsUnit[i].value) + " " + String(ingredientsName[i].value);
       ingredientsData["ingredient " + ingredNumber] = val;
     }
 
@@ -155,7 +190,7 @@ function createRecipe() {
           // todo: add description
           description: "",
           // todo: fix the image link
-          image: "",
+          image: link,
           recipeIngredient: ingredientsData,
           name: recipeName,
           // todo: add nutrition
@@ -186,4 +221,16 @@ function createRecipe() {
   } catch (error) {
     alert(error.message);
   }
+}
+
+function getBase64(file) {
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    console.log(reader.result);
+    return reader.result;
+  };
+  reader.onerror = function (error) {
+    console.log("Error: ", error);
+  };
 }
