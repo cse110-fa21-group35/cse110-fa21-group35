@@ -89,7 +89,7 @@ function deleteRecipe(recipeId) {
       return response.json();
     } else {
       // This will only evaluate if there's an actual failure in the request.
-      console.warn("Something went wrong.", err);
+      console.warn("Something went wrong.", response.status);
       return Promise.reject(response);
     }
   });
