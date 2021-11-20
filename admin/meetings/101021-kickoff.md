@@ -4,16 +4,16 @@
 
 ## Attendance
 
--   Kevin An
--   Yen-yun Wu
--   Arthur(Zhongyi) Wang
--   Qixuan "Harrison" Ma
--   **Jiawen Xu (Scribe)**
--   Logan Ramos
--   Terry Zhang
--   Vivian Wu
--   Jiyoung An (absent)
--   Rudy Zhang (absent)
+- Kevin An
+- Yen-yun Wu
+- Arthur(Zhongyi) Wang
+- Qixuan "Harrison" Ma
+- **Jiawen Xu (Scribe)**
+- Logan Ramos
+- Terry Zhang
+- Vivian Wu
+- Jiyoung An (absent)
+- Rudy Zhang (absent)
 
 ## Agenda
 
@@ -30,7 +30,7 @@
 4. Everyone should have their own agenda in stand-up to keep track of the meeting
 5. Meeting minutes / individual standup will be kept in our group repository
 
--   repository of our group: [repository](https://github.com/cse110-sp21-group35/cse110-sp21-group35)
+- repository of our group: [repository](https://github.com/cse110-sp21-group35/cse110-sp21-group35)
 
 6. We should keep our documentations while working in the group
 7. Make sure your code works before pushing it (Please branch, do NOT push directly to master)
