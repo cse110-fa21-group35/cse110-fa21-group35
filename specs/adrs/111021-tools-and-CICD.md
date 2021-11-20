@@ -1,5 +1,5 @@
-- Deciders: EggCellent (Team 35)
-- Date: 2021/11/10
+-   Deciders: EggCellent (Team 35)
+-   Date: 2021/11/10
 
 ## Context and Problem Statement
 
