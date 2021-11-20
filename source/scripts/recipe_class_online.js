@@ -65,7 +65,6 @@ function createRecipeCardElem(data) {
     document
       .querySelector("section.recipe-expand")
       .appendChild(createRecipeContentElem(data));
-    // document.getElementById(data["title"]).shadowRoot.querySelector("section").classList.remove("hidden");
   };
 
   // creating recipe name element for recipe
@@ -241,7 +240,7 @@ function createRecipeContentElem(data) {
 
   //content container
   const recipeContent = document.createElement("div");
-  recipeContent.id = data["title"];
+  recipeContent.id = data["id"];
   recipeContent.classList = "container-fluid recipe-create-edit-panel";
 
   //content panel itself
@@ -492,8 +491,6 @@ function createSteps(data) {
   const stepContent = document.createElement("p");
   stepContent.className = "step-box";
   setSteps(stepContent, data["instructions"]);
-  // stepContent.innerHTML = data["instructions"];
-  // stepContent.innerText = data["instructions"];
   steps.appendChild(stepContent);
 
   stepList.appendChild(stepTitle);
