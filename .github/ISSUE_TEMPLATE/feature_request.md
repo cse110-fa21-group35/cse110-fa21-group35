@@ -16,7 +16,7 @@ Add any other context or screenshots about the feature request here.
 Insert the estimate for this ticket, Ex. 3pts
 
 **Affected area of code**
-Where in the repository this relates to, ie: html elements
+Where in the repository this relates to, ie: HTML elements
 
 **Reporter**
 Your name (person who created issue)

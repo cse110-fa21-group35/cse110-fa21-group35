@@ -26,7 +26,7 @@ add related logos, fonts, ppt themes, team colors.
 </style>
 ```
 
-- Note: add the above into the <head> portion of the html doc.
+- Note: add the above into the <head> portion of the HTML doc.
 
 ### Rage Italic
 

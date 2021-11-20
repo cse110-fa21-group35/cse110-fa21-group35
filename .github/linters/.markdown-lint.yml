@@ -18,6 +18,7 @@
 ###############
 # Rules by id #
 ###############
+MD001: false
 MD004: false # Unordered list style
 MD007: false
 MD013:
@@ -29,6 +30,7 @@ MD033: false # Allow inline HTML
 MD034: false # Allow bare urls
 MD030: false # Allow spaces after list markers
 MD036: false # Emphasis used instead of a heading
+MD041: false # Allow non-conforming top-level heading
 
 #################
 # Rules by tags #
