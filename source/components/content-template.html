@@ -25,20 +25,33 @@
       rel="stylesheet"
     />
 
-    <!-- JS to render Recipe Create Panel -->
+    <!-- JS to render Recipe Content Panel -->
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script src="../scripts/index.js"></script>
-    <script src="/source/scripts/recipe-content.js" type="module"></script>
+    <script src="../scripts/recipe-content.js" type="module"></script>
 
     <title>Eggcellent Recipe Content</title>
   </head>
+  <script>
+    function addRecipe() {
+      let addBtnIcon = document.querySelector("#recipe-card-add-btn");
+      if (addBtnIcon != null) {
+        addBtnIcon.innerHTML = "favorite";
+        addBtnIcon.id = "recipe-card-added-btn";
+        document.querySelector("span.my-recipe-label").innerHTML = "My Recipe!";
+      } else {
+        addBtnIcon = document.querySelector("#recipe-card-added-btn");
+        addBtnIcon.innerHTML = "favorite_border";
+        addBtnIcon.id = "recipe-card-add-btn";
+        document.querySelector("span.my-recipe-label").innerHTML =
+          "Add to My Recipe";
+      }
+    }
+  </script>
   <body>
-    <div
-      id="recipe-create-edit-panel"
-      class="container-fluid recipe-create-panel"
-    >
+    <section id="recipe-name" class="container-fluid recipe-create-edit-panel">
       <div class="card">
         <div class="card-header">
           <div
@@ -68,11 +81,8 @@
               >
               <span class="header-label"> Delete </span>
             </button>
-            <button class="add-recipe-btn btns">
-              <i
-                id="recipe-card-add-btn"
-                class="material-icons"
-                onclick="addRecipe()"
+            <button class="add-recipe-btn btns" onclick="addRecipe()">
+              <i id="recipe-card-add-btn" class="material-icons"
                 >favorite_border</i
               >
               <span class="my-recipe-label"> Add to My Recipe </span>
@@ -88,7 +98,7 @@
           </div>
         </div>
         <div class="card-body recipe-name">
-          <span> Recipe Name </span>
+          <span><a href="" class="recipe-link"> Recipe Name </a></span>
         </div>
         <div class="card-body recipe-body row justify-content-center">
           <div class="content-left col-4">
@@ -128,6 +138,6 @@
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

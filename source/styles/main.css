@@ -53,6 +53,7 @@ main {
   justify-content: center;
   gap: 50px;
   margin-left: 10%;
+  margin-bottom: 45px;
 }
 
 .nav a:hover > i,
@@ -73,7 +74,7 @@ footer {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 5%;
+  height: 19px;
   display: flex;
   align-items: center;
   justify-content: center;
