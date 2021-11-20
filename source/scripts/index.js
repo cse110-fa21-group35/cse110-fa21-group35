@@ -89,7 +89,7 @@ function convertImageToDataURL(file) {
 }
 
 // createRecipe is the backend function for the Creation of Recipes
-function createRecipe() {
+async function createRecipe() {
   // checks for authentication persistence
   // needed for every function!!
   let user = auth.currentUser;
@@ -102,39 +102,16 @@ function createRecipe() {
     // always make a firebase ref
     var firebaseRef = database.ref();
 
+    // grab variables from the html
     var recipeName = document.getElementById("recipe-name-input").value;
     var recipeBy = document.getElementById("recipe-chief-name-input").value;
     var cookingTime = document.getElementById("recipe-time-input").value;
     var servings = document.getElementById("recipe-servings-input").value;
     var steps = document.getElementById("step-input").value;
-    var files = document.getElementById("img-upload").files;
-    var link = "";
-    if (files.length > 0) {
-      link = getBase64(files[0]);
-    }
-    // getBase64(file).then(
-    //   data => console.log(data)
-    // );
-    //var link = convertImageToDataURL(file);
+    var recipeImage = document.getElementById("img-upload").files[0];
 
-    //var fileName = String(file);
-    //var storageRef = storage.ref();
-    // var photoBytes = btoa(file);
-    // var decodedImageData = atob(photoBytes);
-
-    // if (file == "") {
-    //   var link = "";
-    // }
-
-    // else {
-    //   //torageRef.child("images/" + fileName).put(file);
-    //   var thisRef = storageRef.child("images/" + fileName);
-    //   // put request upload file to firebase storage
-    //   thisRef.put(file).then(function (snapshot) {
-    //   console.log("Uploaded image!");
-    //   });
-    //   var link = thisRef.getDownloadURL();
-    // }
+    // call getBase64 to get the base64 of the image
+    var imageData = await getBase64(recipeImage);
 
     var ingredients = document.getElementsByClassName("ingred-item");
     var ingredientsName = document.getElementsByClassName("ingred-name");
@@ -142,8 +119,8 @@ function createRecipe() {
       document.getElementsByClassName("ingred-quantity");
     var ingredientsUnit = document.getElementsByClassName("ingred-units");
 
+    // add ingredients into ingredientsData json
     var ingredientsData = {};
-    console.log(ingredients.length);
     for (let i = 0; i < ingredients.length; i++) {
       if (
         ingredientsName[i].value == "" ||
@@ -166,7 +143,7 @@ function createRecipe() {
       "-" +
       today.getDate();
 
-    // get recipeCount
+    // get recipeCount from DB
     var databaseRef = firebaseRef.child(uid).child("recipeCount");
     databaseRef.once("value").then(
       function (snapshot) {
@@ -190,7 +167,7 @@ function createRecipe() {
           // todo: add description
           description: "",
           // todo: fix the image link
-          image: link,
+          image: imageData,
           recipeIngredient: ingredientsData,
           name: recipeName,
           // todo: add nutrition
@@ -223,14 +200,14 @@ function createRecipe() {
   }
 }
 
+// converts image to base64
 function getBase64(file) {
   var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = function () {
-    console.log(reader.result);
-    return reader.result;
-  };
-  reader.onerror = function (error) {
-    console.log("Error: ", error);
-  };
+  var promise = new Promise((resolve, reject) => {
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.readAsDataURL(file);
+  });
+  return promise;
 }

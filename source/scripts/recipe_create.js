@@ -351,13 +351,13 @@ function createImgBox(left) {
   fileInput.className = "img-input";
   fileInput.type = "file";
   fileInput.accept = "img/jpeg, img/png, img/jpg";
-  fileInput.onchange = function (event) {
-    let browseBtn = document.querySelector("label.recipe-browse-btn");
-    browseBtn.innerHTML = browseBtn.innerHTML.replace(
-      "Browse",
-      event.srcElement.files[0].name
-    );
-  };
+  // fileInput.onchange = function (event) {
+  //   let browseBtn = document.querySelector("label.recipe-browse-btn");
+  //   browseBtn.innerHTML = browseBtn.innerHTML.replace(
+  //     "Browse",
+  //     event.srcElement.files[0].name
+  //   );
+  // };
 
   iconLabel.appendChild(fileInput);
   img.appendChild(uploadIcon);
