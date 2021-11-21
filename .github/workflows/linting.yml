@@ -4,7 +4,7 @@
 ## Super Linter GitHub Actions ##
 #################################
 #################################
-name: Lint Code Base
+name: Stinky Code Check
 
 #
 # Documentation:
@@ -47,7 +47,7 @@ jobs:
       ################################
       # Run Linter against code base #
       ################################
-      - name: Lint Code Base
+      - name: Linting
         uses: github/super-linter/slim@v4
         env:
           VALIDATE_ALL_CODEBASE: true
