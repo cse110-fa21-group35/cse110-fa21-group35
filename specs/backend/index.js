@@ -70,3 +70,27 @@ function signIn() {
       alert(error.message);
     });
 }
+
+function deleteRecipe(recipeId) {
+  //obtain userId
+  let user = auth.currentUser;
+  if (user != null) {
+    var userId = user.uid;
+  }
+  //issue delete to the desired recipeId under the userId.
+  fetch(
+    `https://eggcellent-330922-default-rtdb.firebaseio.com/${userId}/recipes/${recipeId}.json`,
+    {
+      method: "DELETE",
+    }
+  ).then((response) => {
+    // The request was processed by firebase, maybe deleted.
+    if (response.ok) {
+      return response.json();
+    } else {
+      // This will only evaluate if there's an actual failure in the request.
+      console.warn("Something went wrong.", response.status);
+      return Promise.reject(response);
+    }
+  });
+}
