@@ -1,6 +1,6 @@
 # cse110-fa21-group35
 
-[![GitHub Super-Linter](https://github.com/cse110-fa21-group35/cse110-fa21-group35/workflows/linting.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+[![GitHub Super-Linter](https://github.com/cse110-fa21-group35/cse110-fa21-group35/workflows/Stinky%20Code%20Check/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ---
 
