@@ -1,0 +1,88 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    color: #405262;
+}
+
+.box{
+    position: relative;
+    width: 464px;
+    height: 483px;
+    margin: auto;
+    background-color: white;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: #405262;
+    border-width: 0.1px;
+    border-radius: 15px;
+    box-shadow: 2px 2px .2em #405262;
+}
+
+.box .name{
+    display: inline-block;
+    text-align: center;
+    line-height: 3px;
+    width: 462px;
+    height: 52px;
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 50px;
+    padding: 27px 27px;
+    background: #FDE79B;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.box .name .material-icons{
+    float: right;
+    line-height: 5px;
+    color: #405262;
+    cursor: pointer;
+}
+
+.box .name .material-icons:active{
+    color: white;
+}
+
+.box .name .material-icons .dropdown{
+    display: none;
+    position: absolute;
+    width: 95px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 2px 2px .1em #405262;
+}
+
+.box .name .material-icons .dropdown .material-icons{
+   float: left;
+   size: 1rem;
+   color: black;
+}
+
+.box .name .material-icons .dropdown a{
+    color: black;
+    padding: 15px 15px;
+    text-decoration: none;
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    font-size: 18px;
+    display: block;        
+}
+
+.box .name .material-icons:hover .dropdown{
+    display: block;
+    border-color: #405262;
+}
+.box .name .material-icons .dropdown a:hover{
+    background-color: #FDE79B;
+}
+
+img{
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    
+}
