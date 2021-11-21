@@ -7,8 +7,8 @@ body{
 
 .box{
     position: relative;
-    width: 464px;
-    height: 483px;
+    width: 1134px;
+    height: 194px;
     margin: auto;
     background-color: white;
     box-sizing: border-box;
@@ -16,73 +16,46 @@ body{
     border-color: #405262;
     border-width: 0.1px;
     border-radius: 15px;
-    box-shadow: 2px 2px .2em #405262;
+    box-shadow: 1px 1px .1em #405262;
+}
+.box:hover{
+    box-shadow: 2px 2px .3em #405262;
 }
 
 .box .name{
     display: inline-block;
+    float: right;
     text-align: center;
     line-height: 3px;
-    width: 462px;
-    height: 52px;
-    font-size: 30px;
+    width: 865px;
+    height: 25px;
+    font-size: 18px;
     font-weight: 700;
-    margin-top: 50px;
-    padding: 27px 27px;
+    margin-top: 13px;
+    padding: 10px 5px;
     background: #FDE79B;
     box-sizing: border-box;
     overflow: hidden;
 }
-
-.box .name .material-icons{
-    float: right;
-    line-height: 5px;
-    color: #405262;
-    cursor: pointer;
+.box .summary{
+    float: left; 
+    width: calc(100% - 370px - 50px);
 }
 
-.box .name .material-icons:active{
-    color: white;
+.box .summary .chef{
+    padding: 10px 10px 10px;
 }
 
-.box .name .material-icons .dropdown{
-    display: none;
-    position: absolute;
-    width: 95px;
-    text-align: center;
-    background-color: white;
-    box-shadow: 2px 2px .1em #405262;
+.box .summary .cookingTime{
+    padding: 10px 10px 10px;
 }
-
-.box .name .material-icons .dropdown .material-icons{
-   float: left;
-   size: 1rem;
-   color: black;
-}
-
-.box .name .material-icons .dropdown a{
-    color: black;
-    padding: 15px 15px;
-    text-decoration: none;
-    text-align: center;
-    font-family: "Roboto", sans-serif;
-    font-size: 18px;
-    display: block;        
-}
-
-.box .name .material-icons:hover .dropdown{
-    display: block;
-    border-color: #405262;
-}
-.box .name .material-icons .dropdown a:hover{
-    background-color: #FDE79B;
+.box .summary .ingredient{
+    padding: 10px 10px 10px;
 }
 
 img{
-    display: block;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    float: left;
+    padding-top: 13px;
+    padding-left: 13px;
     width: 50%;
-    
 }
