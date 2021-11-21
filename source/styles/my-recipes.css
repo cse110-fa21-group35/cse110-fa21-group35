@@ -1,0 +1,11 @@
+div.My-Recipes > a,
+#my-recipe-icon {
+  color: #fde79b;
+}
+
+.action-btn {
+}
+
+.search-box {
+  padding-left: -10px;
+}

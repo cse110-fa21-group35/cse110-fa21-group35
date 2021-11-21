@@ -18,6 +18,11 @@
     />
     <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
     <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/my-recipes.css"
+    />
+    <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
@@ -36,7 +41,7 @@
     <title>Eggcellent Recipe</title>
 
     <!--Choosing either render recipes online or offline here-->
-    <script src="source/scripts/recipe_class_online.js" type="module"></script>
+    <!-- <script src="source/scripts/recipe_class_online.js" type="module"></script> -->
     <!--<script src="source/scripts/recipe_class_offline.js" type="module"></script>-->
   </head>
   <body style="background-color: #e5e5e5">
@@ -67,7 +72,18 @@
         </div>
       </div>
     </section>
-    <main></main>
+    <main>
+      <div class="action-btn">
+        <div class="search-recipe-box d-inline-flex">
+          <i class="material-icons" id="search-icon">search</i>
+          <input
+            class="form-control search-box"
+            type="text"
+            placeholder="Search Recipe"
+          />
+        </div>
+      </div>
+    </main>
   </body>
   <footer>
     <!-- Feel free to use onclick="showContact() in contact.js -->
