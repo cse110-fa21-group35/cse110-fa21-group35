@@ -33,6 +33,14 @@ function signUp() {
   let userEmail = document.getElementById('email').value;
   let userPassword = document.getElementById('pass').value;
   let userName = document.getElementById('name').value;
+  let passwordConfirm = document.getElementById('passConf').value;
+
+  //ensure password === confirm password
+  if (userPassword !== passwordConfirm) {
+    document.querySelector('div.alert').classList.add('show');
+    return;
+  }
+
   auth
     .createUserWithEmailAndPassword(userEmail, userPassword)
     .then((userCredential) => {
@@ -47,8 +55,17 @@ function signUp() {
         Email: userEmail,
       };
       firebaseRef.child('users').child(uid).child('details').set(data);
-      window.location.replace('/index.html');
-      alert('Successful Sign Up');
+      let greeting = document.createElement('div');
+      let cardBody = document.querySelector('div.card-body');
+      greeting.className = 'welcome';
+      greeting.innerHTML = `<p>Successfully Signed Up!</p>`;
+      cardBody.innerHTML = '';
+      cardBody.appendChild(greeting);
+
+      setTimeout(() => {
+        window.location.replace('/source/components/signin.html');
+      }, 2000);
+      // alert('Successful Sign Up');
     })
     .catch((error) => {
       alert(error.message);
@@ -62,11 +79,22 @@ function signIn() {
   auth
     .signInWithEmailAndPassword(userSignInEmail, userSignInPassword)
     .then(() => {
-      window.location.replace('/index.html');
-      alert('Successful Sign In');
+      // alert('Successful Sign In');
+      //create a greeting box for user
+      let greeting = document.createElement('div');
+      let cardBody = document.querySelector('div.card-body');
+      greeting.className = 'welcome';
+      greeting.innerHTML = `<p>Welcome<br />${userSignInEmail}!</p>`;
+      cardBody.innerHTML = '';
+      cardBody.appendChild(greeting);
+
+      setTimeout(() => {
+        window.location.replace('/index.html');
+      }, 2000);
     })
     .catch((error) => {
-      alert(error.message);
+      // alert(error.message);
+      document.querySelector('div.alert').classList.add('show');
     });
 }
 
