@@ -8,7 +8,7 @@
     - [x] three dots
     - [x] edit/delete view
   - [x] [JS](scripts/deleteonclick.js)
-  - 
+  
 - [x] Recipe Card 2 : on the 'Search Result' page, long version
   - [x] [HTML - cardviewWide.html](components/cardviewWide.html)
     - [x] card view 
