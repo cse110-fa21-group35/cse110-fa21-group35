@@ -42,7 +42,7 @@
      - We will rely on each individual team member to stop the conversation from going too informal.
      - We will also add an “estimate time” for each item on the agenda that we will try to adhere to.
 5. Method of record keeping (meeting minutes):
-   - Each meeting minutes will be kept as a markdown file in our group repository (/admin/meetings).
+   - Each meeting minutes will be kept as a Markdown file in our group repository (/admin/meetings).
    - The recording keeping will alternate between each member so that every member could equally participate in each meeting.
    - Each meeting minutes will be labeled by date and topics and will include:
      - The type of meeting.
@@ -74,7 +74,7 @@
      - Based on skills and situation of each team member
 2. Strategies for encouraging/including ideas from all team members (team maintenance):
    - During standups, each team member should comment/contribute.
-   - If you feel like an idea isn’t optimal, before shooting it down, walk through their logic and find their confusion/lack of insight. Positively suggest alternatives!!! Do not be like “that sucks, this is better”.
+   - If you feel like an idea isn’t optimal, before shooting it down, walkthrough their logic and find their confusion/lack of insight. Positively suggest alternatives!!! Do not be like “that sucks, this is better”.
    - Do not hesitate to share an idea.
 3. Strategies for keeping on task (task maintenance):
    - Organize sprints and have regular standups.
