@@ -1,11 +1,11 @@
 class Recipe extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.attachShadow({ mode: 'open' });
   }
   set data(data) {
     // creating CSS style element for each recipe element
-    const style_element = document.createElement("style");
+    const style_element = document.createElement('style');
     const styles = `
               a.name {
                   background-color: #FDE79B;
@@ -58,27 +58,27 @@ class Recipe extends HTMLElement {
 
 function createRecipeCardElem(data) {
   // creating a recipe cutomized object
-  const recipe = document.createElement("article");
-  recipe.id = "recipe-card-view";
+  const recipe = document.createElement('article');
+  recipe.id = 'recipe-card-view';
   recipe.onclick = function () {
     createOverlay();
     document
-      .querySelector("section.recipe-expand")
+      .querySelector('section.recipe-expand')
       .appendChild(createRecipeContentElem(data));
   };
 
   // creating recipe name element for recipe
-  let recipe_name = document.createElement("a");
-  recipe_name.setAttribute("class", "name");
+  let recipe_name = document.createElement('a');
+  recipe_name.setAttribute('class', 'name');
   // recipe_name.setAttribute("href", "");
-  recipe_name.textContent = data["title"];
+  recipe_name.textContent = data['title'];
   recipe.appendChild(recipe_name);
 
   // creating image element for recipe
-  let recipe_img_link = document.createElement("a");
-  let recipe_img = document.createElement("img");
-  recipe_img.setAttribute("src", data["image"]);
-  recipe_img_link.setAttribute("class", "img");
+  let recipe_img_link = document.createElement('a');
+  let recipe_img = document.createElement('img');
+  recipe_img.setAttribute('src', data['image']);
+  recipe_img_link.setAttribute('class', 'img');
   // recipe_img_link.setAttribute("href", "");
   recipe_img_link.appendChild(recipe_img);
   recipe.appendChild(recipe_img_link);
@@ -86,9 +86,9 @@ function createRecipeCardElem(data) {
 }
 
 function createRecipeContentElem(data) {
-  const recipeContentSection = document.querySelector("section.recipe-expand");
+  const recipeContentSection = document.querySelector('section.recipe-expand');
 
-  const contStyleElem = document.createElement("style");
+  const contStyleElem = document.createElement('style');
   const contStyle = `
   .btns {
     border-width: 0;
@@ -239,18 +239,18 @@ function createRecipeContentElem(data) {
   recipeContentSection.appendChild(contStyleElem);
 
   //content container
-  const recipeContent = document.createElement("div");
-  recipeContent.id = data["id"];
-  recipeContent.classList = "container-fluid recipe-create-edit-panel";
+  const recipeContent = document.createElement('div');
+  recipeContent.id = data['id'];
+  recipeContent.classList = 'container-fluid recipe-create-edit-panel';
 
   //content panel itself
-  const card = document.createElement("div");
-  card.className = "card";
+  const card = document.createElement('div');
+  card.className = 'card';
 
   //panel header, title, and body
   card.appendChild(createRecipeCotentPanelHeader());
   card.appendChild(
-    createRecipeContentPanelName(data["title"], data["sourceUrl"])
+    createRecipeContentPanelName(data['title'], data['sourceUrl'])
   );
   card.appendChild(createRecipeContentPanelBody(data));
 
@@ -260,8 +260,8 @@ function createRecipeContentElem(data) {
 
 function createOverlay() {
   //generate background overlay
-  const overlay = document.createElement("section");
-  const styleElem = document.createElement("style");
+  const overlay = document.createElement('section');
+  const styleElem = document.createElement('style');
   const overlayStyle = `
     #overlay {
         position: fixed; 
@@ -275,61 +275,61 @@ function createOverlay() {
         background-color: rgba(0, 0, 0, 0.61);
         z-index: 2;
     }`;
-  overlay.id = "overlay";
+  overlay.id = 'overlay';
   styleElem.innerHTML = overlayStyle;
   overlay.appendChild(styleElem);
-  document.querySelector("html").appendChild(overlay);
+  document.querySelector('html').appendChild(overlay);
 }
 
 function createRecipeCotentPanelHeader() {
   //panel header
-  const header = document.createElement("div");
-  header.className = "card-header";
-  const headerSpan = document.createElement("div");
+  const header = document.createElement('div');
+  header.className = 'card-header';
+  const headerSpan = document.createElement('div');
   headerSpan.className =
-    "d-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space";
+    'd-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space';
 
   //add recipe to my favorite btn
-  const addBtn = document.createElement("button");
-  addBtn.className = "add-recipe-btn btns";
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-recipe-btn btns';
   addBtn.onclick = function addRecipe() {
-    let addBtnIcon = document.querySelector("#recipe-card-add-btn");
+    let addBtnIcon = document.querySelector('#recipe-card-add-btn');
     if (addBtnIcon != null) {
-      addBtnIcon.innerHTML = "favorite";
-      addBtnIcon.id = "recipe-card-added-btn";
-      document.querySelector("span.my-recipe-label").innerHTML = "My Recipe!";
+      addBtnIcon.innerHTML = 'favorite';
+      addBtnIcon.id = 'recipe-card-added-btn';
+      document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
     } else {
-      addBtnIcon = document.querySelector("#recipe-card-added-btn");
-      addBtnIcon.innerHTML = "favorite_border";
-      addBtnIcon.id = "recipe-card-add-btn";
-      document.querySelector("span.my-recipe-label").innerHTML =
-        "Add to My Recipe";
+      addBtnIcon = document.querySelector('#recipe-card-added-btn');
+      addBtnIcon.innerHTML = 'favorite_border';
+      addBtnIcon.id = 'recipe-card-add-btn';
+      document.querySelector('span.my-recipe-label').innerHTML =
+        'Add to My Recipe';
     }
   };
-  const addIcon = document.createElement("i");
-  addIcon.id = "recipe-card-add-btn";
-  addIcon.className = "material-icons";
-  addIcon.innerHTML = "favorite_border";
-  const addText = document.createElement("span");
-  addText.className = "my-recipe-label";
-  addText.innerHTML = "Add to My Recipe";
+  const addIcon = document.createElement('i');
+  addIcon.id = 'recipe-card-add-btn';
+  addIcon.className = 'material-icons';
+  addIcon.innerHTML = 'favorite_border';
+  const addText = document.createElement('span');
+  addText.className = 'my-recipe-label';
+  addText.innerHTML = 'Add to My Recipe';
   addBtn.append(addIcon);
   addBtn.append(addText);
 
   //close btn (X)
-  const closeBtn = document.createElement("button");
-  closeBtn.className = "close-recipe-btn";
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-recipe-btn';
   closeBtn.onclick = function () {
-    document.querySelector("section.recipe-expand").innerHTML = "";
+    document.querySelector('section.recipe-expand').innerHTML = '';
     document
-      .querySelector("html")
-      .removeChild(document.getElementById("overlay"));
+      .querySelector('html')
+      .removeChild(document.getElementById('overlay'));
   };
   //closeBtn icon
-  const closeBtnIcon = document.createElement("i");
-  closeBtnIcon.className = "material-icons";
-  closeBtnIcon.id = "recipe-card-close-btn";
-  closeBtnIcon.innerHTML = "close";
+  const closeBtnIcon = document.createElement('i');
+  closeBtnIcon.className = 'material-icons';
+  closeBtnIcon.id = 'recipe-card-close-btn';
+  closeBtnIcon.innerHTML = 'close';
   closeBtn.appendChild(closeBtnIcon);
 
   headerSpan.appendChild(addBtn);
@@ -340,38 +340,38 @@ function createRecipeCotentPanelHeader() {
 }
 
 function createRecipeContentPanelName(title, url) {
-  const name = document.createElement("div");
-  name.className = "card-body recipe-name";
-  const link = document.createElement("a");
+  const name = document.createElement('div');
+  name.className = 'card-body recipe-name';
+  const link = document.createElement('a');
   link.href = url;
-  link.className = "recipe-link";
+  link.className = 'recipe-link';
   link.innerHTML = title;
-  name.appendChild(document.createElement("span").appendChild(link));
+  name.appendChild(document.createElement('span').appendChild(link));
 
   return name;
 }
 
 function createRecipeContentPanelBody(data) {
-  const body = document.createElement("div");
-  body.className = "card-body recipe-body row justify-content-center";
+  const body = document.createElement('div');
+  body.className = 'card-body recipe-body row justify-content-center';
   body.appendChild(createLeftContent(data));
   body.appendChild(createRightContent(data));
   return body;
 }
 
 function createLeftContent(data) {
-  const left = document.createElement("div");
-  left.className = "content-left col-4";
+  const left = document.createElement('div');
+  left.className = 'content-left col-4';
 
   //recipe image
-  const img = document.createElement("img");
-  img.className = "recipe-img";
-  img.src = data["image"];
+  const img = document.createElement('img');
+  img.className = 'recipe-img';
+  img.src = data['image'];
 
   //nutrition label;
-  const label = document.createElement("img");
-  label.className = "nutr-label";
-  label.src = `https://api.spoonacular.com/recipes/${data["id"]}/nutritionLabel.png?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+  const label = document.createElement('img');
+  label.className = 'nutr-label';
+  label.src = `https://api.spoonacular.com/recipes/${data['id']}/nutritionLabel.png?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
 
   left.appendChild(img);
   left.appendChild(label);
@@ -379,8 +379,8 @@ function createLeftContent(data) {
 }
 
 function createRightContent(data) {
-  const right = document.createElement("div");
-  right.className = "content-right col-7";
+  const right = document.createElement('div');
+  right.className = 'content-right col-7';
 
   right.appendChild(createRecipeInfo(data));
   right.appendChild(createIngredList(data));
@@ -390,48 +390,48 @@ function createRightContent(data) {
 
 function createRecipeInfo(data) {
   //recipe info: recipe by; cooking time; servings.
-  const recipeInfoBox = document.createElement("div");
-  recipeInfoBox.className = "recipe-info-box";
-  const infoTitle = document.createElement("span");
-  infoTitle.className = "fs-4";
-  infoTitle.innerHTML = "RECIPE INFO";
-  const infos = document.createElement("p");
-  infos.className = "recipe-info";
+  const recipeInfoBox = document.createElement('div');
+  recipeInfoBox.className = 'recipe-info-box';
+  const infoTitle = document.createElement('span');
+  infoTitle.className = 'fs-4';
+  infoTitle.innerHTML = 'RECIPE INFO';
+  const infos = document.createElement('p');
+  infos.className = 'recipe-info';
   infos.innerHTML = `
-    Recipe By: ${data["sourceName"]}<br />
-    Cooking Time: ${data["readyInMinutes"]} minutes<br />
-    Servings: ${data["servings"]}<br />
+    Recipe By: ${data['sourceName']}<br />
+    Cooking Time: ${data['readyInMinutes']} minutes<br />
+    Servings: ${data['servings']}<br />
   `;
 
   recipeInfoBox.appendChild(infoTitle);
-  recipeInfoBox.appendChild(document.createElement("hr"));
+  recipeInfoBox.appendChild(document.createElement('hr'));
   recipeInfoBox.appendChild(infos);
   return recipeInfoBox;
 }
 
 function createIngredList(data) {
   //ingred list
-  const ingredList = document.createElement("div");
-  ingredList.className = "ingred-list";
-  const ingredTitle = document.createElement("span");
-  ingredTitle.className = "fs-4";
-  ingredTitle.innerHTML = "INGREDIENTS";
-  const ingreds = document.createElement("div");
-  ingreds.className = "ingreds";
+  const ingredList = document.createElement('div');
+  ingredList.className = 'ingred-list';
+  const ingredTitle = document.createElement('span');
+  ingredTitle.className = 'fs-4';
+  ingredTitle.innerHTML = 'INGREDIENTS';
+  const ingreds = document.createElement('div');
+  ingreds.className = 'ingreds';
   ingreds.appendChild(ingredients(data));
 
   ingredList.appendChild(ingredTitle);
-  ingredList.appendChild(document.createElement("hr"));
+  ingredList.appendChild(document.createElement('hr'));
   ingredList.appendChild(ingreds);
   return ingredList;
 }
 
 function ingredients(data) {
-  const list = document.createElement("ul");
+  const list = document.createElement('ul');
   let items = getIngreds(data);
 
   for (let i = 0; i < items.length; i++) {
-    let it = document.createElement("li");
+    let it = document.createElement('li');
     it.innerHTML = items[i];
     list.appendChild(it);
   }
@@ -439,38 +439,38 @@ function ingredients(data) {
 }
 
 function getIngreds(data) {
-  let ingredData = data["extendedIngredients"];
+  let ingredData = data['extendedIngredients'];
   let items = [];
 
   for (let i = 0; i < ingredData.length; i++) {
-    items.push(ingredData[i]["original"]);
+    items.push(ingredData[i]['original']);
   }
   return items;
 }
 
 function createSteps(data) {
-  const stepList = document.createElement("div");
-  stepList.className = "step-list";
+  const stepList = document.createElement('div');
+  stepList.className = 'step-list';
 
-  const stepTitle = document.createElement("span");
-  stepTitle.className = "fs-4";
-  stepTitle.innerHTML = "STEPS";
+  const stepTitle = document.createElement('span');
+  stepTitle.className = 'fs-4';
+  stepTitle.innerHTML = 'STEPS';
 
-  const steps = document.createElement("div");
-  steps.className = "steps";
-  const stepContent = document.createElement("p");
-  stepContent.className = "step-box";
-  setSteps(stepContent, data["instructions"]);
+  const steps = document.createElement('div');
+  steps.className = 'steps';
+  const stepContent = document.createElement('p');
+  stepContent.className = 'step-box';
+  setSteps(stepContent, data['instructions']);
   steps.appendChild(stepContent);
 
   stepList.appendChild(stepTitle);
-  stepList.appendChild(document.createElement("hr"));
+  stepList.appendChild(document.createElement('hr'));
   stepList.appendChild(steps);
   return stepList;
 }
 
 function setSteps(stepContent, stepStr) {
-  if (!stepStr.includes("\n")) {
+  if (!stepStr.includes('\n')) {
     stepContent.innerHTML = stepStr;
   } else {
     stepContent.innerText = stepStr;
@@ -478,7 +478,7 @@ function setSteps(stepContent, stepStr) {
 }
 
 // define a recipe-main element
-customElements.define("recipe-main", Recipe);
+customElements.define('recipe-main', Recipe);
 
 // HAVE TO MANUALLY SET THE DISPLAY RECIPES AMOUNT FOR FIRST PAGE
 var recipe_length = 6;
@@ -492,24 +492,24 @@ var recipe_data = undefined;
 
 // manually set the id of mainpage recipe - may change to automatical fetching id later
 const recipe_ids = [
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-97",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-98",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-99",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-100",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-101",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-102",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-103",
-  "Br6v40acvTTGoMvvdbLLRBPplHF3-104",
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-97',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-98',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-99',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-100',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-101',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-102',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-103',
+  'Br6v40acvTTGoMvvdbLLRBPplHF3-104',
 ];
 
 // eventlistener here
-window.addEventListener("DOMContentLoaded", init);
+window.addEventListener('DOMContentLoaded', init);
 
 // starting here
 async function init() {
   let fetchSuccessful = await fetch_recipe();
   if (!fetchSuccessful) {
-    console.log("Recipe fetch unsuccessful");
+    console.log('Recipe fetch unsuccessful');
     return;
   }
   createRecipeCards();
@@ -533,12 +533,12 @@ async function fetch_recipe() {
 // creating recipe-main element based on the data we have - data are store in "recipes"
 function createRecipeCards() {
   var cards = [];
-  let recipes_set = recipe_data["recipes"];
-  var main = document.querySelector("main");
+  let recipes_set = recipe_data['recipes'];
+  var main = document.querySelector('main');
   for (let i = 0; i < recipe_length; i++) {
     console.log(recipe_length);
-    cards.push(document.createElement("recipe-main"));
-    console.log(recipe_data["recipes"]);
+    cards.push(document.createElement('recipe-main'));
+    console.log(recipe_data['recipes']);
     cards[i].data = recipes_set[i];
     main.appendChild(cards[i]);
   }

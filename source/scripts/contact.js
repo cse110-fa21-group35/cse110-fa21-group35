@@ -1,6 +1,6 @@
 function showContact() {
-  document.querySelector("main").innerHTML = "";
-  const styleEle = document.createElement("style");
+  document.querySelector('main').innerHTML = '';
+  const styleEle = document.createElement('style');
   const style = `
     body {
         background: #dbdcd7;
@@ -51,28 +51,28 @@ function showContact() {
     }
     `;
   styleEle.innerHTML = style;
-  document.querySelector("main").appendChild(styleEle);
+  document.querySelector('main').appendChild(styleEle);
   createContactUsCard();
 }
 
 function createContactUsCard() {
-  const card = document.createElement("div");
-  card.className = "card";
+  const card = document.createElement('div');
+  card.className = 'card';
 
-  const emptyHeader = document.createElement("div");
-  emptyHeader.id = "void";
-  emptyHeader.className = "card-header";
+  const emptyHeader = document.createElement('div');
+  emptyHeader.id = 'void';
+  emptyHeader.className = 'card-header';
 
-  const header = document.createElement("div");
-  header.className = "card-header";
-  header.innerHTML = "Customer Service";
+  const header = document.createElement('div');
+  header.className = 'card-header';
+  header.innerHTML = 'Customer Service';
 
-  const body = document.createElement("div");
-  body.className = "card-body";
-  const contact = document.createElement("div");
-  contact.className = "contact";
-  const text = document.createElement("p");
-  text.innerHTML = "Phone: 123-456-7890<br>Email: eggcellent@gmail.com";
+  const body = document.createElement('div');
+  body.className = 'card-body';
+  const contact = document.createElement('div');
+  contact.className = 'contact';
+  const text = document.createElement('p');
+  text.innerHTML = 'Phone: 123-456-7890<br>Email: eggcellent@gmail.com';
 
   contact.appendChild(text);
   body.appendChild(body);
