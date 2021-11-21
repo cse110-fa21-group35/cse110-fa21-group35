@@ -24,7 +24,7 @@
 
 ## Ideas & Comments
 
-1. Use google doc for first draft for [team contract](https://docs.google.com/document/d/1O0kvgBc5t3iqWs2eXWbfYBEb58oqkMlJCBcGpzxDPV8/edit) (Yen-yun share us a template for contract), and we will convert it to markdown file
+1. Use google doc for first draft for [team contract](https://docs.google.com/document/d/1O0kvgBc5t3iqWs2eXWbfYBEb58oqkMlJCBcGpzxDPV8/edit) (Yen-yun share us a template for contract), and we will convert it to Markdown file
 2. We can have a stand-up meeting on Thursday afternoon, and a longer meeting on Sunday afternoon. [Availability update](https://www.when2meet.com/?13175372-28DpZ)
 3. Everyone should update weekly (what they have done in a period) either in Slack or Zoom meeting.
 4. Everyone should have their own agenda in stand-up to keep track of the meeting
@@ -53,5 +53,5 @@
 
 ## Next Step
 
-1.  Upload the signed team contract to repo individually
+1.  Upload the signed team contract to repository individually
 2.  Will be scheduled during weekdays and talk about group branding, group page, and group video

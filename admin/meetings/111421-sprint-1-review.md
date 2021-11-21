@@ -53,17 +53,17 @@
 
 - Vivian Wu:
 
-  - Implemented the back-end functionality of the CREATE recipe feature
+  - Implemented the backend functionality of the CREATE recipe feature
   - Implemented the User Sign Up and Sign In for Firebase (backend + bare bones frontend)
   - Helped with the Project Roadmap
   - Discussed Datamodel with Logan
-  - Discussed backend tools and REST/Firebase Javascript SDK with Logan
+  - Discussed backend tools and REST/Firebase JavaScript SDK with Logan
 
 - Jiyoung An:
 
   - Developed the UI design with Alice and Jiawen
   - Updated the UI design based on Alice’s UML
-  - Implement the Recipe card view components - front-end design: HTML, CSS, JS
+  - Implement the Recipe card view components - frontend design: HTML, CSS, JS
 
 - Terry Zhang:
 
@@ -82,13 +82,13 @@
 
   - Drafted low-fidelity wireframes
   - Worked with Jiyoung and Alice(Yen-yun) in Figma design (High-Fidelity wireframe)
-  - Develop front-end design of main page including HTML/CSS
+  - Develop frontend design of main page including HTML/CSS
   - Handled JSON format of recipe data and display different kinds of recipes based on the data accordingly using JavaScript DOM
   - Discussed implementation of Edit/Update feature with Zhongyi and Terry
 
 - Zhongyi Wang:
 
-  - Develop and implement front-end design of tag Tab by using HTML, CSS, and Javascript
+  - Develop and implement frontend design of tag Tab by using HTML, CSS, and JavaScript
   - Work with Logan to set up and configure the firebase for user recipes.
   - Work with Jiawen and Terry to implement the Update feature.
 
