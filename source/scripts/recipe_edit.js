@@ -7,8 +7,8 @@ import {
 } from "./recipe_create.js";
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
-
-var recipeInfo = {
+let recipeId = "5B9aMathQzajr1zBkEJEXgyhfsD2-1";
+let recipeInfo = {
   name: "Kung Pao Chicken",
   author: "David Newton",
   "cooking-time": "1 hour",
@@ -59,10 +59,6 @@ editBtn.addEventListener("click", function () {
   recipeCreatePanelContainer.appendChild(recipeCreatePanel);
   document.querySelector("body").appendChild(recipeCreatePanelContainer);
   fillInBlank();
-
-  let saveBtn = document.getElementsByClassName("recipe-save-btn");
-  saveBtn.onclick = edit;
-  console.dirxml(saveBtn);
 });
 
 function createPanelHeader(recipeCreatePanel) {
@@ -76,9 +72,9 @@ function createPanelHeader(recipeCreatePanel) {
   //save btn
   const saveBtn = createElem("button");
   saveBtn.className = "btn btn-primary btn-sm me-md-3 recipe-save-btn";
-  saveBtn.innerHTML = "Edit";
+  saveBtn.innerHTML = "Save";
   saveBtn.onclick = function () {
-    editRecipe();
+    editRecipe(recipeId, recipeInfo);
   };
 
   //close btn (X)
@@ -125,28 +121,4 @@ function fillInBlank() {
     ingredients_unit[i].value = ingredients_item["unit"];
   }
   steps.value = recipeInfo["steps"];
-}
-
-function editRecipe() {
-  let name = document.getElementById("recipe-name-input");
-  let author = document.getElementById("recipe-chief-name-input");
-  let time = document.getElementById("recipe-time-input");
-  let serving = document.getElementById("recipe-servings-input");
-  let ingredients_name = document.getElementsByClassName("ingred-name");
-  let ingredients_amount = document.getElementsByClassName("ingred-quantity");
-  let ingredients_unit = document.getElementsByClassName("ingred-units");
-  let steps = document.getElementById("step-input");
-  recipeInfo["name"] = name.value;
-  recipeInfo["author"] = author.value;
-  recipeInfo["cooking-time"] = time.value;
-  recipeInfo["serving"] = serving.value;
-  let ingre_list = recipeInfo["ingredients"];
-  for (let i = 0; i < ingre_list.length; i++) {
-    let ingredients_item = ingre_list[i];
-    ingredients_item["name"] = ingredients_name[i].value;
-    ingredients_item["amount"] = ingredients_amount[i].value;
-    ingredients_item["unit"] = ingredients_unit[i].value;
-  }
-  steps.value = recipeInfo["steps"];
-  console.log(recipeInfo);
 }

@@ -187,3 +187,102 @@ function createRecipe() {
     alert(error.message);
   }
 }
+function editRecipe(recipeId, recipeInfo) {
+  // checks for authentication persistence
+  let user = auth.currentUser;
+  var uid;
+  if (user != null) {
+    uid = user.uid;
+  }
+  // frontend element parsing
+  let name = document.getElementById("recipe-name-input");
+  let author = document.getElementById("recipe-chief-name-input");
+  let time = document.getElementById("recipe-time-input");
+  let serving = document.getElementById("recipe-servings-input");
+  let ingredients_name = document.getElementsByClassName("ingred-name");
+  let ingredients_amount = document.getElementsByClassName("ingred-quantity");
+  let ingredients_unit = document.getElementsByClassName("ingred-units");
+  let steps = document.getElementById("step-input");
+  recipeInfo["name"] = name.value;
+  recipeInfo["author"] = author.value;
+  recipeInfo["cooking-time"] = time.value;
+  recipeInfo["serving"] = serving.value;
+  let ingre_list = recipeInfo["ingredients"];
+  var ingredientsData = {};
+  for (let i = 0; i < ingre_list.length; i++) {
+    let ingredients_item = ingre_list[i];
+    ingredients_item["name"] = ingredients_name[i].value;
+    ingredients_item["amount"] = ingredients_amount[i].value;
+    ingredients_item["unit"] = ingredients_unit[i].value;
+    var val =
+      String(ingredients_item.value) +
+      String(ingredients_item.value) +
+      " " +
+      String(ingredients_item.value);
+    ingredientsData["ingredient " + i] = val;
+  }
+  recipeInfo["steps"] = steps.value;
+  console.log(recipeInfo);
+
+  // backend database operations
+  var firebaseRef = database.ref(); // get today's date
+  var today = new Date();
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+
+  // Recipe Data information to push to database
+  let recipeData = {
+    public: false,
+    "@context": "https://schema.org",
+    "@type": "Recipe",
+    author: recipeInfo["author"],
+    cookTime: recipeInfo["cooking-time"],
+    datePublished: date,
+    // todo: add description
+    description: "",
+    // todo: fix the image link
+    image: "",
+    recipeIngredient: ingredientsData,
+    name: recipeInfo["name"],
+    // todo: add nutrition
+    // "nutrition": {
+    //   "@type": "NutritionInformation",
+    //   "calories": "1200 calories",
+    //   "carbohydrateContent": "12 carbs",
+    //   "proteinContent": "9 grams of protein",
+    //   "fatContent": "9 grams fat"
+    // },
+    prepTime: "",
+    recipeInstructions: recipeInfo["steps"],
+    recipeYield: ["serving"],
+  };
+  console.log(recipeData);
+  // try {
+  //   fetch(
+  //     `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes/${recipeId}.json`,
+  //     {
+  //       method: PUT,
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(data)
+  //     }
+  //   )
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json;
+  //       } else {
+  //         return Promise.reject(response);
+  //       }
+  //     })
+  // } catch (error) {
+  //   alert(error.message);
+  // }
+  try {
+    // push to DB
+    firebaseRef.child(uid).child("recipes").child(recipeId).set(recipeData);
+    alert("Successfully Update Recipe");
+  } catch (error) {
+    alert(error.message);
+  }
+}
