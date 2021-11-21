@@ -1,6 +1,12 @@
 //Render the Recipe Create/Edit Panel
 //make sure every external css is imported
-export {createOverlay, createRecipeNameInput, createPanelContainer, createElem, createRecipeContent};
+export {
+  createOverlay,
+  createRecipeNameInput,
+  createPanelContainer,
+  createElem,
+  createRecipeContent,
+};
 let editBtn = document.getElementById("edit-recipe-btn");
 let createRecipeBtn = document.getElementById("create-recipe-btn");
 createRecipeBtn.addEventListener("click", function () {
