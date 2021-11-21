@@ -3,4 +3,4 @@
   "reporters": ["consoleFull"],
   "ignore": ["**/__snapshots__/**"],
   "absolute": true
-}
+
