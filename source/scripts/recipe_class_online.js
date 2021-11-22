@@ -56,6 +56,8 @@ class Recipe extends HTMLElement {
   }
 }
 
+var recipeId = '';
+
 function createRecipeCardElem(data) {
   // creating a recipe cutomized object
   const recipe = document.createElement('article');
@@ -241,6 +243,7 @@ function createRecipeContentElem(data) {
   //content container
   const recipeContent = document.createElement('div');
   recipeContent.id = data['id'];
+  recipeId = data['id'];
   recipeContent.classList = 'container-fluid recipe-create-edit-panel';
 
   //content panel itself
@@ -298,6 +301,7 @@ function createRecipeCotentPanelHeader() {
       addBtnIcon.innerHTML = 'favorite';
       addBtnIcon.id = 'recipe-card-added-btn';
       document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
+      addToMyRecipe(recipeId);
     } else {
       addBtnIcon = document.querySelector('#recipe-card-added-btn');
       addBtnIcon.innerHTML = 'favorite_border';

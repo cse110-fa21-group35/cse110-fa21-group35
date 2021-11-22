@@ -184,6 +184,101 @@ function createRecipe() {
   }
 }
 
+async function addToMyRecipe(recipeId) {
+  // checks for authentication persistence
+  let user = auth.currentUser;
+  var uid;
+  if (user != null) {
+    uid = user.uid;
+  }
+
+  try {
+    var recipeUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+    const addRecipeInfo = await getRecipeData(recipeUrl);
+    console.log(addRecipeInfo);
+
+    var ingredients = addRecipeInfo.extendedIngredients;
+
+    // add ingredients into ingredientsData json
+    var ingredientsData = {};
+    for (let i = 0; i < ingredients.length; i++) {
+      var ingredNumber = i + 1;
+      var val = ingredients[i].original;
+      ingredientsData['ingredient ' + ingredNumber] = val;
+    }
+
+    var firebaseRef = database.ref();
+    // get recipeCount
+    var databaseRef = firebaseRef.child(uid).child('recipeCount');
+    databaseRef.once('value').then(
+      function (snapshot) {
+        var recipeCount = snapshot.val();
+        var newRecipeCount = recipeCount + 1;
+
+        // the unique recipe
+        var uniqueRecipe = String(uid + '-' + newRecipeCount);
+
+        // set the new recipeCount
+        firebaseRef.child(uid).child('recipeCount').set(newRecipeCount);
+
+        // Recipe Data information to push to database
+        recipeData = {
+          public: false,
+          '@context': 'https://schema.org',
+          '@type': 'Recipe',
+          author: addRecipeInfo.sourceName,
+          cookTime: addRecipeInfo.readyInMinutes,
+          datePublished: '',
+          // todo: add description
+          description: '',
+          image: addRecipeInfo.image,
+          recipeIngredient: ingredientsData,
+          name: addRecipeInfo.title,
+          // todo: add nutrition
+          // "nutrition": {
+          //   "@type": "NutritionInformation",
+          //   "calories": "1200 calories",
+          //   "carbohydrateContent": "12 carbs",
+          //   "proteinContent": "9 grams of protein",
+          //   "fatContent": "9 grams fat"
+          // },
+          prepTime: '',
+          recipeInstructions: addRecipeInfo.instructions,
+          recipeYield: addRecipeInfo.servings,
+        };
+
+        // push to DB
+        firebaseRef
+          .child(uid)
+          .child('recipes')
+          .child(uniqueRecipe)
+          .set(recipeData);
+        alert('Successfully Created Recipe');
+      },
+      function (error) {
+        console.log('Error: ' + error.code);
+      }
+    );
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+function getRecipeData(url) {
+  var promise = new Promise((resolve, reject) => {
+    fetch(url)
+      .then((response) => response.json())
+      .then(function (data) {
+        recipe_data = data;
+        console.log(recipe_data);
+      })
+      .then(() => {
+        resolve(recipe_data);
+      });
+  });
+  return promise;
+}
+
 function deleteRecipe(recipeId) {
   //obtain userId
   let user = auth.currentUser;
