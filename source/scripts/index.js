@@ -129,8 +129,12 @@ async function createRecipe() {
         continue;
       }
       var ingredNumber = i + 1;
-      var val = String(ingredientsQuantity[i].value) + " ";
-      String(ingredientsUnit[i].value) + " " + String(ingredientsName[i].value);
+      var val =
+        String(ingredientsQuantity[i].value) +
+        " " +
+        String(ingredientsUnit[i].value) +
+        " " +
+        String(ingredientsName[i].value);
       ingredientsData["ingredient " + ingredNumber] = val;
     }
 
@@ -190,6 +194,7 @@ async function createRecipe() {
           .child(uniqueRecipe)
           .set(recipeData);
         alert("Successfully Created Recipe");
+        window.location.replace("../components/recipe_create.html");
       },
       function (error) {
         console.log("Error: " + error.code);
