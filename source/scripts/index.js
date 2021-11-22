@@ -162,6 +162,7 @@ async function createRecipe() {
 
         // Recipe Data information to push to database
         recipeData = {
+          createdByUser: true,
           public: false,
           "@context": "https://schema.org",
           "@type": "Recipe",
