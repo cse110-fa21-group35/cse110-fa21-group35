@@ -301,7 +301,9 @@ function createRecipeCotentPanelHeader() {
       addBtnIcon.innerHTML = 'favorite';
       addBtnIcon.id = 'recipe-card-added-btn';
       document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
-      addToMyRecipe(recipeId);
+
+      var recipeUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+      addToMyRecipe(recipeUrl);
     } else {
       addBtnIcon = document.querySelector('#recipe-card-added-btn');
       addBtnIcon.innerHTML = 'favorite_border';

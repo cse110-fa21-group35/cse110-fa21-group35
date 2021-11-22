@@ -184,7 +184,7 @@ function createRecipe() {
   }
 }
 
-async function addToMyRecipe(recipeId) {
+async function addToMyRecipe(url) {
   // checks for authentication persistence
   let user = auth.currentUser;
   var uid;
@@ -193,7 +193,9 @@ async function addToMyRecipe(recipeId) {
   }
 
   try {
-    var recipeUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+    var recipeUrl = url;
+
+    // call fetch to get the recipe information
     const addRecipeInfo = await getRecipeData(recipeUrl);
     console.log(addRecipeInfo);
 
@@ -223,6 +225,7 @@ async function addToMyRecipe(recipeId) {
 
         // Recipe Data information to push to database
         recipeData = {
+          createdByUser: false,
           public: false,
           '@context': 'https://schema.org',
           '@type': 'Recipe',
@@ -253,7 +256,7 @@ async function addToMyRecipe(recipeId) {
           .child('recipes')
           .child(uniqueRecipe)
           .set(recipeData);
-        alert('Successfully Created Recipe');
+        alert('Successfully Added Recipe');
       },
       function (error) {
         console.log('Error: ' + error.code);
