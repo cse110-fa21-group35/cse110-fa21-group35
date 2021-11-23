@@ -268,24 +268,22 @@ async function addToMyRecipe(url) {
   }
 }
 
-function readRecipe(){
+function readRecipe() {
   let user = auth.currentUser;
   var uid;
   if (user != null) {
     uid = user.uid;
+  } else {
+    alert('Please login');
   }
-  else{
-    alert("Please login");
-  }
-  try{
+  try {
     var firebaseRef = database.ref();
     // get recipeCount
     var databaseRef = firebaseRef.child(uid).child('recipeCount');
     var recipesRef = firebaseRef.child(uid).child('recipes');
     console.log(databaseRef);
     console.log(recipesRef);
-  }
-  catch(error){
+  } catch (error) {
     alert(error.message);
   }
 }

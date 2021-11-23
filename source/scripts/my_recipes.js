@@ -1,27 +1,28 @@
-
-import{createRecipeCardElem, 
-    createRecipeContentElem, 
-    createOverlay, 
-    createRecipeCotentPanelHeader, 
-    createRecipeContentPanelName, 
-    createRecipeContentPanelBody, 
-    createLeftContent, 
-    createRightContent, 
-    createRecipeInfo, 
-    createIngredList, 
-    ingredients, 
-    getIngreds, 
-    createSteps, 
-    setSteps} from "recipe_class_online.js"
+import {
+  createRecipeCardElem,
+  createRecipeContentElem,
+  createOverlay,
+  createRecipeCotentPanelHeader,
+  createRecipeContentPanelName,
+  createRecipeContentPanelBody,
+  createLeftContent,
+  createRightContent,
+  createRecipeInfo,
+  createIngredList,
+  ingredients,
+  getIngreds,
+  createSteps,
+  setSteps,
+} from 'recipe_class_online.js';
 class Recipe extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' });
-    }
-    set data(data) {
-      // creating CSS style element for each recipe element
-      const style_element = document.createElement('style');
-      const styles = `
+  constructor() {
+    super();
+    this.attachShadow({ mode: 'open' });
+  }
+  set data(data) {
+    // creating CSS style element for each recipe element
+    const style_element = document.createElement('style');
+    const styles = `
                 a.name {
                     background-color: #FDE79B;
                     position: relative;
@@ -63,14 +64,14 @@ class Recipe extends HTMLElement {
                     box-shadow: 4px 4px 5px #405263;
                 }
             `;
-      style_element.innerHTML = styles;
-  
-      // adding customized recipe and CSS style to main
-      this.shadowRoot.appendChild(style_element);
-      this.shadowRoot.appendChild(createRecipeCardElem(data));
-    }
+    style_element.innerHTML = styles;
+
+    // adding customized recipe and CSS style to main
+    this.shadowRoot.appendChild(style_element);
+    this.shadowRoot.appendChild(createRecipeCardElem(data));
   }
-  
+}
+
 // define a recipe-main element
 customElements.define('recipe-main', Recipe);
 
