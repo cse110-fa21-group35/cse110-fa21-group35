@@ -64,7 +64,7 @@ function signUp() {
       cardBody.appendChild(greeting);
 
       setTimeout(() => {
-        window.location.replace('/source/components/signin.html');
+        window.location.replace('/source/components/my_recipe.html');
       }, 2000);
       // alert('Successful Sign Up');
     })
@@ -90,7 +90,7 @@ function signIn() {
       cardBody.appendChild(greeting);
 
       setTimeout(() => {
-        window.location.replace('/source/components/my_recipes.html');
+        window.location.replace('/index.html');
       }, 2000);
     })
     .catch((error) => {
@@ -268,23 +268,23 @@ async function addToMyRecipe(url) {
   }
 }
 
+//TODO: Working on it - by Jiawen
 function readRecipe() {
   let user = auth.currentUser;
   var uid;
   if (user != null) {
     uid = user.uid;
-  } else {
-    alert('Please login');
-  }
-  try {
-    var firebaseRef = database.ref();
-    // get recipeCount
-    var databaseRef = firebaseRef.child(uid).child('recipeCount');
-    var recipesRef = firebaseRef.child(uid).child('recipes');
-    console.log(databaseRef);
-    console.log(recipesRef);
-  } catch (error) {
-    alert(error.message);
+    try {
+      var firebaseRef = database.ref();
+      // get recipeCount
+      var databaseRef = firebaseRef.child(uid).child('recipeCount');
+      var recipesRef = firebaseRef.child(uid).child('recipes');
+      console.log(databaseRef);
+      console.log(recipesRef);
+      console.log('here');
+    } catch (error) {
+      alert(error.message);
+    }
   }
 }
 
@@ -358,27 +358,6 @@ function editRecipe(recipeId, recipeInfo) {
     recipeYield: ['serving'],
   };
   console.log(recipeData);
-  // try {
-  //   fetch(
-  //     `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes/${recipeId}.json`,
-  //     {
-  //       method: "PUT",
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(data)
-  //     }
-  //   )
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json;
-  //       } else {
-  //         return Promise.reject(response);
-  //       }
-  //     })
-  // } catch (error) {
-  //   alert(error.message);
-  // }
   try {
     // push to DB
     firebaseRef.child(uid).child('recipes').child(recipeId).set(recipeData);
