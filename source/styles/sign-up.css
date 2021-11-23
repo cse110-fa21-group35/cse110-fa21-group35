@@ -78,6 +78,20 @@ label {
   color: #405263;
 }
 
+.sign-in-direct-box {
+  margin-top: 4vw;
+  margin-bottom: 1.3vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign-in-question-label {
+  color: #405262;
+  font-size: 18px;
+}
+
 .welcome {
   background-color: #405262;
   border-radius: 10px;
