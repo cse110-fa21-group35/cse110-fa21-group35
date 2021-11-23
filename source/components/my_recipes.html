@@ -5,18 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Required CSS. Bootstrap MUST be imported -->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/source/styles/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/source/styles/recipe_content.css"
-    />
-    <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="/source/styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/source/styles/recipe_create.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -32,13 +23,10 @@
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    <script src="/source/scripts/recipe-content.js"></script>
-    <title>Eggcellent Recipe</title>
-
-    <!--Choosing either render recipes online or offline here-->
-    <script src="source/scripts/recipe_class_online.js" type="module"></script>
-    <!--<script src="source/scripts/recipe_class_offline.js" type="module"></script>-->
-    <script src="source/scripts/index.js"></script>
+    <script src="/source/scripts/index.js"></script>
+    <script src="/source/scripts/recipe_create.js" type="module"></script>
+    <script src="/source/scripts/recipe_edit.js" type="module"></script>
+    <title>Eggcellent Create/Edit Recipe</title>
   </head>
   <body style="background-color: #e5e5e5">
     <header>
@@ -136,13 +124,13 @@
     <section>
       <div class="nav">
         <div class="All">
-          <a href="index.html">
+          <a href="../../index.html">
             <i class="material-icons">menu</i>
             All Recipes
           </a>
         </div>
         <div class="My-Recipes">
-          <a href="/source/components/my_recipes.html">
+          <a href="">
             <i class="material-icons">restaurant_menu</i>
             My Recipes
           </a>
@@ -155,11 +143,19 @@
         </div>
       </div>
     </section>
-    <main></main>
+    <!-- Below button for testing purpose -->
+    <section>
+      <button id="create-recipe-btn" class="btn btn-warning">
+        Create Recipe
+      </button>
+
+      <button id="edit-recipe-btn" class="btn btn-secondary">
+        Edit Recipe
+      </button>
+    </section>
   </body>
   <footer>
     <!-- Feel free to use onclick="showContact() in contact.js -->
     <a href="/source/components/contact-us.html">Contact Us</a>
   </footer>
-  <section class="recipe-expand"></section>
 </html>
