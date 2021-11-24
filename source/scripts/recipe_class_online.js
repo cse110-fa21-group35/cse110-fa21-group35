@@ -1,3 +1,4 @@
+/* eslint-disable */
 class Recipe extends HTMLElement {
   constructor() {
     super();
@@ -543,3 +544,4 @@ function createRecipeCards() {
     main.appendChild(cards[i]);
   }
 }
+/* eslint-onable */

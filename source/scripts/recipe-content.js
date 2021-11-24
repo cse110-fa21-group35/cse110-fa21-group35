@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 function addRecipe() {
   let addBtnIcon = document.querySelector('#recipe-card-add-btn');
   if (addBtnIcon != null) {
@@ -45,3 +47,4 @@ function addRecipe() {
   headerSpan.appendChild(editBtn);
   headerSpan.appendChild(deleteBtn);
  */
+/* eslint-onable */
