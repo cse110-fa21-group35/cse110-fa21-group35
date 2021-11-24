@@ -1,3 +1,4 @@
+/* eslint-disable */
 class Recipe extends HTMLElement {
   constructor() {
     super();
@@ -182,3 +183,4 @@ function get(object, key) {
   });
   return result;
 }
+/* eslint-enable */

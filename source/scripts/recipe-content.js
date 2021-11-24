@@ -47,4 +47,4 @@ function addRecipe() {
   headerSpan.appendChild(editBtn);
   headerSpan.appendChild(deleteBtn);
  */
-/* eslint-onable */
+/* eslint-enable */

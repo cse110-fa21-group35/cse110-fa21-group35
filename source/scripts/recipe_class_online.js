@@ -544,4 +544,4 @@ function createRecipeCards() {
     main.appendChild(cards[i]);
   }
 }
-/* eslint-onable */
+/* eslint-enable */
