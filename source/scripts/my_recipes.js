@@ -23,11 +23,11 @@ window.addEventListener('DOMContentLoaded', init);
 
 // starting here
 async function init() {
-  //   let fetchSuccessful = await fetch_recipe();
-  //   if (!fetchSuccessful) {
-  //     console.log('Recipe fetch unsuccessful');
-  //     return;
-  //   }
-  readRecipe();
+  console.log('Calling reading function');
+  let success = await readRecipe();
+
+  if (!success) {
+    console.log('something wrong');
+  }
   //createRecipeCards();
 }

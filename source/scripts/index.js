@@ -269,23 +269,32 @@ async function addToMyRecipe(url) {
 }
 
 //TODO: Working on it - by Jiawen
-function readRecipe() {
+async function readRecipe() {
   let user = auth.currentUser;
   var uid;
   if (user != null) {
     uid = user.uid;
-    try {
-      var firebaseRef = database.ref();
-      // get recipeCount
-      var databaseRef = firebaseRef.child(uid).child('recipeCount');
-      var recipesRef = firebaseRef.child(uid).child('recipes');
-      console.log(databaseRef);
-      console.log(recipesRef);
-      console.log('here');
-    } catch (error) {
-      alert(error.message);
-    }
   }
+  return new Promise((resolve, reject) => {
+    console.log(`the user is: ${user}`);
+    fetch(
+      `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes.json`
+    )
+      .then((response) => {
+        // The request was processed by firebase, maybe deleted.
+        if (response.ok) {
+          return response.json();
+        } else {
+          // This will only evaluate if there's an actual failure in the request.
+          console.warn('Something went wrong.', response.status);
+          reject(false);
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        resolve(true);
+      });
+  });
 }
 
 function editRecipe(recipeId, recipeInfo) {
