@@ -504,7 +504,7 @@ function setSteps(stepContent, stepStr) {
 customElements.define('recipe-main', Recipe);
 
 // HAVE TO MANUALLY SET THE DISPLAY RECIPES AMOUNT FOR FIRST PAGE
-var recipe_length = 6;
+var recipe_length = 9;
 
 // path of json of main page
 // LAST NUMBER IS HOW MANY RECIPES WE ARE RENDERING

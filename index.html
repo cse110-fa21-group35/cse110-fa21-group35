@@ -40,12 +40,12 @@
     <!--<script src="source/scripts/recipe_class_offline.js" type="module"></script>-->
   </head>
   <body>
-    <header>
+    <header id="top">
       <div>
         <a href="/index.html"><img src="/source/images/logo.JPG" /></a>
       </div>
     </header>
-    <section>
+    <section id="navbar">
       <div class="nav">
         <div class="All">
           <a href="/index.html">
@@ -54,7 +54,7 @@
           </a>
         </div>
         <div class="My-Recipes">
-          <a href="/source/components/my_recipe.html">
+          <a href="/source/components/my_recipes.html">
             <i class="material-icons">restaurant_menu</i>
             My Recipes
           </a>
@@ -67,7 +67,19 @@
         </div>
       </div>
     </section>
-    <main></main>
+    <main>
+      <section class="page-up-btn-group">
+        <a class="page-up-btn" href="#top">
+          <i class="material-icons">arrow_drop_up</i>
+        </a>
+      </section>
+      <section class="page-down-btn-group">
+        <a class="page-down-btn" href="#end">
+          <i class="material-icons">arrow_drop_down</i>
+        </a>
+      </section>
+    </main>
+    <div id="end"></div>
   </body>
   <footer>
     <!-- Feel free to use onclick="showContact() in contact.js -->

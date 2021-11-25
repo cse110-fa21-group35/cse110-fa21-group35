@@ -91,3 +91,43 @@ footer > a {
   color: white;
   text-decoration: none;
 }
+
+.page-up-btn-group {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  top: 7rem;
+  right: 4vw;
+}
+
+.page-down-btn-group {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: end;
+  bottom: 3rem;
+  right: 4vw;
+}
+
+a.page-up-btn,
+a.page-down-btn {
+  background-color: white;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  border-radius: 60px;
+  box-shadow: 0px 4px 4px 0px #00000040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+a.page-up-btn > i,
+a.page-down-btn > i {
+  color: #fde79b;
+  font-size: 62px;
+  margin-right: 0px;
+}
