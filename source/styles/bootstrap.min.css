@@ -1,4 +1,6 @@
-@charset "UTF-8"; /*!
+@charset "UTF-8";
+/* eslint-disable */
+/*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
  * Copyright 2011-2021 Twitter, Inc.
@@ -9868,3 +9870,4 @@ fieldset:disabled .btn {
   }
 }
 /*# sourceMappingURL=bootstrap.min.css.map */
+/* eslint-enable */
