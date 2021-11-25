@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Bootstrap CSS -->
+    <!-- Required CSS. Bootstrap MUST be imported -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -14,7 +14,13 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/source/styles/recipe_create.css"
+      href="/source/styles/recipe-content.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/my_recipe.css"
     />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -31,101 +37,13 @@
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="/source/scripts/recipe-content.js"></script>
     <script src="/source/scripts/index.js"></script>
-    <script src="/source/scripts/recipe_create.js" type="module"></script>
-    <script src="/source/scripts/recipe_edit.js" type="module"></script>
-    <script src="/source/scripts/my_recipes.js" type="module"></script>
-    <title>Eggcellent Create/Edit Recipe</title>
+    <script src="/source/scripts/my_recipes.js"></script>
+    <title>Eggcellent Recipe</title>
   </head>
-  <body style="background-color: #e5e5e5">
-    <header>
-      <style>
-        body {
-          margin: 0;
-          font-family: 'Roboto', sans-serif;
-          background: linear-gradient(
-            to right,
-            #dbdcd7 0,
-            #dbdcd7 10%,
-            #8c8c7d 10%,
-            #8c8c7d 90%,
-            #dbdcd7 90%,
-            #dbdcd7 100%
-          );
-        }
-
-        header {
-          background-color: #fde79b;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin: 0px;
-        }
-
-        header img {
-          width: 100%;
-          height: 70px;
-        }
-
-        header > div > a {
-          width: 0;
-          height: 0;
-        }
-
-        .nav {
-          background-color: #405262;
-          display: flex;
-          justify-content: space-evenly;
-          align-items: center;
-          height: 32px;
-        }
-
-        .nav a {
-          color: white;
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 17px;
-        }
-
-        main {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 30px;
-        }
-
-        .nav a:hover > i,
-        .nav a:hover,
-        footer > a:hover {
-          color: #fde79b;
-        }
-
-        i.material-icons {
-          color: white;
-          margin-right: 3px;
-          font-size: 30px;
-        }
-
-        footer {
-          background-color: #405262;
-          text-align: center;
-          position: fixed;
-          bottom: 0;
-          width: 100%;
-          height: 5%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        footer > a {
-          font-size: 18px;
-          color: white;
-          text-decoration: none;
-        }
-      </style>
+  <body>
+    <header id="header">
       <div>
         <a href="/index.html"><img src="/source/images/logo.JPG" /></a>
       </div>
@@ -133,13 +51,13 @@
     <section>
       <div class="nav">
         <div class="All">
-          <a href="../../index.html">
+          <a href="/index.html">
             <i class="material-icons">menu</i>
             All Recipes
           </a>
         </div>
         <div class="My-Recipes">
-          <a href="">
+          <a href="/source/components/my_recipes.html">
             <i class="material-icons">restaurant_menu</i>
             My Recipes
           </a>
@@ -152,19 +70,45 @@
         </div>
       </div>
     </section>
-    <!-- Below button for testing purpose -->
-    <section>
-      <button id="create-recipe-btn" class="btn btn-warning">
-        Create Recipe
-      </button>
-
-      <button id="edit-recipe-btn" class="btn btn-secondary">
-        Edit Recipe
-      </button>
-    </section>
+    <main>
+      <section class="page-up-btn-group">
+        <a class="page-up-btn" href="#top">
+          <i class="material-icons">arrow_drop_up</i>
+        </a>
+      </section>
+      <section class="page-down-btn-group">
+        <a class="page-down-btn" href="#end">
+          <i class="material-icons">arrow_drop_down</i>
+        </a>
+      </section>
+      <section class="main-action-group">
+        <div class="actions">
+          <div class="search-box">
+            <i class="material-icons">search</i>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search In My Recipes"
+            />
+          </div>
+          <div class="recipe-create-btn">
+            <button class="create-recipe-btn btn" onclick="createRecipe()">
+              <i id="recipe-card-create-btn" class="material-icons"
+                >library_add</i
+              >
+              <span class="creat-btn-label"> Create New Recipe </span>
+            </button>
+          </div>
+        </div>
+        <div class="d-flex justify-content-end">
+          <span class="total-recipe-count">Total X Recipes</span>
+        </div>
+      </section>
+    </main>
   </body>
-  <footer>
+  <footer id="footer">
     <!-- Feel free to use onclick="showContact() in contact.js -->
     <a href="/source/components/contact-us.html">Contact Us</a>
   </footer>
+  <section class="recipe-expand"></section>
 </html>
