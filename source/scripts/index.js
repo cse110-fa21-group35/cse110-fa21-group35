@@ -120,7 +120,7 @@ function createRecipe() {
   auth.onAuthStateChanged(function (user) {
     if (user != null) {
       uid = user.uid;
-      console.log(uid);
+      console.log('uid: ' + uid);
     }
 
     try {
