@@ -7,7 +7,7 @@
 
 ## Considered Options
 
-1. If the action is to delete a recipe, essentially remove the associated recipe contents in firebase. In the app, we need two pieces of information: the respective account id attempting to make the deletion, and the recipe id which was chosen. Deleting would be removing the associated json of the recipeID inside the user’s recipes object, which is identified by accountId.recipes. We will query our database accordingly.
+1. If the action is to delete a recipe, essentially remove the associated recipe contents in firebase. In the app, we need two pieces of information: the respective account ID attempting to make the deletion, and the recipe id which was chosen. Deleting would be removing the associated json of the recipeID inside the user’s recipes object, which is identified by accountId.recipes. We will query our database accordingly.
 
 ## Decision Outcome
 
