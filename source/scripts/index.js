@@ -28,6 +28,7 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const database = firebase.database();
 let uid;
+var user_recipe_data = 'User Recipe Data';
 //const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
@@ -330,28 +331,39 @@ async function addToMyRecipe(id) {
   });
 }
 
-//TODO: Working on it - by Jiawen
-function readRecipe() {
-  // let user = auth.currentUser;
-  var uid;
-  // console.log(user);
-  auth.onAuthStateChanged(function (user) {
-    if (user != null) {
-      uid = user.uid;
-      console.log(uid);
-    }
-    try {
-      var firebaseRef = database.ref();
-      // get recipeCount
-      var databaseRef = firebaseRef.child(uid).child('recipeCount');
-      var recipesRef = firebaseRef.child(uid).child('recipes');
-      console.log(uid);
-      console.log(databaseRef);
-      console.log(recipesRef);
-      console.log('here');
-    } catch (error) {
-      alert(error.message);
-    }
+async function readRecipe() {
+  return new Promise((resolve, reject) => {
+    var uid;
+    auth.onAuthStateChanged(function (user) {
+      if (user != null) {
+        uid = user.uid;
+        console.log('uid: ' + uid);
+      }
+      try {
+        // var firebaseRef = database.ref();
+        // // get recipeCount
+        // var databaseRef = firebaseRef.child(uid).child('recipeCount');
+        // databaseRef.once('value').then(
+        //   function (snapshot) {
+        //     user_recipe_data_length = snapshot.val();
+        //   }
+        // );
+        fetch(
+          `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes.json`
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            user_recipe_data = data;
+          })
+          .then(() => {
+            resolve(true);
+          });
+      } catch (error) {
+        alert(error.message);
+      }
+    });
   });
 }
 
