@@ -7,11 +7,8 @@ export {
   createElem,
   createRecipeContent,
 };
-let editBtn = document.getElementById('edit-recipe-btn');
 let createRecipeBtn = document.getElementById('create-recipe-btn');
 createRecipeBtn.addEventListener('click', function () {
-  createRecipeBtn.setAttribute('class', 'btn btn-warning');
-  editBtn.setAttribute('class', 'btn btn-secondary');
   createOverlay();
 
   //create the panel container element
@@ -160,6 +157,7 @@ function createPanelContainer(recipeCreatePanelContainer) {
   }
   
   .recipe-img {
+    width: 90%;
     background-color: white;
     border-radius: 15px;
     text-align: center;
@@ -360,13 +358,13 @@ function createImgBox(left) {
   fileInput.className = 'img-input';
   fileInput.type = 'file';
   fileInput.accept = 'img/jpeg, img/png, img/jpg';
-  fileInput.onchange = function (event) {
-    let browseBtn = document.querySelector('label.recipe-browse-btn');
-    browseBtn.innerHTML = browseBtn.innerHTML.replace(
-      'Browse',
-      event.srcElement.files[0].name
-    );
-  };
+  // fileInput.onchange = function (event) {
+  //   let browseBtn = document.querySelector('label.recipe-browse-btn');
+  //   browseBtn.innerHTML = browseBtn.innerHTML.replace(
+  //     'Browse',
+  //     event.srcElement.files[0].name
+  //   );
+  // };
 
   iconLabel.appendChild(fileInput);
   img.appendChild(uploadIcon);
