@@ -53,10 +53,11 @@ function signUp() {
         }
         let firebaseRef = database.ref();
         data = {
-          Name: userName,
-          Email: userEmail,
+          name: userName,
+          email: userEmail,
+          recipeCount: 0,
         };
-        firebaseRef.child('users').child(uid).child('details').set(data);
+        firebaseRef.child(uid).set(data);
         let greeting = document.createElement('div');
         let cardBody = document.querySelector('div.card-body');
         greeting.className = 'welcome';
@@ -65,7 +66,7 @@ function signUp() {
         cardBody.appendChild(greeting);
 
         setTimeout(() => {
-          window.location.replace('/source/components/index.html');
+          window.location.replace('/index.html');
         }, 2000);
         // alert('Successful Sign Up');
       })
@@ -109,30 +110,57 @@ function signIn() {
 }
 
 // createRecipe is the backend function for the Creation of Recipes
-function createRecipe() {
+async function createRecipe() {
   // checks for authentication persistence
+  // needed for every function!!
   // let user = auth.currentUser;
   var uid;
-  // if (user != null) {
-  //   uid = user.uid;
-  // }
 
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged(async function (user) {
     if (user != null) {
       uid = user.uid;
-      console.log('uid: ' + uid);
+      console.log(uid);
     }
 
     try {
+      // always make a firebase ref
       var firebaseRef = database.ref();
 
+      // grab variables from the html
       var recipeName = document.getElementById('recipe-name-input').value;
       var recipeBy = document.getElementById('recipe-chief-name-input').value;
       var cookingTime = document.getElementById('recipe-time-input').value;
       var servings = document.getElementById('recipe-servings-input').value;
-      var ingredients = document.getElementById('ingred-input').value;
       var steps = document.getElementById('step-input').value;
-      var file = document.getElementById('file-input').files[0];
+      var recipeImage = document.getElementById('img-upload').files[0];
+
+      // call getBase64 to get the base64 of the image
+      var imageData = await getBase64(recipeImage);
+
+      var ingredients = document.getElementsByClassName('ingred-item');
+      var ingredientsName = document.getElementsByClassName('ingred-name');
+      var ingredientsQuantity =
+        document.getElementsByClassName('ingred-quantity');
+      var ingredientsUnit = document.getElementsByClassName('ingred-units');
+
+      // add ingredients into ingredientsData json
+      var ingredientsData = {};
+      for (let i = 0; i < ingredients.length; i++) {
+        if (
+          ingredientsName[i].value == '' ||
+          ingredientsQuantity[i].value == ''
+        ) {
+          continue;
+        }
+        var ingredNumber = i + 1;
+        var val =
+          String(ingredientsQuantity[i].value) +
+          ' ' +
+          String(ingredientsUnit[i].value) +
+          ' ' +
+          String(ingredientsName[i].value);
+        ingredientsData['ingredient ' + ingredNumber] = val;
+      }
 
       // get today's date
       var today = new Date();
@@ -143,7 +171,7 @@ function createRecipe() {
         '-' +
         today.getDate();
 
-      // get recipeCount
+      // get recipeCount from DB
       var databaseRef = firebaseRef.child(uid).child('recipeCount');
       databaseRef.once('value').then(
         function (snapshot) {
@@ -158,6 +186,7 @@ function createRecipe() {
 
           // Recipe Data information to push to database
           recipeData = {
+            createdByUser: true,
             public: false,
             '@context': 'https://schema.org',
             '@type': 'Recipe',
@@ -167,8 +196,8 @@ function createRecipe() {
             // todo: add description
             description: '',
             // todo: fix the image link
-            image: '',
-            recipeIngredient: ingredients,
+            image: imageData,
+            recipeIngredient: ingredientsData,
             name: recipeName,
             // todo: add nutrition
             // "nutrition": {
@@ -190,6 +219,7 @@ function createRecipe() {
             .child(uniqueRecipe)
             .set(recipeData);
           alert('Successfully Created Recipe');
+          window.location.replace('../components/recipe_create.html');
         },
         function (error) {
           console.log('Error: ' + error.code);
@@ -201,7 +231,19 @@ function createRecipe() {
   });
 }
 
-async function addToMyRecipe(url) {
+// converts image to base64
+function getBase64(file) {
+  var reader = new FileReader();
+  var promise = new Promise((resolve, reject) => {
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.readAsDataURL(file);
+  });
+  return promise;
+}
+
+async function addToMyRecipe(id) {
   // checks for authentication persistence
   // let user = auth.currentUser;
   var uid;
@@ -215,10 +257,12 @@ async function addToMyRecipe(url) {
     }
 
     try {
-      var recipeUrl = url;
+      var recipeInfoUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+      var recipeNutritionUrl = `https://api.spoonacular.com/recipes/${id}/nutritionLabel.png`;
 
+      console.log(recipeNutritionUrl);
       // call fetch to get the recipe information
-      const addRecipeInfo = await getRecipeData(recipeUrl);
+      const addRecipeInfo = await getRecipeData(recipeInfoUrl);
       console.log(addRecipeInfo);
 
       var ingredients = addRecipeInfo.extendedIngredients;
@@ -260,13 +304,9 @@ async function addToMyRecipe(url) {
             recipeIngredient: ingredientsData,
             name: addRecipeInfo.title,
             // todo: add nutrition
-            // "nutrition": {
-            //   "@type": "NutritionInformation",
-            //   "calories": "1200 calories",
-            //   "carbohydrateContent": "12 carbs",
-            //   "proteinContent": "9 grams of protein",
-            //   "fatContent": "9 grams fat"
-            // },
+            nutrition: {
+              nutritionImage: recipeNutritionUrl,
+            },
             prepTime: '',
             recipeInstructions: addRecipeInfo.instructions,
             recipeYield: addRecipeInfo.servings,
