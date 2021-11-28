@@ -454,6 +454,8 @@ function deleteRecipe(recipeId) {
     ).then((response) => {
       // The request was processed by firebase, maybe deleted.
       if (response.ok) {
+        alert('Successfully deleted recipe');
+        location.reload();
         return response.json();
       } else {
         // This will only evaluate if there's an actual failure in the request.

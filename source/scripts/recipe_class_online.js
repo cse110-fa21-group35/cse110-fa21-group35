@@ -1,19 +1,19 @@
-export {
-  createRecipeCardElem,
-  createRecipeContentElem,
-  createOverlay,
-  createRecipeCotentPanelHeader,
-  createRecipeContentPanelName,
-  createRecipeContentPanelBody,
-  createLeftContent,
-  createRightContent,
-  createRecipeInfo,
-  createIngredList,
-  ingredients,
-  getIngreds,
-  createSteps,
-  setSteps,
-};
+// export {
+//   createRecipeCardElem,
+//   createRecipeContentElem,
+//   createOverlay,
+//   createRecipeCotentPanelHeader,
+//   createRecipeContentPanelName,
+//   createRecipeContentPanelBody,
+//   createLeftContent,
+//   createRightContent,
+//   createRecipeInfo,
+//   createIngredList,
+//   ingredients,
+//   getIngreds,
+//   createSteps,
+//   setSteps,
+// };
 
 class Recipe extends HTMLElement {
   constructor() {
@@ -513,18 +513,6 @@ const recipe_path = `https://api.spoonacular.com/recipes/random?apiKey=48efb642c
 // we store the data of recipe temporary in object
 var recipe_data = undefined;
 
-// manually set the id of mainpage recipe - may change to automatical fetching id later
-const recipe_ids = [
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-97',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-98',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-99',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-100',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-101',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-102',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-103',
-  'Br6v40acvTTGoMvvdbLLRBPplHF3-104',
-];
-
 // eventlistener here
 window.addEventListener('DOMContentLoaded', init);
 
@@ -537,6 +525,7 @@ async function init() {
   }
   createRecipeCards();
 }
+
 // reading the json data and store it in object array
 // recipes data will be stored in "recipes"
 async function fetch_recipe() {

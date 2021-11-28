@@ -1,3 +1,5 @@
+import { showEditPanel } from './recipe_edit.js';
+
 class Recipe extends HTMLElement {
   constructor() {
     super();
@@ -242,7 +244,7 @@ function createRecipeContentElem(data, id) {
   //content container
   const recipeContent = document.createElement('div');
   recipeContent.id = id;
-  recipeContent.classList = 'container-fluid recipe-create-edit-panel';
+  recipeContent.className = 'container-fluid recipe-create-edit-panel';
 
   //content panel itself
   const card = document.createElement('div');
@@ -294,7 +296,9 @@ function createRecipeCotentPanelHeader(data, id) {
   const editBtn = document.createElement('button');
   editBtn.className = 'edit-recipe-btn btns';
   const editIcon = document.createElement('i');
-  // editBtn.onclick = editRecipe(id, data);
+  editBtn.onclick = function () {
+    showEditPanel(data);
+  };
   editIcon.id = 'recipe-card-edit-btn';
   editIcon.className = 'material-icons';
   editIcon.innerHTML = 'edit';
@@ -307,7 +311,9 @@ function createRecipeCotentPanelHeader(data, id) {
   //delete btn
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-recipe-btn btns';
-  deleteBtn.onclick = deleteRecipe(id);
+  deleteBtn.onclick = function () {
+    deleteRecipe(id);
+  };
   const deleteIcon = document.createElement('i');
   deleteIcon.id = 'recipe-card-delete-btn';
   deleteIcon.className = 'material-icons';
@@ -446,7 +452,7 @@ function getIngreds(data) {
   let ingredData = data['recipeIngredient'];
   let items = [];
   let keys = Object.keys(ingredData);
-  for (let i = 0; i < ingredData.length; i++) {
+  for (let i = 0; i < keys.length; i++) {
     items.push(ingredData[keys[i]]);
   }
   return items;
@@ -500,6 +506,7 @@ async function init() {
   createRecipeCards();
   showTotalRecipeCount();
 }
+
 // creating recipe-main element based on the data we have - data are store in "recipes"
 function createRecipeCards() {
   var cards = [];
