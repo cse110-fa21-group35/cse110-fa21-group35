@@ -407,6 +407,9 @@ function createNameTimeServing(right) {
     const nameInput = createElem('input');
     if (i < 2) {
       nameInput.type = 'text';
+      if (i == 1) {
+        nameInput.placeholder = 'minutes';
+      }
     } else {
       nameInput.type = 'number';
       nameInput.min = '1';

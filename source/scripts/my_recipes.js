@@ -381,7 +381,7 @@ function createLeftContent(data) {
   //nutrition label;
   const label = document.createElement('img');
   label.className = 'nutr-label';
-  label.src = `https://api.spoonacular.com/recipes/${data['id']}/nutritionLabel.png?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+  label.src = `${data['nutritionLabel']}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
 
   left.appendChild(img);
   left.appendChild(label);

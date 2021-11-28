@@ -110,30 +110,60 @@ function signIn() {
 }
 
 // createRecipe is the backend function for the Creation of Recipes
-function createRecipe() {
+async function createRecipe() {
   // checks for authentication persistence
   // let user = auth.currentUser;
   var uid;
-  // if (user != null) {
-  //   uid = user.uid;
-  // }
 
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged(async function (user) {
     if (user != null) {
       uid = user.uid;
       console.log('uid: ' + uid);
     }
 
     try {
+      // always make a firebase ref
       var firebaseRef = database.ref();
 
+      // grab variables from the html
       var recipeName = document.getElementById('recipe-name-input').value;
       var recipeBy = document.getElementById('recipe-chief-name-input').value;
       var cookingTime = document.getElementById('recipe-time-input').value;
       var servings = document.getElementById('recipe-servings-input').value;
-      var ingredients = document.getElementById('ingred-input').value;
       var steps = document.getElementById('step-input').value;
-      var file = document.getElementById('file-input').files[0];
+      var recipeImage = document.getElementById('img-upload').files[0];
+
+      if (recipeImage == null) {
+        var imageData = '/source/images/no-img-avail.png';
+      } else {
+        // call getBase64 to get the base64 of the image
+        var imageData = await getBase64(recipeImage);
+      }
+
+      var ingredients = document.getElementsByClassName('ingred-item');
+      var ingredientsName = document.getElementsByClassName('ingred-name');
+      var ingredientsQuantity =
+        document.getElementsByClassName('ingred-quantity');
+      var ingredientsUnit = document.getElementsByClassName('form-select');
+
+      // add ingredients into ingredientsData json
+      var ingredientsData = {};
+      for (let i = 0; i < ingredients.length; i++) {
+        if (
+          ingredientsName[i].value == '' ||
+          ingredientsQuantity[i].value == ''
+        ) {
+          continue;
+        }
+        var ingredNumber = i + 1;
+        var val =
+          String(ingredientsQuantity[i].value) +
+          ' ' +
+          String(ingredientsUnit[i].value) +
+          ' ' +
+          String(ingredientsName[i].value);
+        ingredientsData['ingredient ' + ingredNumber] = val;
+      }
 
       // get today's date
       var today = new Date();
@@ -144,7 +174,7 @@ function createRecipe() {
         '-' +
         today.getDate();
 
-      // get recipeCount
+      // get recipeCount from DB
       var databaseRef = firebaseRef.child(uid).child('recipeCount');
       databaseRef.once('value').then(
         function (snapshot) {
@@ -159,6 +189,7 @@ function createRecipe() {
 
           // Recipe Data information to push to database
           recipeData = {
+            createdByUser: true,
             public: false,
             '@context': 'https://schema.org',
             '@type': 'Recipe',
@@ -168,8 +199,8 @@ function createRecipe() {
             // todo: add description
             description: '',
             // todo: fix the image link
-            image: '',
-            recipeIngredient: ingredients,
+            image: imageData,
+            recipeIngredient: ingredientsData,
             name: recipeName,
             // todo: add nutrition
             // "nutrition": {
@@ -191,6 +222,7 @@ function createRecipe() {
             .child(uniqueRecipe)
             .set(recipeData);
           alert('Successfully Created Recipe');
+          window.location.replace('../components/my_recipes.html');
         },
         function (error) {
           console.log('Error: ' + error.code);
@@ -200,6 +232,18 @@ function createRecipe() {
       alert(error.message);
     }
   });
+}
+
+// converts image to base64
+function getBase64(file) {
+  var reader = new FileReader();
+  var promise = new Promise((resolve, reject) => {
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.readAsDataURL(file);
+  });
+  return promise;
 }
 
 async function addToMyRecipe(url) {
@@ -299,15 +343,8 @@ async function readRecipe() {
         uid = user.uid;
         console.log('uid: ' + uid);
       }
+
       try {
-        // var firebaseRef = database.ref();
-        // // get recipeCount
-        // var databaseRef = firebaseRef.child(uid).child('recipeCount');
-        // databaseRef.once('value').then(
-        //   function (snapshot) {
-        //     user_recipe_data_length = snapshot.val();
-        //   }
-        // );
         fetch(
           `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes.json`
         )
@@ -322,6 +359,7 @@ async function readRecipe() {
           });
       } catch (error) {
         alert(error.message);
+        return reject(true);
       }
     });
   });
