@@ -6,6 +6,7 @@ export {
   createPanelContainer,
   createElem,
   createRecipeContent,
+  createIngredInput,
 };
 let createRecipeBtn = document.getElementById('create-recipe-btn');
 createRecipeBtn.addEventListener('click', function () {

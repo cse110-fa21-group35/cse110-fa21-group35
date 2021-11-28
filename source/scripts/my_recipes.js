@@ -297,7 +297,7 @@ function createRecipeCotentPanelHeader(data, id) {
   editBtn.className = 'edit-recipe-btn btns';
   const editIcon = document.createElement('i');
   editBtn.onclick = function () {
-    showEditPanel(data);
+    showEditPanel(data, id);
   };
   editIcon.id = 'recipe-card-edit-btn';
   editIcon.className = 'material-icons';

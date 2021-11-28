@@ -367,7 +367,7 @@ async function readRecipe() {
   });
 }
 
-function editRecipe(recipeId, recipeInfo) {
+function editRecipe(recipeId, data) {
   // checks for authentication persistence
   // let user = auth.currentUser;
   var uid;
@@ -381,37 +381,51 @@ function editRecipe(recipeId, recipeInfo) {
       console.log(uid);
     }
     // frontend element parsing
-    let name = document.getElementById('recipe-name-input');
-    let author = document.getElementById('recipe-chief-name-input');
-    let time = document.getElementById('recipe-time-input');
-    let serving = document.getElementById('recipe-servings-input');
-    let ingredients_name = document.getElementsByClassName('ingred-name');
-    let ingredients_amount = document.getElementsByClassName('ingred-quantity');
-    let ingredients_unit = document.getElementsByClassName('ingred-units');
-    let steps = document.getElementById('step-input');
-    recipeInfo['name'] = name.value;
-    recipeInfo['author'] = acookTue;
-    recipeInfo['cooking-time'] = recipeYieldalue;
-    recipeInfo['serving'] = serving.value;
-    recipeIngredientist = recipeInfo['ingredients'];
-    var ingredientsData = {};
-    for (let i = 0; i < ingre_list.length; i++) {
-      let ingredients_item = ingre_list[i];
-      ingredients_item['name'] = ingredients_name[i].value;
-      ingredients_item['amount'] = ingredients_amount[i].value;
-      ingredients_item['unit'] = ingredients_unit[i].value;
-      var val =
-        String(ingredients_item.value) +
-        String(ingredients_item.value) +
-        ' ' +
-        String(ingredients_item.value);
-      ingredientsData['ingredient ' + i] = val;
-    }
-    recipeInfo['steps'] = steps.value;
-    console.log(recipeInfo);
 
+    // grab variables from the html
+    var recipeName = document.getElementById('recipe-name-input').value;
+    var recipeBy = document.getElementById('recipe-chief-name-input').value;
+    var cookingTime = document.getElementById('recipe-time-input').value;
+    var servings = document.getElementById('recipe-servings-input').value;
+    var steps = document.getElementById('step-input').value;
+    var recipeImage = document.getElementById('img-upload').files[0];
+
+    if (recipeImage == null) {
+      var imageData = data['image'];
+    } else {
+      // call getBase64 to get the base64 of the image
+      // var imageData = await getBase64(recipeImage);
+    }
+
+    var ingredients = document.getElementsByClassName('ingred-item');
+    var ingredientsName = document.getElementsByClassName('ingred-name');
+    var ingredientsQuantity =
+      document.getElementsByClassName('ingred-quantity');
+    var ingredientsUnit = document.getElementsByClassName('form-select');
+
+    // add ingredients into ingredientsData json
+    var ingredientsData = {};
+    for (let i = 0; i < ingredients.length; i++) {
+      if (
+        ingredientsName[i].value == '' ||
+        ingredientsQuantity[i].value == ''
+      ) {
+        continue;
+      }
+      var ingredNumber = i + 1;
+      var unit =
+        ingredientsUnit[i].value === 'unit' ? '' : ingredientsUnit[i].value;
+      var val =
+        String(ingredientsQuantity[i].value) +
+        ' ' +
+        String(unit) +
+        ' ' +
+        String(ingredientsName[i].value);
+      ingredientsData['ingredient ' + ingredNumber] = val;
+    }
     // backend database operations
-    var firebaseRef = database.ref(); // get today's date
+    var firebaseRef = database.ref();
+    // get today's date
     var today = new Date();
     var date =
       today.getFullYear() +
@@ -421,19 +435,21 @@ function editRecipe(recipeId, recipeInfo) {
       today.getDate();
 
     // Recipe Data information to push to database
+    // Recipe Data information to push to database
     let recipeData = {
+      createdByUser: true,
       public: false,
       '@context': 'https://schema.org',
       '@type': 'Recipe',
-      author: recipeInfo['author'],
-      cookTime: recipeInfo['cooking-time'],
+      author: recipeBy,
+      cookTime: cookingTime,
       datePublished: date,
       // todo: add description
       description: '',
       // todo: fix the image link
-      image: '',
+      image: imageData,
       recipeIngredient: ingredientsData,
-      name: recipeInfo['name'],
+      name: recipeName,
       // todo: add nutrition
       // "nutrition": {
       //   "@type": "NutritionInformation",
@@ -443,14 +459,15 @@ function editRecipe(recipeId, recipeInfo) {
       //   "fatContent": "9 grams fat"
       // },
       prepTime: '',
-      recipeInstructions: recipeInfo['steps'],
-      recipeYield: ['serving'],
+      recipeInstructions: steps,
+      recipeYield: servings,
     };
     console.log(recipeData);
     try {
       // push to DB
       firebaseRef.child(uid).child('recipes').child(recipeId).set(recipeData);
       alert('Successfully Update Recipe');
+      window.location.replace('../components/my_recipes.html');
     } catch (error) {
       alert(error.message);
     }
