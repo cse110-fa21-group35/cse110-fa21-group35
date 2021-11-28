@@ -381,7 +381,11 @@ function createLeftContent(data) {
   //nutrition label;
   const label = document.createElement('img');
   label.className = 'nutr-label';
-  label.src = `${data['nutritionLabel']}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+  if (data['nutritionLabel'] === undefined) {
+    label.src = '/source/images/no-nutr-label-avail.jpg';
+  } else {
+    label.src = `${data['nutritionLabel']}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+  }
 
   left.appendChild(img);
   left.appendChild(label);
