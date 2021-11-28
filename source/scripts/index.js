@@ -158,10 +158,12 @@ async function createRecipe() {
           continue;
         }
         var ingredNumber = i + 1;
+        var unit =
+          ingredientsUnit[i].value === 'unit' ? '' : ingredientsUnit[i].value;
         var val =
           String(ingredientsQuantity[i].value) +
           ' ' +
-          String(ingredientsUnit[i].value) +
+          String(unit) +
           ' ' +
           String(ingredientsName[i].value);
         ingredientsData['ingredient ' + ingredNumber] = val;

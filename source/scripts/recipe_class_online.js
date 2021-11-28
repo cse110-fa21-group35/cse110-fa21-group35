@@ -318,7 +318,7 @@ function createRecipeCotentPanelHeader() {
       addBtnIcon.innerHTML = 'favorite';
       addBtnIcon.id = 'recipe-card-added-btn';
       document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
-      
+
       addToMyRecipe(recipeId);
     } else {
       addBtnIcon = document.querySelector('#recipe-card-added-btn');
