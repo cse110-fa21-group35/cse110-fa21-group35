@@ -27,7 +27,7 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
-let uid;
+//const storage = firebase.stlet uid;
 var user_recipe_data = 'User Recipe Data';
 //const storage = firebase.storage();
 // const analytics = getAnalytics(app);
@@ -350,10 +350,10 @@ function editRecipe(recipeId, recipeInfo) {
     let ingredients_unit = document.getElementsByClassName('ingred-units');
     let steps = document.getElementById('step-input');
     recipeInfo['name'] = name.value;
-    recipeInfo['author'] = author.value;
-    recipeInfo['cooking-time'] = time.value;
+    recipeInfo['author'] = acookTue;
+    recipeInfo['cooking-time'] = recipeYieldalue;
     recipeInfo['serving'] = serving.value;
-    let ingre_list = recipeInfo['ingredients'];
+    recipeIngredientist = recipeInfo['ingredients'];
     var ingredientsData = {};
     for (let i = 0; i < ingre_list.length; i++) {
       let ingredients_item = ingre_list[i];
@@ -447,7 +447,7 @@ function deleteRecipe(recipeId) {
     }
     //issue delete to the desired recipeId under the userId.
     fetch(
-      `https://eggcellent-330922-default-rtdb.firebaseio.com/${userId}/recipes/${recipeId}.json`,
+      `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes/${recipeId}.json`,
       {
         method: 'DELETE',
       }
@@ -463,4 +463,3 @@ function deleteRecipe(recipeId) {
     });
   });
 }
-/* eslint-enable */

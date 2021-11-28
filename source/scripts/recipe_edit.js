@@ -5,8 +5,7 @@ import {
   createElem,
   createRecipeContent,
 } from './recipe_create.js';
-let editBtn = document.getElementById('edit-recipe-btn');
-let createRecipeBtn = document.getElementById('create-recipe-btn');
+let editBtn = document.getElementById('recipe-card-edit-btn');
 let recipeId = '5B9aMathQzajr1zBkEJEXgyhfsD2-1';
 let recipeInfo = {
   name: 'Kung Pao Chicken',
@@ -38,8 +37,6 @@ let recipeInfo = {
   steps: 'some steps',
 };
 editBtn.addEventListener('click', function () {
-  editBtn.setAttribute('class', 'btn btn-warning');
-  createRecipeBtn.setAttribute('class', 'btn btn-secondary');
   //get name, image, label, recipe by, cooking time, servings,
   //ingredients, and steps from the recipe to be edited
   createOverlay();

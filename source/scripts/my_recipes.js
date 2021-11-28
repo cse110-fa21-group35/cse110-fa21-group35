@@ -61,10 +61,11 @@ function createRecipeCardElem(data) {
   const recipe = document.createElement('article');
   recipe.id = 'recipe-card-view';
   recipe.onclick = function () {
+    let id = recipe.getRootNode().host.id;
     createOverlay();
     document
       .querySelector('section.recipe-expand')
-      .appendChild(createRecipeContentElem(data));
+      .appendChild(createRecipeContentElem(data, id));
   };
 
   // creating recipe name element for recipe
@@ -85,7 +86,7 @@ function createRecipeCardElem(data) {
   return recipe;
 }
 
-function createRecipeContentElem(data) {
+function createRecipeContentElem(data, id) {
   const recipeContentSection = document.querySelector('section.recipe-expand');
 
   const contStyleElem = document.createElement('style');
@@ -240,8 +241,7 @@ function createRecipeContentElem(data) {
 
   //content container
   const recipeContent = document.createElement('div');
-  recipeContent.id = data['id'];
-  recipeId = data['id'];
+  recipeContent.id = id;
   recipeContent.classList = 'container-fluid recipe-create-edit-panel';
 
   //content panel itself
@@ -249,7 +249,7 @@ function createRecipeContentElem(data) {
   card.className = 'card';
 
   //panel header, title, and body
-  card.appendChild(createRecipeCotentPanelHeader());
+  card.appendChild(createRecipeCotentPanelHeader(data, id));
   card.appendChild(
     createRecipeContentPanelName(data['name'], data['@context'])
   );
@@ -282,7 +282,7 @@ function createOverlay() {
   document.querySelector('html').appendChild(overlay);
 }
 
-function createRecipeCotentPanelHeader() {
+function createRecipeCotentPanelHeader(data, id) {
   //panel header
   const header = document.createElement('div');
   header.className = 'card-header';
@@ -290,35 +290,36 @@ function createRecipeCotentPanelHeader() {
   headerSpan.className =
     'd-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space';
 
-  //add recipe to my favorite btn
-  const addBtn = document.createElement('button');
-  addBtn.className = 'add-recipe-btn btns';
-  addBtn.onclick = function addRecipe() {
-    let addBtnIcon = document.querySelector('#recipe-card-add-btn');
-    if (addBtnIcon != null) {
-      addBtnIcon.innerHTML = 'favorite';
-      addBtnIcon.id = 'recipe-card-added-btn';
-      document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
+  //edit btn
+  const editBtn = document.createElement('button');
+  editBtn.className = 'edit-recipe-btn btns';
+  const editIcon = document.createElement('i');
+  // editBtn.onclick = editRecipe(id, data);
+  editIcon.id = 'recipe-card-edit-btn';
+  editIcon.className = 'material-icons';
+  editIcon.innerHTML = 'edit';
+  const editText = document.createElement('span');
+  editText.className = 'header-label';
+  editText.innerHTML = 'Edit';
+  editBtn.appendChild(editIcon);
+  editBtn.appendChild(editText);
 
-      var recipeUrl = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
-      addToMyRecipe(recipeUrl);
-    } else {
-      addBtnIcon = document.querySelector('#recipe-card-added-btn');
-      addBtnIcon.innerHTML = 'favorite_border';
-      addBtnIcon.id = 'recipe-card-add-btn';
-      document.querySelector('span.my-recipe-label').innerHTML =
-        'Add to My Recipe';
-    }
-  };
-  const addIcon = document.createElement('i');
-  addIcon.id = 'recipe-card-add-btn';
-  addIcon.className = 'material-icons';
-  addIcon.innerHTML = 'favorite_border';
-  const addText = document.createElement('span');
-  addText.className = 'my-recipe-label';
-  addText.innerHTML = 'Add to My Recipe';
-  addBtn.append(addIcon);
-  addBtn.append(addText);
+  //delete btn
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-recipe-btn btns';
+  deleteBtn.onclick = deleteRecipe(id);
+  const deleteIcon = document.createElement('i');
+  deleteIcon.id = 'recipe-card-delete-btn';
+  deleteIcon.className = 'material-icons';
+  deleteIcon.innerHTML = 'delete';
+  const delText = document.createElement('span');
+  delText.className = 'header-label';
+  delText.innerHTML = 'Delete';
+  deleteBtn.appendChild(deleteIcon);
+  deleteBtn.appendChild(delText);
+
+  headerSpan.appendChild(editBtn);
+  headerSpan.appendChild(deleteBtn);
 
   //close btn (X)
   const closeBtn = document.createElement('button');
@@ -336,7 +337,6 @@ function createRecipeCotentPanelHeader() {
   closeBtnIcon.innerHTML = 'close';
   closeBtn.appendChild(closeBtnIcon);
 
-  headerSpan.appendChild(addBtn);
   headerSpan.appendChild(closeBtn);
   header.appendChild(headerSpan);
 
@@ -402,9 +402,9 @@ function createRecipeInfo(data) {
   const infos = document.createElement('p');
   infos.className = 'recipe-info';
   infos.innerHTML = `
-    Recipe By: ${data['sourceName']}<br />
-    Cooking Time: ${data['readyInMinutes']} minutes<br />
-    Servings: ${data['servings']}<br />
+    Recipe By: ${data['author']}<br />
+    Cooking Time: ${data['cookTime']} minutes<br />
+    Servings: ${data['recipeYield']}<br />
   `;
 
   recipeInfoBox.appendChild(infoTitle);
@@ -487,6 +487,9 @@ window.addEventListener('DOMContentLoaded', init);
 // define a recipe-main element
 customElements.define('recipe-main', Recipe);
 
+var recipeCounts = 0;
+var recipeIds = [];
+
 // starting here
 async function init() {
   let fetchSuccessful = await readRecipe();
@@ -495,15 +498,24 @@ async function init() {
     return;
   }
   createRecipeCards();
+  showTotalRecipeCount();
 }
 // creating recipe-main element based on the data we have - data are store in "recipes"
 function createRecipeCards() {
   var cards = [];
-  let keys = Object.keys(user_recipe_data);
+  recipeIds = Object.keys(user_recipe_data);
   var main = document.querySelector('main');
-  for (let i = 0; i < keys.length; i++) {
+  recipeCounts = recipeIds.length;
+  for (let i = 0; i < recipeCounts; i++) {
     cards.push(document.createElement('recipe-main'));
-    cards[i].data = user_recipe_data[keys[i]];
+    cards[i].data = user_recipe_data[recipeIds[i]];
+    cards[i].id = recipeIds[i];
     main.appendChild(cards[i]);
   }
+}
+
+function showTotalRecipeCount() {
+  document.querySelector('span.total-recipe-count').innerHTML = document
+    .querySelector('span.total-recipe-count')
+    .innerHTML.replace('X', recipeCounts);
 }
