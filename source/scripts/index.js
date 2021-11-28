@@ -54,10 +54,11 @@ function signUp() {
         }
         let firebaseRef = database.ref();
         data = {
-          Name: userName,
-          Email: userEmail,
+          name: userName,
+          email: userEmail,
+          recipeCount: 0,
         };
-        firebaseRef.child('users').child(uid).child('details').set(data);
+        firebaseRef.child(uid).set(data);
         let greeting = document.createElement('div');
         let cardBody = document.querySelector('div.card-body');
         greeting.className = 'welcome';
@@ -66,7 +67,7 @@ function signUp() {
         cardBody.appendChild(greeting);
 
         setTimeout(() => {
-          window.location.replace('/source/components/index.html');
+          window.location.replace('/index.html');
         }, 2000);
         // alert('Successful Sign Up');
       })
@@ -112,13 +113,14 @@ function signIn() {
 // createRecipe is the backend function for the Creation of Recipes
 async function createRecipe() {
   // checks for authentication persistence
+  // needed for every function!!
   // let user = auth.currentUser;
   var uid;
 
   auth.onAuthStateChanged(async function (user) {
     if (user != null) {
       uid = user.uid;
-      console.log('uid: ' + uid);
+      console.log(uid);
     }
 
     try {
@@ -246,7 +248,7 @@ function getBase64(file) {
   return promise;
 }
 
-async function addToMyRecipe(url) {
+async function addToMyRecipe(id) {
   // checks for authentication persistence
   // let user = auth.currentUser;
   var uid;
@@ -260,10 +262,12 @@ async function addToMyRecipe(url) {
     }
 
     try {
-      var recipeUrl = url;
+      var recipeInfoUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+      var recipeNutritionUrl = `https://api.spoonacular.com/recipes/${id}/nutritionLabel.png`;
 
+      console.log(recipeNutritionUrl);
       // call fetch to get the recipe information
-      const addRecipeInfo = await getRecipeData(recipeUrl);
+      const addRecipeInfo = await getRecipeData(recipeInfoUrl);
       console.log(addRecipeInfo);
 
       var ingredients = addRecipeInfo.extendedIngredients;
@@ -305,13 +309,9 @@ async function addToMyRecipe(url) {
             recipeIngredient: ingredientsData,
             name: addRecipeInfo.title,
             // todo: add nutrition
-            // "nutrition": {
-            //   "@type": "NutritionInformation",
-            //   "calories": "1200 calories",
-            //   "carbohydrateContent": "12 carbs",
-            //   "proteinContent": "9 grams of protein",
-            //   "fatContent": "9 grams fat"
-            // },
+            nutrition: {
+              nutritionImage: recipeNutritionUrl,
+            },
             prepTime: '',
             recipeInstructions: addRecipeInfo.instructions,
             recipeYield: addRecipeInfo.servings,
