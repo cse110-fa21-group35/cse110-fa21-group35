@@ -367,7 +367,7 @@ async function readRecipe() {
   });
 }
 
-function editRecipe(recipeId, data) {
+async function editRecipe(recipeId, data) {
   // checks for authentication persistence
   // let user = auth.currentUser;
   var uid;
@@ -375,7 +375,7 @@ function editRecipe(recipeId, data) {
   //   uid = user.uid;
   // }
 
-  auth.onAuthStateChanged(function (user) {
+  auth.onAuthStateChanged(async function (user) {
     if (user != null) {
       uid = user.uid;
       console.log(uid);
@@ -394,7 +394,7 @@ function editRecipe(recipeId, data) {
       var imageData = data['image'];
     } else {
       // call getBase64 to get the base64 of the image
-      // var imageData = await getBase64(recipeImage);
+      var imageData = await getBase64(recipeImage);
     }
 
     var ingredients = document.getElementsByClassName('ingred-item');
@@ -434,7 +434,6 @@ function editRecipe(recipeId, data) {
       '-' +
       today.getDate();
 
-    // Recipe Data information to push to database
     // Recipe Data information to push to database
     let recipeData = {
       createdByUser: true,

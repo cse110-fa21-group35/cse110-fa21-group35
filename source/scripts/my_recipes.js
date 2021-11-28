@@ -293,21 +293,24 @@ function createRecipeCotentPanelHeader(data, id) {
     'd-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space';
 
   //edit btn
-  const editBtn = document.createElement('button');
-  editBtn.className = 'edit-recipe-btn btns';
-  const editIcon = document.createElement('i');
-  editBtn.onclick = function () {
-    showEditPanel(data, id);
-  };
-  editIcon.id = 'recipe-card-edit-btn';
-  editIcon.className = 'material-icons';
-  editIcon.innerHTML = 'edit';
-  const editText = document.createElement('span');
-  editText.className = 'header-label';
-  editText.innerHTML = 'Edit';
-  editBtn.appendChild(editIcon);
-  editBtn.appendChild(editText);
 
+  if (data['createdByUser']) {
+    const editBtn = document.createElement('button');
+    editBtn.className = 'edit-recipe-btn btns';
+    const editIcon = document.createElement('i');
+    editBtn.onclick = function () {
+      showEditPanel(data, id);
+    };
+    editIcon.id = 'recipe-card-edit-btn';
+    editIcon.className = 'material-icons';
+    editIcon.innerHTML = 'edit';
+    const editText = document.createElement('span');
+    editText.className = 'header-label';
+    editText.innerHTML = 'Edit';
+    editBtn.appendChild(editIcon);
+    editBtn.appendChild(editText);
+    headerSpan.appendChild(editBtn);
+  }
   //delete btn
   const deleteBtn = document.createElement('button');
   deleteBtn.className = 'delete-recipe-btn btns';
@@ -323,8 +326,6 @@ function createRecipeCotentPanelHeader(data, id) {
   delText.innerHTML = 'Delete';
   deleteBtn.appendChild(deleteIcon);
   deleteBtn.appendChild(delText);
-
-  headerSpan.appendChild(editBtn);
   headerSpan.appendChild(deleteBtn);
 
   //close btn (X)
