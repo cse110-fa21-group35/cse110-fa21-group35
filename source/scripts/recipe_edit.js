@@ -5,41 +5,10 @@ import {
   createElem,
   createRecipeContent,
 } from './recipe_create.js';
-let editBtn = document.getElementById('edit-recipe-btn');
-let createRecipeBtn = document.getElementById('create-recipe-btn');
-let recipeId = '5B9aMathQzajr1zBkEJEXgyhfsD2-1';
-let recipeInfo = {
-  name: 'Kung Pao Chicken',
-  author: 'David Newton',
-  'cooking-time': '1 hour',
-  serving: 3,
-  ingredients: [
-    {
-      name: 'garlic',
-      amount: '2',
-      unit: 'g',
-    },
-    {
-      name: 'onion',
-      amount: '10',
-      unit: 'g',
-    },
-    {
-      name: 'chicken',
-      amount: '200',
-      unit: 'g',
-    },
-    {
-      name: 'cilantro',
-      amount: '5',
-      unit: 'oc',
-    },
-  ],
-  steps: 'some steps',
-};
-editBtn.addEventListener('click', function () {
-  editBtn.setAttribute('class', 'btn btn-warning');
-  createRecipeBtn.setAttribute('class', 'btn btn-secondary');
+
+export { showEditPanel };
+
+function showEditPanel(data) {
   //get name, image, label, recipe by, cooking time, servings,
   //ingredients, and steps from the recipe to be edited
   createOverlay();
@@ -59,7 +28,7 @@ editBtn.addEventListener('click', function () {
   recipeCreatePanelContainer.appendChild(recipeCreatePanel);
   document.querySelector('body').appendChild(recipeCreatePanelContainer);
   fillInBlank();
-});
+}
 
 function createPanelHeader(recipeCreatePanel) {
   //create panel header
