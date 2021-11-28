@@ -314,6 +314,8 @@ async function addToMyRecipe(id) {
             nutrition: {
               nutritionImage: recipeNutritionUrl,
             },
+            sourceUrl: addRecipeInfo.sourceUrl,
+            sourceID: addRecipeInfo.id,
             prepTime: '',
             recipeInstructions: addRecipeInfo.instructions,
             recipeYield: addRecipeInfo.servings,
