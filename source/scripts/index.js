@@ -135,14 +135,18 @@ async function createRecipe() {
       var steps = document.getElementById('step-input').value;
       var recipeImage = document.getElementById('img-upload').files[0];
 
-      // call getBase64 to get the base64 of the image
-      var imageData = await getBase64(recipeImage);
+      if (recipeImage == null) {
+        var imageData = '/source/images/no-img-avail.jpeg';
+      } else {
+        // call getBase64 to get the base64 of the image
+        var imageData = await getBase64(recipeImage);
+      }
 
       var ingredients = document.getElementsByClassName('ingred-item');
       var ingredientsName = document.getElementsByClassName('ingred-name');
       var ingredientsQuantity =
         document.getElementsByClassName('ingred-quantity');
-      var ingredientsUnit = document.getElementsByClassName('ingred-units');
+      var ingredientsUnit = document.getElementsByClassName('ingredient-units');
 
       // add ingredients into ingredientsData json
       var ingredientsData = {};
@@ -220,7 +224,7 @@ async function createRecipe() {
             .child(uniqueRecipe)
             .set(recipeData);
           alert('Successfully Created Recipe');
-          window.location.replace('../components/recipe_create.html');
+          window.location.replace('../components/my_recipes.html');
         },
         function (error) {
           console.log('Error: ' + error.code);
