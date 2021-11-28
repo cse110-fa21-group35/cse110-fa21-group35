@@ -456,6 +456,9 @@ function ingredients(data) {
 function getIngreds(data) {
   let ingredData = data['recipeIngredient'];
   let items = [];
+  if (ingredData == null) {
+    return items;
+  }
   let keys = Object.keys(ingredData);
   for (let i = 0; i < keys.length; i++) {
     items.push(ingredData[keys[i]]);
