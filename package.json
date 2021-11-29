@@ -8,6 +8,11 @@
       "__tests__/fixtures"
     ]
   },
+  "standard": {
+    "ignore": [
+      "__tests__/"
+    ]
+  },
   "scripts": {
     "test": "jest"
   },
