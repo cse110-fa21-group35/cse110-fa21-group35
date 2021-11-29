@@ -23,5 +23,5 @@ jobs:
         run: npx prettier --check '.'
       - name: Build Check
         run: npm run build --if-present
-    # will use whatever test script is specified in package.json (ie jest)
-    # - run: npm test
+        # will use whatever test script is specified in package.json (ie jest)
+      - run: npm test

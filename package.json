@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "*Group Page*",
   "main": "index.js",
+  "jest": {
+    "testPathIgnorePatterns": ["__tests__/fixtures"]
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
