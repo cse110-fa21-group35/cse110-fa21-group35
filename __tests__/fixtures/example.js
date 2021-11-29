@@ -1,4 +1,4 @@
-function example(a){
-   return a;
+function example(a) {
+  return a;
 }
 module.exports = example;
