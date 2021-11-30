@@ -1,0 +1,49 @@
+html > body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #dbdcd7;
+}
+
+div.card {
+  margin-top: 10px;
+  width: 80%;
+  border-radius: 20px;
+  border-width: 0;
+  box-shadow: 3px 3px 10px 0px #405262;
+}
+
+#void {
+  background-color: white;
+  height: 30px;
+}
+
+div.card-header {
+  background-color: #fde79b;
+  text-align: center;
+  font-weight: bold;
+  font-size: 32px;
+  color: #405262;
+  border-width: 0;
+}
+
+div.card-header:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.contact {
+  background-color: #405262;
+  border-radius: 10px;
+  color: white;
+  width: 40%;
+  padding: 2% 0 1% 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 13%;
+  margin-bottom: 13%;
+  font-weight: 400;
+  font-size: 20px;
+}
