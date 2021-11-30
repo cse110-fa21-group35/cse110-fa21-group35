@@ -488,42 +488,6 @@ function getRecipeData(url) {
       });
   });
   return promise;
-=======
-  auth
-    .createUserWithEmailAndPassword(userEmail, userPassword)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      let uid;
-      if (user != null) {
-        uid = user.uid;
-      }
-      let firebaseRef = database.ref();
-      data = {
-        Name: userName,
-        Email: userEmail,
-      };
-      firebaseRef.child('users').child(uid).child('details').set(data);
-      window.location.replace('home.html');
-      alert('Successful Sign Up');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-}
-
-function signIn() {
-  let userSignInEmail = document.getElementById('email').value;
-  let userSignInPassword = document.getElementById('pass').value;
-
-  auth
-    .signInWithEmailAndPassword(userSignInEmail, userSignInPassword)
-    .then(() => {
-      window.location.replace('home.html');
-      alert('Successful Sign In');
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
 }
 
 function deleteRecipe(recipeId) {
