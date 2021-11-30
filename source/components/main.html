@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Required CSS. Bootstrap MUST be imported -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/recipe_content.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JS to render Recipe Create Panel -->
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="/source/scripts/index.js"></script>
+    <script src="/source/scripts/recipe-content.js"></script>
+    <script src="/source/scripts/index.js"></script>
+    <title>Eggcellent Recipe</title>
+
+    <!--Choosing either render recipes online or offline here-->
+    <script src="/source/scripts/recipe_class_online.js" type="module"></script>
+    <!--<script src="source/scripts/recipe_class_offline.js" type="module"></script>-->
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <a href="/source/components/main.html"
+          ><img src="/source/images/logo.JPG"
+        /></a>
+      </div>
+    </header>
+    <section id="navbar">
+      <div class="nav">
+        <div class="All">
+          <a href="/source/components/main.html">
+            <i class="material-icons">menu</i>
+            All Recipes
+          </a>
+        </div>
+        <div class="My-Recipes">
+          <a href="/source/components/my_recipes.html">
+            <i class="material-icons">restaurant_menu</i>
+            My Recipes
+          </a>
+        </div>
+        <div class="Account">
+          <a href="/source/components/account.html">
+            <i class="material-icons">account_circle</i>
+            Account
+          </a>
+        </div>
+      </div>
+    </section>
+    <main>
+      <section class="page-up-btn-group">
+        <a class="page-up-btn" href="#top">
+          <i class="material-icons">arrow_drop_up</i>
+        </a>
+      </section>
+      <section class="page-down-btn-group">
+        <a class="page-down-btn" href="#end">
+          <i class="material-icons">arrow_drop_down</i>
+        </a>
+      </section>
+    </main>
+    <div id="end"></div>
+  </body>
+  <footer>
+    <!-- Feel free to use onclick="showContact() in contact.js -->
+    <a href="/source/components/contact-us.html">Contact Us</a>
+  </footer>
+  <section class="recipe-expand"></section>
+</html>

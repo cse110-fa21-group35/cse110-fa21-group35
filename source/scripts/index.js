@@ -100,7 +100,7 @@ function signIn() {
         cardBody.appendChild(greeting);
 
         setTimeout(() => {
-          window.location.replace('/index.html');
+          window.location.replace('/source/components/main.html');
         }, 2000);
       })
       .catch((error) => {
