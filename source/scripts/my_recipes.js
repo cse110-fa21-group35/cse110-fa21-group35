@@ -293,7 +293,6 @@ function createRecipeCotentPanelHeader(data, id) {
     'd-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space';
 
   //edit btn
-
   if (data['createdByUser']) {
     const editBtn = document.createElement('button');
     editBtn.className = 'edit-recipe-btn btns';
