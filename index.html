@@ -9,14 +9,10 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="source/styles/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="source/styles/recipe_content.css"
+      href="/source/styles/bootstrap.min.css"
     />
     <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="/source/styles/sign-in.css" />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -33,59 +29,76 @@
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
     <script src="/source/scripts/index.js"></script>
-    <script src="/source/scripts/recipe-content.js"></script>
-    <script src="/source/scripts/index.js"></script>
-    <title>Eggcellent Recipe</title>
+    <title>Eggcellent Recipe Login</title>
 
     <!--Choosing either render recipes online or offline here-->
-    <script src="source/scripts/recipe_class_online.js" type="module"></script>
+    <!-- <script src="source/scripts/recipe_class_online.js" type="module"></script> -->
     <!--<script src="source/scripts/recipe_class_offline.js" type="module"></script>-->
   </head>
-  <body>
-    <header id="top">
+  <body style="background-color: #e5e5e5">
+    <header>
       <div>
         <a href="/index.html"><img src="/source/images/logo.JPG" /></a>
       </div>
     </header>
-    <section id="navbar">
-      <div class="nav">
-        <div class="All">
-          <a href="/index.html">
-            <i class="material-icons">menu</i>
-            All Recipes
-          </a>
-        </div>
-        <div class="My-Recipes">
-          <a href="/source/components/my_recipes.html">
-            <i class="material-icons">restaurant_menu</i>
-            My Recipes
-          </a>
-        </div>
-        <div class="Account">
-          <a href="/source/components/signin.html">
-            <i class="material-icons">account_circle</i>
-            Account
-          </a>
-        </div>
-      </div>
+    <section>
+      <div class="nav"></div>
     </section>
     <main>
-      <section class="page-up-btn-group">
-        <a class="page-up-btn" href="#top">
-          <i class="material-icons">arrow_drop_up</i>
-        </a>
-      </section>
-      <section class="page-down-btn-group">
-        <a class="page-down-btn" href="#end">
-          <i class="material-icons">arrow_drop_down</i>
-        </a>
-      </section>
+      <div class="alert alert-danger alert-dismissible fade" role="alert">
+        Invalid userID or incorrect password. Please try again.
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+          onclick="document.querySelector('div.alert').classList.remove('show');"
+        ></button>
+      </div>
+      <div class="card">
+        <div class="card-header" id="void"></div>
+        <div class="card-header">Account</div>
+        <div class="card-body">
+          <div class="mb-3 account-input">
+            <label for="email" class="form-label">Email address (UserID)</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="name@domain.com"
+            />
+          </div>
+          <div class="mb-3 account-input">
+            <label for="pass" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="pass"
+              placeholder="Your password"
+            />
+          </div>
+          <div class="login-btn-box">
+            <button class="btn btn-primary btn-sm login-btn" onclick="signIn()">
+              Log In
+            </button>
+          </div>
+          <div class="sign-up-direct-box">
+            <p class="sign-up-question-label">New to Eggcellent?</p>
+            <button class="btn btn-primary btn-sm sign-up-btn">
+              <a
+                href="/source/components/signup.html"
+                style="
+                  text-decoration: none;
+                  color: inherit;
+                  width: 100%;
+                  display: block;
+                "
+                >Sign Up</a
+              >
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
-    <div id="end"></div>
   </body>
-  <footer>
-    <!-- Feel free to use onclick="showContact() in contact.js -->
-    <a href="/source/components/contact-us.html">Contact Us</a>
-  </footer>
-  <section class="recipe-expand"></section>
 </html>

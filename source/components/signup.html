@@ -38,26 +38,7 @@
       </div>
     </header>
     <section>
-      <div class="nav">
-        <div class="All">
-          <a href="">
-            <i class="material-icons" id="menu-icon">menu</i>
-            All Recipes
-          </a>
-        </div>
-        <div class="My-Recipes">
-          <a href="">
-            <i class="material-icons" id="my-recipe-icon">restaurant_menu</i>
-            My Recipes
-          </a>
-        </div>
-        <div class="Account">
-          <a href="/source/components/signin.html">
-            <i class="material-icons" id="account-icon">account_circle</i>
-            Account
-          </a>
-        </div>
-      </div>
+      <div class="nav"></div>
     </section>
     <main>
       <div class="alert alert-danger alert-dismissible fade" role="alert">
@@ -118,13 +99,23 @@
               Sign Up
             </button>
           </div>
+          <div class="sign-in-direct-box">
+            <p class="sign-in-question-label">Already have an account?</p>
+            <button class="btn btn-primary btn-sm sign-up-btn">
+              <a
+                href="/index.html"
+                style="
+                  text-decoration: none;
+                  color: inherit;
+                  width: 100%;
+                  display: block;
+                "
+                >Sign In</a
+              >
+            </button>
+          </div>
         </div>
       </div>
     </main>
   </body>
-  <footer>
-    <!-- Feel free to use onclick="showContact() in contact.js -->
-    <a href="/source/components/contact-us.html">Contact Us</a>
-  </footer>
-  <section class="recipe-expand"></section>
 </html>

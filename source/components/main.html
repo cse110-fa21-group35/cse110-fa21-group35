@@ -14,14 +14,9 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/source/styles/recipe-content.css"
+      href="/source/styles/recipe_content.css"
     />
     <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="/source/styles/my_recipe.css"
-    />
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -37,11 +32,9 @@
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
-    <script src="/source/scripts/recipe_edit.js" type="module"></script>
-    <script src="/source/scripts/recipe-content.js"></script>
-    <script src="/source/scripts/recipe_create.js" type="module"></script>
+    <script src="/source/scripts/recipe_class_online.js" type="module"></script>
     <script src="/source/scripts/index.js"></script>
-    <script src="/source/scripts/my_recipes.js" type="module"></script>
+    <script src="/source/scripts/recipe-content.js"></script>
     <title>Eggcellent Recipe</title>
   </head>
   <body>
@@ -84,29 +77,6 @@
         <a class="page-down-btn" href="#end">
           <i class="material-icons">arrow_drop_down</i>
         </a>
-      </section>
-      <section class="main-action-group">
-        <div class="actions">
-          <div class="search-box">
-            <i class="material-icons">search</i>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Search In My Recipes"
-            />
-          </div>
-          <div class="recipe-create-btn">
-            <button id="create-recipe-btn" class="create-recipe-btn btn">
-              <i id="recipe-card-create-btn" class="material-icons"
-                >library_add</i
-              >
-              <span class="creat-btn-label"> Create New Recipe </span>
-            </button>
-          </div>
-        </div>
-        <div class="d-flex justify-content-end">
-          <span class="total-recipe-count">Total X Recipes</span>
-        </div>
       </section>
     </main>
     <div id="end"></div>

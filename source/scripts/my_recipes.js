@@ -518,14 +518,16 @@ async function init() {
 // creating recipe-main element based on the data we have - data are store in "recipes"
 function createRecipeCards() {
   var cards = [];
-  recipeIds = Object.keys(user_recipe_data);
-  var main = document.querySelector('main');
-  recipeCounts = recipeIds.length;
-  for (let i = 0; i < recipeCounts; i++) {
-    cards.push(document.createElement('recipe-main'));
-    cards[i].data = user_recipe_data[recipeIds[i]];
-    cards[i].id = recipeIds[i];
-    main.appendChild(cards[i]);
+  if (user_recipe_data != undefined) {
+    recipeIds = Object.keys(user_recipe_data);
+    var main = document.querySelector('main');
+    recipeCounts = recipeIds.length;
+    for (let i = 0; i < recipeCounts; i++) {
+      cards.push(document.createElement('recipe-main'));
+      cards[i].data = user_recipe_data[recipeIds[i]];
+      cards[i].id = recipeIds[i];
+      main.appendChild(cards[i]);
+    }
   }
 }
 

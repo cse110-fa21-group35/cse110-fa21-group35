@@ -29,6 +29,7 @@ const auth = firebase.auth();
 const database = firebase.database();
 //const storage = firebase.stlet uid;
 var user_recipe_data = 'User Recipe Data';
+var userID = '';
 //const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
@@ -100,7 +101,7 @@ function signIn() {
         cardBody.appendChild(greeting);
 
         setTimeout(() => {
-          window.location.replace('/index.html');
+          window.location.replace('/source/components/main.html');
         }, 2000);
       })
       .catch((error) => {
@@ -519,6 +520,37 @@ function deleteRecipe(recipeId) {
         // This will only evaluate if there's an actual failure in the request.
         console.warn('Something went wrong.', response.status);
         return Promise.reject(response);
+      }
+    });
+  });
+}
+
+async function readUserInfo() {
+  return new Promise((resolve, reject) => {
+    var uid;
+    auth.onAuthStateChanged(function (user) {
+      if (user != null) {
+        uid = user.uid;
+        console.log('uid: ' + uid);
+      }
+
+      try {
+        fetch(
+          `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}.json`
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            userInfo = data;
+            userID = uid;
+          })
+          .then(() => {
+            resolve(true);
+          });
+      } catch (error) {
+        alert(error.message);
+        return reject(true);
       }
     });
   });
