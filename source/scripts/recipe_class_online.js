@@ -74,6 +74,7 @@ class Recipe extends HTMLElement {
 }
 
 var recipeId = '';
+var recipesAddedIDs = new Set();
 
 function createRecipeCardElem(data) {
   // creating a recipe cutomized object
@@ -310,33 +311,7 @@ function createRecipeCotentPanelHeader() {
     'd-grid gap-2 d-md-flex justify-content-md-end recipe-card-header-space';
 
   //add recipe to my favorite btn
-  const addBtn = document.createElement('button');
-  addBtn.className = 'add-recipe-btn btns';
-  addBtn.onclick = function addRecipe() {
-    let addBtnIcon = document.querySelector('#recipe-card-add-btn');
-    if (addBtnIcon != null) {
-      addBtnIcon.innerHTML = 'favorite';
-      addBtnIcon.id = 'recipe-card-added-btn';
-      document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
-
-      addToMyRecipe(recipeId);
-    } else {
-      addBtnIcon = document.querySelector('#recipe-card-added-btn');
-      addBtnIcon.innerHTML = 'favorite_border';
-      addBtnIcon.id = 'recipe-card-add-btn';
-      document.querySelector('span.my-recipe-label').innerHTML =
-        'Add to My Recipe';
-    }
-  };
-  const addIcon = document.createElement('i');
-  addIcon.id = 'recipe-card-add-btn';
-  addIcon.className = 'material-icons';
-  addIcon.innerHTML = 'favorite_border';
-  const addText = document.createElement('span');
-  addText.className = 'my-recipe-label';
-  addText.innerHTML = 'Add to My Recipe';
-  addBtn.append(addIcon);
-  addBtn.append(addText);
+  const addRecBtn = createAddBtn();
 
   //close btn (X)
   const closeBtn = document.createElement('button');
@@ -354,11 +329,47 @@ function createRecipeCotentPanelHeader() {
   closeBtnIcon.innerHTML = 'close';
   closeBtn.appendChild(closeBtnIcon);
 
-  headerSpan.appendChild(addBtn);
+  headerSpan.appendChild(addRecBtn);
   headerSpan.appendChild(closeBtn);
   header.appendChild(headerSpan);
 
   return header;
+}
+
+function createAddBtn() {
+  const addBtn = document.createElement('button');
+  const addIcon = document.createElement('i');
+  const addText = document.createElement('span');
+  addBtn.className = 'add-recipe-btn btns';
+  addIcon.className = 'material-icons';
+  addText.className = 'my-recipe-label';
+
+  //add btn style different if recipe already added
+  if (recipesAddedIDs.has(recipeId)) {
+    addIcon.id = 'recipe-card-added-btn';
+    addIcon.innerHTML = 'favorite';
+    addText.innerHTML = 'My Recipe!';
+  } else {
+    addIcon.id = 'recipe-card-add-btn';
+    addIcon.innerHTML = 'favorite_border';
+    addText.innerHTML = 'Add to My Recipe';
+  }
+
+  addBtn.onclick = function addRecipe() {
+    let addBtnIcon = document.querySelector('#recipe-card-add-btn');
+    if (addBtnIcon != null) {
+      addBtnIcon.innerHTML = 'favorite';
+      addBtnIcon.id = 'recipe-card-added-btn';
+      document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
+      addToMyRecipe(recipeId);
+      recipesAddedIDs.add(recipeId);
+    } else {
+      alert('Recipe Already Added!');
+    }
+  };
+  addBtn.append(addIcon);
+  addBtn.append(addText);
+  return addBtn;
 }
 
 function createRecipeContentPanelName(title, url) {
@@ -518,6 +529,7 @@ window.addEventListener('DOMContentLoaded', init);
 // starting here
 async function init() {
   let fetchSuccessful = await fetch_recipe();
+  recipesAddedIDs = new Set();
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
     return;
