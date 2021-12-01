@@ -2,7 +2,6 @@
   "extends": "stylelint-config-standard",
   "rules": {
     "rule-empty-line-before": "always",
-    "string-quotes": ["single", "double"],
     "value-list-comma-newline-after": "never-multi-line"
   },
   "ignoreFiles": ["**/*.css"]
