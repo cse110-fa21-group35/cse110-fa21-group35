@@ -1,0 +1,62 @@
+div.Account > a,
+div.Account > a > i {
+  color: #fde79b;
+}
+
+body > section:nth-child(2) > div > div.All > a,
+body > section:nth-child(2) > div > div.All > a > i {
+  color: white;
+}
+
+html > body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background: #dbdcd7;
+}
+
+div.card {
+  margin-top: 20px;
+  width: 80%;
+  border-radius: 20px;
+  border-width: 0;
+  box-shadow: 3px 3px 10px 0px #405262;
+  font-size: 23px;
+}
+
+div.card-body {
+  width: auto;
+  margin: auto;
+}
+
+div.card-header {
+  background-color: #fde79b;
+  text-align: center;
+  font-weight: bold;
+  font-size: 28px;
+  color: #405262;
+  border-width: 0;
+}
+
+div.card-header:first-child {
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+#void {
+  background-color: white;
+  height: 30px;
+}
+
+.info-title {
+  font-weight: 500;
+  color: #405262;
+}
+
+.update-time {
+  font-size: 18px;
+  text-align: end;
+  padding-right: 5%;
+  color: #405262;
+}

@@ -55,6 +55,7 @@ main {
   gap: 30px;
   margin-left: 10%;
   margin-bottom: 45px;
+  padding-top: 10px;
 }
 
 .nav a:hover > i,
