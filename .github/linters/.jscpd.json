@@ -1,6 +1,6 @@
 {
   "threshold": 0,
   "reporters": ["consoleFull"],
-  "ignore": ["**/__snapshots__/**", "/source/scripts/index.js"],
+  "ignore": ["**/__snapshots__/**", "**/index.js"],
   "absolute": true
 }
