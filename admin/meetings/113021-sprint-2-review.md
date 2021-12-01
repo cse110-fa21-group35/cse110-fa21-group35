@@ -36,7 +36,7 @@
 
 - Harrison Ma:
 
-  - Merge several different branches in frontend and make the css files more consistent and inline with our expectation
+  - Merge several different branches in frontend and make the CSS files more consistent and inline with our expectation
   - Work on the read feature with Kevin and connect to backend
   - Getting ready for test implementation
 
@@ -86,7 +86,7 @@
   - Discussed with Jiawen and Terry about the edit recipe features.
   - Learn how to use rest to modify the code
   - Researched on writing the tests for the edit recipe features.
-  - Getting started on tests to test the website application.
+  - Getting started on tests to test the site application.
 
 - Logan Ramos
   - Added more to our CI/CD pipeline
