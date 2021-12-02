@@ -117,6 +117,7 @@ async function createRecipe() {
   // needed for every function!!
   // let user = auth.currentUser;
   let uid;
+  let imageData;
 
   auth.onAuthStateChanged(async function (user) {
     if (user != null) {
@@ -137,10 +138,10 @@ async function createRecipe() {
       let recipeImage = document.getElementById('img-upload').files[0];
 
       if (recipeImage == null) {
-        let imageData = '/source/images/no-img-avail.png';
+        imageData = '/source/images/no-img-avail.png';
       } else {
         // call getBase64 to get the base64 of the image
-        let imageData = await getBase64(recipeImage);
+        imageData = await getBase64(recipeImage);
       }
 
       let ingredients = document.getElementsByClassName('ingred-item');
@@ -430,7 +431,7 @@ async function editRecipe(recipeId, data) {
     let firebaseRef = database.ref();
     // get today's date
     let today = new Date();
-    let date =
+    var date =
       today.getFullYear() +
       '-' +
       (today.getMonth() + 1) +
@@ -477,7 +478,7 @@ async function editRecipe(recipeId, data) {
 }
 
 function getRecipeData(url) {
-  let promise = new Promise((resolve, reject) => {
+  var promise = new Promise((resolve, reject) => {
     fetch(url)
       .then((response) => response.json())
       .then(function (data) {
@@ -497,7 +498,7 @@ function deleteRecipe(recipeId) {
   // if (user != null) {
   //   var userId = user.uid;
   // }
-  let uid;
+  var uid;
 
   auth.onAuthStateChanged(function (user) {
     if (user != null) {
@@ -527,7 +528,7 @@ function deleteRecipe(recipeId) {
 
 async function readUserInfo() {
   return new Promise((resolve, reject) => {
-    let uid;
+    var uid;
     auth.onAuthStateChanged(function (user) {
       if (user != null) {
         uid = user.uid;
