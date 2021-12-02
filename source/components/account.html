@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Required CSS. Bootstrap MUST be imported -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/source/styles/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="/source/styles/main.css" />
+    <link rel="stylesheet" type="text/css" href="/source/styles/account.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+    <script src="/source/scripts/index.js"></script>
+    <script src="/source/scripts/account.js"></script>
+    <title>Eggcellent Recipe</title>
+  </head>
+  <body>
+    <header id="top">
+      <div>
+        <a href="/source/components/main.html"
+          ><img src="/source/images/logo.JPG"
+        /></a>
+      </div>
+    </header>
+    <section id="navbar">
+      <div class="nav">
+        <div class="All">
+          <a href="/source/components/main.html">
+            <i class="material-icons">menu</i>
+            All Recipes
+          </a>
+        </div>
+        <div class="My-Recipes">
+          <a href="/source/components/my_recipes.html">
+            <i class="material-icons">restaurant_menu</i>
+            My Recipes
+          </a>
+        </div>
+        <div class="Account">
+          <a href="/source/components/account.html">
+            <i class="material-icons">account_circle</i>
+            Account
+          </a>
+        </div>
+      </div>
+    </section>
+    <main>
+      <div class="card">
+        <div class="card-header" id="void"></div>
+        <div class="card-header user-name">Example</div>
+        <div class="card-body">
+          <br />
+          <p class="user-info">
+            <span class="info-title">User Name:</span> username<br /><br />
+            <span class="info-title">User ID:</span> userid<br /><br />
+            <span class="info-title">Recipes count:</span> XX recipes<br /><br />
+          </p>
+        </div>
+        <p class="update-time">Updated By DATE</p>
+      </div>
+    </main>
+    <div id="end"></div>
+  </body>
+  <footer>
+    <!-- Feel free to use onclick="showContact() in contact.js -->
+    <a href="/source/components/contact-us.html">Contact Us</a>
+  </footer>
+  <section class="recipe-expand"></section>
+</html>
