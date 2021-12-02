@@ -127,7 +127,7 @@ async function createRecipe() {
 
     try {
       // always make a firebase ref
-      let firebaseRef = database.ref();
+      var firebaseRef = database.ref();
 
       // grab variables from the html
       let recipeName = document.getElementById('recipe-name-input').value;
@@ -181,7 +181,7 @@ async function createRecipe() {
         today.getDate();
 
       // get recipeCount from DB
-      const databaseRef = firebaseRef.child(uid).child('recipeCount');
+      var databaseRef = firebaseRef.child(uid).child('recipeCount');
       databaseRef.once('value').then(
         function (snapshot) {
           let recipeCount = snapshot.val();
