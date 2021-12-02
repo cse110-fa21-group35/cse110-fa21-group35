@@ -1,3 +1,4 @@
+/* stylelint-disable */
 div.Account > a,
 div.Account > a > i {
   color: #fde79b;
@@ -59,4 +60,10 @@ div.card-header:first-child {
   text-align: end;
   padding-right: 5%;
   color: #405262;
+  width: fit-content;
+}
+
+.log-out-btn {
+  margin-bottom: 1rem;
+  margin-left: 2rem;
 }
