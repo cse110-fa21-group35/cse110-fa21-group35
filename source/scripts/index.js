@@ -393,12 +393,9 @@ async function editRecipe(recipeId, data) {
     let servings = document.getElementById('recipe-servings-input').value;
     let steps = document.getElementById('step-input').value;
     let recipeImage = document.getElementById('img-upload').files[0];
-
-    if (recipeImage == null) {
-      let imageData = data['image'];
-    } else {
-      // call getBase64 to get the base64 of the image
-      let imageData = await getBase64(recipeImage);
+    let imageData = data['image'];
+    if (recipeImage != null) {
+      imageData = await getBase64(recipeImage);
     }
 
     let ingredients = document.getElementsByClassName('ingred-item');
