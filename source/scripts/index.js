@@ -116,7 +116,8 @@ async function createRecipe() {
   // checks for authentication persistence
   // needed for every function!!
   // let user = auth.currentUser;
-  var uid;
+  let uid;
+  let imageData;
 
   auth.onAuthStateChanged(async function (user) {
     if (user != null) {
@@ -126,31 +127,31 @@ async function createRecipe() {
 
     try {
       // always make a firebase ref
-      var firebaseRef = database.ref();
+      let firebaseRef = database.ref();
 
       // grab variables from the html
-      var recipeName = document.getElementById('recipe-name-input').value;
-      var recipeBy = document.getElementById('recipe-chief-name-input').value;
-      var cookingTime = document.getElementById('recipe-time-input').value;
-      var servings = document.getElementById('recipe-servings-input').value;
-      var steps = document.getElementById('step-input').value;
-      var recipeImage = document.getElementById('img-upload').files[0];
+      let recipeName = document.getElementById('recipe-name-input').value;
+      let recipeBy = document.getElementById('recipe-chief-name-input').value;
+      let cookingTime = document.getElementById('recipe-time-input').value;
+      let servings = document.getElementById('recipe-servings-input').value;
+      let steps = document.getElementById('step-input').value;
+      let recipeImage = document.getElementById('img-upload').files[0];
 
       if (recipeImage == null) {
-        var imageData = '/source/images/no-img-avail.png';
+        imageData = '/source/images/no-img-avail.png';
       } else {
         // call getBase64 to get the base64 of the image
-        var imageData = await getBase64(recipeImage);
+        imageData = await getBase64(recipeImage);
       }
 
-      var ingredients = document.getElementsByClassName('ingred-item');
-      var ingredientsName = document.getElementsByClassName('ingred-name');
-      var ingredientsQuantity =
+      let ingredients = document.getElementsByClassName('ingred-item');
+      let ingredientsName = document.getElementsByClassName('ingred-name');
+      let ingredientsQuantity =
         document.getElementsByClassName('ingred-quantity');
-      var ingredientsUnit = document.getElementsByClassName('form-select');
+      let ingredientsUnit = document.getElementsByClassName('form-select');
 
       // add ingredients into ingredientsData json
-      var ingredientsData = {};
+      let ingredientsData = {};
       for (let i = 0; i < ingredients.length; i++) {
         if (
           ingredientsName[i].value == '' ||
@@ -158,10 +159,10 @@ async function createRecipe() {
         ) {
           continue;
         }
-        var ingredNumber = i + 1;
-        var unit =
+        let ingredNumber = i + 1;
+        let unit =
           ingredientsUnit[i].value === 'unit' ? '' : ingredientsUnit[i].value;
-        var val =
+        let val =
           String(ingredientsQuantity[i].value) +
           ' ' +
           String(unit) +
@@ -171,8 +172,8 @@ async function createRecipe() {
       }
 
       // get today's date
-      var today = new Date();
-      var date =
+      let today = new Date();
+      let date =
         today.getFullYear() +
         '-' +
         (today.getMonth() + 1) +
@@ -180,14 +181,14 @@ async function createRecipe() {
         today.getDate();
 
       // get recipeCount from DB
-      var databaseRef = firebaseRef.child(uid).child('recipeCount');
+      const databaseRef = firebaseRef.child(uid).child('recipeCount');
       databaseRef.once('value').then(
         function (snapshot) {
-          var recipeCount = snapshot.val();
-          var newRecipeCount = recipeCount + 1;
+          let recipeCount = snapshot.val();
+          let newRecipeCount = recipeCount + 1;
 
           // the unique recipe
-          var uniqueRecipe = String(uid + '-' + newRecipeCount);
+          let uniqueRecipe = String(uid + '-' + newRecipeCount);
 
           // set the new recipeCount
           firebaseRef.child(uid).child('recipeCount').set(newRecipeCount);
@@ -241,8 +242,8 @@ async function createRecipe() {
 
 // converts image to base64
 function getBase64(file) {
-  var reader = new FileReader();
-  var promise = new Promise((resolve, reject) => {
+  let reader = new FileReader();
+  let promise = new Promise((resolve, reject) => {
     reader.onload = function () {
       resolve(reader.result);
     };
@@ -254,7 +255,7 @@ function getBase64(file) {
 async function addToMyRecipe(id) {
   // checks for authentication persistence
   // let user = auth.currentUser;
-  var uid;
+  let uid;
   // if (user != null) {
   //   uid = user.uid;
   // }
@@ -265,34 +266,34 @@ async function addToMyRecipe(id) {
     }
 
     try {
-      var recipeInfoUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
-      var recipeNutritionUrl = `https://api.spoonacular.com/recipes/${id}/nutritionLabel.png`;
+      let recipeInfoUrl = `https://api.spoonacular.com/recipes/${id}/information?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+      let recipeNutritionUrl = `https://api.spoonacular.com/recipes/${id}/nutritionLabel.png`;
 
       console.log(recipeNutritionUrl);
       // call fetch to get the recipe information
       const addRecipeInfo = await getRecipeData(recipeInfoUrl);
       console.log(addRecipeInfo);
 
-      var ingredients = addRecipeInfo.extendedIngredients;
+      let ingredients = addRecipeInfo.extendedIngredients;
 
       // add ingredients into ingredientsData json
-      var ingredientsData = {};
+      let ingredientsData = {};
       for (let i = 0; i < ingredients.length; i++) {
-        var ingredNumber = i + 1;
-        var val = ingredients[i].original;
+        let ingredNumber = i + 1;
+        let val = ingredients[i].original;
         ingredientsData['ingredient ' + ingredNumber] = val;
       }
 
-      var firebaseRef = database.ref();
+      let firebaseRef = database.ref();
       // get recipeCount
-      var databaseRef = firebaseRef.child(uid).child('recipeCount');
+      let databaseRef = firebaseRef.child(uid).child('recipeCount');
       databaseRef.once('value').then(
         function (snapshot) {
-          var recipeCount = snapshot.val();
-          var newRecipeCount = recipeCount + 1;
+          let recipeCount = snapshot.val();
+          let newRecipeCount = recipeCount + 1;
 
           // the unique recipe
-          var uniqueRecipe = String(uid + '-' + newRecipeCount);
+          let uniqueRecipe = String(uid + '-' + newRecipeCount);
 
           // set the new recipeCount
           firebaseRef.child(uid).child('recipeCount').set(newRecipeCount);
@@ -342,7 +343,7 @@ async function addToMyRecipe(id) {
 
 async function readRecipe() {
   return new Promise((resolve, reject) => {
-    var uid;
+    let uid;
     auth.onAuthStateChanged(function (user) {
       if (user != null) {
         uid = user.uid;
@@ -373,7 +374,7 @@ async function readRecipe() {
 async function editRecipe(recipeId, data) {
   // checks for authentication persistence
   // let user = auth.currentUser;
-  var uid;
+  let uid;
   // if (user != null) {
   //   uid = user.uid;
   // }
@@ -386,28 +387,28 @@ async function editRecipe(recipeId, data) {
     // frontend element parsing
 
     // grab variables from the html
-    var recipeName = document.getElementById('recipe-name-input').value;
-    var recipeBy = document.getElementById('recipe-chief-name-input').value;
-    var cookingTime = document.getElementById('recipe-time-input').value;
-    var servings = document.getElementById('recipe-servings-input').value;
-    var steps = document.getElementById('step-input').value;
-    var recipeImage = document.getElementById('img-upload').files[0];
+    let recipeName = document.getElementById('recipe-name-input').value;
+    let recipeBy = document.getElementById('recipe-chief-name-input').value;
+    let cookingTime = document.getElementById('recipe-time-input').value;
+    let servings = document.getElementById('recipe-servings-input').value;
+    let steps = document.getElementById('step-input').value;
+    let recipeImage = document.getElementById('img-upload').files[0];
 
     if (recipeImage == null) {
-      var imageData = data['image'];
+      let imageData = data['image'];
     } else {
       // call getBase64 to get the base64 of the image
-      var imageData = await getBase64(recipeImage);
+      let imageData = await getBase64(recipeImage);
     }
 
-    var ingredients = document.getElementsByClassName('ingred-item');
-    var ingredientsName = document.getElementsByClassName('ingred-name');
-    var ingredientsQuantity =
+    let ingredients = document.getElementsByClassName('ingred-item');
+    let ingredientsName = document.getElementsByClassName('ingred-name');
+    let ingredientsQuantity =
       document.getElementsByClassName('ingred-quantity');
-    var ingredientsUnit = document.getElementsByClassName('form-select');
+    let ingredientsUnit = document.getElementsByClassName('form-select');
 
     // add ingredients into ingredientsData json
-    var ingredientsData = {};
+    let ingredientsData = {};
     for (let i = 0; i < ingredients.length; i++) {
       if (
         ingredientsName[i].value == '' ||
@@ -415,10 +416,10 @@ async function editRecipe(recipeId, data) {
       ) {
         continue;
       }
-      var ingredNumber = i + 1;
-      var unit =
+      let ingredNumber = i + 1;
+      let unit =
         ingredientsUnit[i].value === 'unit' ? '' : ingredientsUnit[i].value;
-      var val =
+      let val =
         String(ingredientsQuantity[i].value) +
         ' ' +
         String(unit) +
@@ -427,9 +428,9 @@ async function editRecipe(recipeId, data) {
       ingredientsData['ingredient ' + ingredNumber] = val;
     }
     // backend database operations
-    var firebaseRef = database.ref();
+    let firebaseRef = database.ref();
     // get today's date
-    var today = new Date();
+    let today = new Date();
     var date =
       today.getFullYear() +
       '-' +

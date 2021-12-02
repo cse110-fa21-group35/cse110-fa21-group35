@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "standard": {
+    "ignore": [
+      "source/scripts/"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cse110-sp21-group35/cse110-fa21-group35.git"
