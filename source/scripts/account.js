@@ -32,7 +32,11 @@ function showUserInfo() {
 
   header.innerHTML = userInfo['name'];
   info.innerHTML = info.innerHTML.replace('username', userInfo['name']);
+  info.innerHTML = info.innerHTML.replace('userEmail', userInfo['email']);
   info.innerHTML = info.innerHTML.replace('userid', userID);
-  info.innerHTML = info.innerHTML.replace('XX', userInfo['recipeCount']);
+  info.innerHTML = info.innerHTML.replace(
+    'XX',
+    Object.keys(userInfo['recipes']).length
+  );
   day.innerHTML = day.innerHTML.replace('DATE', date);
 }
