@@ -1,0 +1,73 @@
+.sidebar {
+  height: 100%;
+  width: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+button {
+  background-color: #405262;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 30px;
+  font-size: 15px;
+  border: none;
+}
+
+button:hover {
+  background-color: #fbe598;
+  color: #405262;
+}
+
+h1 {
+  color: #405262;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+
+h4 {
+  color: #405262;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+hr {
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+}
+
+.sidebar .closebutton {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: #405262;
+}
+
+a {
+  text-decoration: none;
+}
+
+p.offcanvas-title {
+  width: 100%;
+  text-align: center;
+  color: #405262;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+section.offcanvas {
+  font-family: 'Roboto', sans-serif;
+}
