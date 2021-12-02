@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css">
+    <script src="change.js"></script>
+  </head>
+  <body>
+    <div id="mySidebar" class="sidebar">
+      <a href="javascript:void(0)" class="closebutton" onclick="closeNav()"
+        >&times;</a>
+      <h1>Categories</h1>
+
+      <h4>Ingredient</h4>
+      <hr />
+      <button id="1" onclick="changeColor1()">Shrimp</button>
+      <button id="2" onclick="changeColor2()">Pork</button>
+      <button id="3" onclick="changeColor3()">Beef</button>
+      <button id="4" onclick="changeColor4()">Shrimp</button>
+      <h4>Cooking Time</h4>
+      <hr />
+      <button id="5" onclick="changeColor5()">< 15 min</button>
+      <button id="6" onclick="changeColor6()">< 30 min</button>
+      <button id="7" onclick="changeColor7()">< 45 min</button>
+      <button id="8" onclick="changeColor8()">< 60 min</button>
+      <h4>Nutrition</h4>
+      <hr />
+      <button id="9" onclick="changeColor9()">Shrimp</button>
+      <button id="10" onclick="changeColor10()"></button>
+      <button id="11" onclick="changeColor11()">Keto</button>
+      <h4>Vegan</h4>
+      <hr />
+      <button id="12" onclick="changeColor12()">100%</button>
+      <button id="13" onclick="changeColor13()">Egg</button>
+      <button id="14" onclick="changeColor14()">Fish</button>
+    </div>
+
+    <div id="main">
+      <span style="font-size: 30px" onclick="show()">&#9776;All recipes</span>
+    </div>
+  </body>
+</html>
