@@ -152,6 +152,8 @@ a.categBtn {
 p.tag-label {
   color: #405262;
   font-size: 20px;
+  margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
 }
 
 button.tag-btn,

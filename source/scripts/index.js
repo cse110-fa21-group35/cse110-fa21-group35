@@ -563,3 +563,19 @@ function changeColor(btn) {
     btn.classList.add('tag-btn');
   }
 }
+
+function resetSearch() {
+  document.getElementById('ingreds-input').value = '';
+  document.getElementById('cook-time-input').value = '';
+  document.getElementById('calories-input').value = '';
+  let btnSelected = document.querySelectorAll('button.tag-selected-btn');
+  for (let i = 0; i < btnSelected.length; i++) {
+    changeColor(btnSelected[i]);
+  }
+}
+
+function searchRecipe() {
+  //get user inputs and call api
+  document.querySelector('button.btn-close').click();
+  //show recipe results
+}

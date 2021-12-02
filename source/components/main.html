@@ -82,6 +82,12 @@
       <div class="offcanvas-header">
         <p class="offcanvas-title" id="categoriesTabdropLabel">Categories</p>
         <button
+          class="btn btn-sm btn-outline-primary"
+          style="margin-right: 1rem"
+          onclick="resetSearch()"
+        >Reset
+        </button>
+        <button
           class="btn btn-sm btn-outline-success"
           style="margin-right: 1rem"
           onclick="searchRecipe()"
@@ -98,44 +104,216 @@
       <div class="offcanvas-body">
         <div class="tags">
           <p class="tag-label">Ingredient</p>
+          <input id="ingreds-input" type="text" class="form-control" placeholder="(ex. egg,water,oil)">
+        </div>
+        <div class="tags">
+          <p class="tag-label">Cooking Time (minutes)</p>
+          <input id="cook-time-input" type="number" class="form-control" min="0" placeholder="(ex. 10)">
+        </div>
+        <div class="tags">
+          <p class="tag-label">Calories</p>
+          <input id="calories-input" type="number" class="form-control" min="0" placeholder="(ex. 200)">
+        </div>
+        <div class="tags">
+          <p class="tag-label">Meal Type</p>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>Beef</span>
+            <span>Main Course</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Side Dish</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Dessert</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Appetizer</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Salad</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Bread</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Breakfast</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Soup</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Beverage</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Sauce</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Marinade</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Fingerfood</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Snack</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Drink</span>
+          </button>
+          </button>
+        </div>
+        <div class="tags">
+          <p class="tag-label">Intolerance</p>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Dairy</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Egg</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Gluten</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Grain</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Peanut</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Seafood</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Sesame</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Shellfish</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Soy</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Sulfite</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Tree Nut</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Wheat</span>
           </button>
         </div>
         <div class="tags">
           <p class="tag-label">Diet</p>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>gluten Free</span>
+            <span>Gluten Free</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>ketogenic</span>
+            <span>Ketogenic</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>vegetarian</span>
+            <span>Vegetarian</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>lacto-vegetarian</span>
+            <span>Lacto-Vegetarian</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>ovo-vegetarian</span>
+            <span>Ovo-Vegetarian</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>vegan</span>
+            <span>Vegan</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>pescetarian</span>
+            <span>Pescetarian</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>paleo</span>
+            <span>Paleo</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>primal</span>
+            <span>Primal</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>low FODMAP</span>
+            <span>Low FODMAP</span>
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
-            <span>whole30</span>
+            <span>Whole30</span>
+          </button>
+        </div>
+        <div class="tags">
+          <p class="tag-label">Cuisine</p>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>African</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>American</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>British</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Cajun</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Caribbean</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Chinese</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Eastern European</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>European</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>French</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>German</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Greek</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Indian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Irish</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Italian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Japanese</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Jewish</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Korean</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Latin American</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Mediterranean</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Mexican</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Middle Eastern</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Nordic</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Southern</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Spanish</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Thai</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Vietnamese</span>
           </button>
         </div>
       </div>
