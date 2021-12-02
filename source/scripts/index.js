@@ -556,3 +556,13 @@ async function readUserInfo() {
     });
   });
 }
+
+function changeColor(btn) {
+  if (btn.className.includes('tag-btn')) {
+    btn.classList.remove('tag-btn');
+    btn.classList.add('tag-selected-btn');
+  } else {
+    btn.classList.remove('tag-selected-btn');
+    btn.classList.add('tag-btn');
+  }
+}

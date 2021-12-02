@@ -29,6 +29,7 @@
     />
 
     <!-- JS to render Recipe Create Panel -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
@@ -48,7 +49,11 @@
     <section id="navbar">
       <div class="nav">
         <div class="All">
-          <a href="/source/components/main.html">
+          <a
+            class="categBtn"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#categoriesTab"
+          >
             <i class="material-icons">menu</i>
             All Recipes
           </a>
@@ -64,6 +69,74 @@
             <i class="material-icons">account_circle</i>
             Account
           </a>
+        </div>
+      </div>
+    </section>
+    <section
+      class="offcanvas offcanvas-start"
+      tabindex="-1"
+      id="categoriesTab"
+      data-bs-scroll="true"
+      aria-labelledby="categoriesTabdropLabel"
+    >
+      <div class="offcanvas-header">
+        <p class="offcanvas-title" id="categoriesTabdropLabel">Categories</p>
+        <button
+          class="btn btn-sm btn-outline-success"
+          style="margin-right: 1rem"
+          onclick="searchRecipe()"
+        >
+          Search
+        </button>
+        <button
+          type="button"
+          class="btn-close text-reset"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="tags">
+          <p class="tag-label">Ingredient</p>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>Beef</span>
+          </button>
+        </div>
+        <div class="tags">
+          <p class="tag-label">Diet</p>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>gluten Free</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>ketogenic</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>vegetarian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>lacto-vegetarian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>ovo-vegetarian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>vegan</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>pescetarian</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>paleo</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>primal</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>low FODMAP</span>
+          </button>
+          <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
+            <span>whole30</span>
+          </button>
         </div>
       </div>
     </section>

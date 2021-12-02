@@ -133,3 +133,51 @@ a.page-down-btn > i {
   font-size: 62px;
   margin-right: 0px;
 }
+
+p.offcanvas-title {
+  width: 100%;
+  color: #405262;
+  font-weight: 500;
+  font-size: 30px;
+}
+
+section.offcanvas {
+  font-family: 'Roboto', sans-serif;
+}
+
+a.categBtn {
+  cursor: pointer;
+}
+
+p.tag-label {
+  color: #405262;
+  font-size: 20px;
+}
+
+button.tag-btn,
+button.tag-btn:focus {
+  color: white;
+  background-color: #405262;
+  font-size: 16px;
+  border-radius: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: none;
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+button.tag-selected-btn {
+  color: #405262;
+  background-color: #fde79b;
+  font-size: 16px;
+  border-radius: 50px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: none;
+  margin: 0 0.5rem 0.5rem 0;
+}
+
+button.tag-btn:hover {
+  background-color: #fde79b;
+  color: #405262;
+}
