@@ -4,11 +4,15 @@
 
 ---
 
+_Live Demo_
+
+[Check it out here](https://app.eggcellent.cooking)
+
+---
+
 _Group Page_
 
 [Click Here for group page](admin/team.md)
-
----
 
 _Group members:_
 
