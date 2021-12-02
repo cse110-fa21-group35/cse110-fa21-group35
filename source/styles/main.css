@@ -158,3 +158,17 @@ a.page-down-btn > i {
   font-size: 62px;
   margin-right: 0px;
 }
+
+section.result-count {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.result-text {
+  font-size: 16px;
+  padding-right: 3rem;
+  margin-bottom: 0;
+  font-style: italic;
+  color: white;
+}
