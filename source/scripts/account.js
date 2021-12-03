@@ -2,12 +2,16 @@ window.addEventListener('DOMContentLoaded', init);
 var userInfo = null;
 
 async function init() {
+  createOverlay();
+  showSpinner();
   let fetchSuccessful = await readUserInfo();
   if (!fetchSuccessful) {
     console.log('User Info fetch unsuccessful');
     return;
   }
   showUserInfo();
+  removeSpinner();
+  removeOverlay();
 }
 
 function showUserInfo() {

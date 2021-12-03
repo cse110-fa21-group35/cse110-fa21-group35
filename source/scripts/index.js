@@ -605,7 +605,7 @@ async function searchRecipeByTag() {
   document.querySelector('button.btn-close').click();
   createOverlay();
   showSpinner();
-  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&addRecipeInformation=true&number=100&`;
+  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&addRecipeInformation=true&number=100&sort=random&`;
   path = getPathForTag(path);
 
   console.log(path);
@@ -653,7 +653,7 @@ function getPathForTag(path) {
   }
 
   if (mealType !== null) {
-    path += `type=${mealType.value}&`;
+    path += `type=${mealType.innerText}&`;
   }
 
   if (intol.length !== 0) {
@@ -662,13 +662,13 @@ function getPathForTag(path) {
       if (i != 0) {
         path += ',';
       }
-      path += `${intol[i].value}`;
+      path += `${intol[i].innerText}`;
     }
     path += '&';
   }
 
   if (diet !== null) {
-    path += `diet=${diet.value}&`;
+    path += `diet=${diet.innerText}&`;
   }
 
   if (cuis.length !== 0) {
@@ -677,7 +677,7 @@ function getPathForTag(path) {
       if (i != 0) {
         path += ',';
       }
-      path += `${cuis[i].value}`;
+      path += `${cuis[i].innerText}`;
     }
   }
   return path;
