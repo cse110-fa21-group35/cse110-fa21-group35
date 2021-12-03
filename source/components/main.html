@@ -97,7 +97,8 @@
           class="btn btn-sm btn-outline-primary"
           style="margin-right: 1rem"
           onclick="resetSearch()"
-        >Reset
+        >
+          Reset
         </button>
         <button
           class="btn btn-sm btn-outline-success"
@@ -116,15 +117,32 @@
       <div class="offcanvas-body">
         <div class="tags">
           <p class="tag-label">Ingredients</p>
-          <input id="ingreds-input" type="text" class="form-control" placeholder="(ex. egg,water,oil)">
+          <input
+            id="ingreds-input"
+            type="text"
+            class="form-control"
+            placeholder="(ex. egg,water,oil)"
+          />
         </div>
         <div class="tags">
           <p class="tag-label">Max Cooking Time (minutes)</p>
-          <input id="cook-time-input" type="number" class="form-control" min="0" placeholder="(ex. 10)">
+          <input
+            id="cook-time-input"
+            type="number"
+            class="form-control"
+            min="0"
+            placeholder="(ex. 10)"
+          />
         </div>
         <div class="tags">
           <p class="tag-label">Max Calories</p>
-          <input id="calories-input" type="number" class="form-control" min="0" placeholder="(ex. 200)">
+          <input
+            id="calories-input"
+            type="number"
+            class="form-control"
+            min="0"
+            placeholder="(ex. 200)"
+          />
         </div>
         <div class="tags" id="meal-type">
           <p class="tag-label">Meal Type (Select <strong>ONE</strong> only)</p>
@@ -169,7 +187,6 @@
           </button>
           <button class="btn btn-sm tag-btn" onclick="changeColor(this)">
             Drink
-          </button>
           </button>
         </div>
         <div class="tags" id="intolerance">
