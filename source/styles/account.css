@@ -1,14 +1,4 @@
 /* stylelint-disable */
-div.Account > a,
-div.Account > a > i {
-  color: #fde79b;
-}
-
-body > section:nth-child(2) > div > div.All > a,
-body > section:nth-child(2) > div > div.All > a > i {
-  color: white;
-}
-
 html > body {
   font-family: 'Roboto', sans-serif;
 }
@@ -60,4 +50,10 @@ div.card-header:first-child {
   text-align: end;
   padding-right: 5%;
   color: #405262;
+  width: fit-content;
+}
+
+.log-out-btn {
+  margin-bottom: 1rem;
+  margin-left: 2rem;
 }

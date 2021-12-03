@@ -27,9 +27,11 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
+const APIKEY = '48efb642c0b24eb586a3ba1d81ee738e';
 //const storage = firebase.stlet uid;
 var user_recipe_data = 'User Recipe Data';
 var userID = '';
+var single_recipe_info = '';
 //const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
@@ -91,7 +93,9 @@ function signIn() {
           uid = user.uid;
           console.log(uid);
         }
-        // alert('Successful Sign In');
+
+        //TODO: recipesAddedIDs = recipesAddedIDs from firebase;
+
         //create a greeting box for user
         let greeting = document.createElement('div');
         let cardBody = document.querySelector('div.card-body');
@@ -108,6 +112,27 @@ function signIn() {
         // alert(error.message);
         document.querySelector('div.alert').classList.add('show');
       });
+  });
+}
+
+function logout() {
+  auth
+    .signOut()
+    .then(() => {
+      window.location.replace('/index.html');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+function checkSignedIn() {
+  auth.onAuthStateChanged(function (user) {
+    if (user != null) {
+      uid = user.uid;
+      console.log(uid);
+      window.location.replace('/source/components/main.html');
+    }
   });
 }
 
@@ -152,6 +177,7 @@ async function createRecipe() {
 
       // add ingredients into ingredientsData json
       let ingredientsData = {};
+      let tagsData = {};
       for (let i = 0; i < ingredients.length; i++) {
         if (
           ingredientsName[i].value == '' ||
@@ -169,6 +195,7 @@ async function createRecipe() {
           ' ' +
           String(ingredientsName[i].value);
         ingredientsData['ingredient ' + ingredNumber] = val;
+        tagsData['tag ' + ingredNumber] = ingredientsName[i].value;
       }
 
       // get today's date
@@ -204,9 +231,9 @@ async function createRecipe() {
             datePublished: date,
             // todo: add description
             description: '',
-            // todo: fix the image link
             image: imageData,
             recipeIngredient: ingredientsData,
+            tags: tagsData,
             name: recipeName,
             // todo: add nutrition
             // "nutrition": {
@@ -276,12 +303,16 @@ async function addToMyRecipe(id) {
 
       let ingredients = addRecipeInfo.extendedIngredients;
 
-      // add ingredients into ingredientsData json
+      // add ingredients into ingredientsData json and tagsData json
       let ingredientsData = {};
+      let tagsData = {};
       for (let i = 0; i < ingredients.length; i++) {
         let ingredNumber = i + 1;
         let val = ingredients[i].original;
         ingredientsData['ingredient ' + ingredNumber] = val;
+
+        let ingredName = ingredients[i].name;
+        tagsData['tag ' + ingredNumber] = ingredName;
       }
 
       let firebaseRef = database.ref();
@@ -311,6 +342,7 @@ async function addToMyRecipe(id) {
             description: '',
             image: addRecipeInfo.image,
             recipeIngredient: ingredientsData,
+            tags: tagsData,
             name: addRecipeInfo.title,
             // todo: add nutrition
             nutrition: {
@@ -490,11 +522,6 @@ function getRecipeData(url) {
 }
 
 function deleteRecipe(recipeId) {
-  //obtain userId
-  // let user = auth.currentUser;
-  // if (user != null) {
-  //   var userId = user.uid;
-  // }
   var uid;
 
   auth.onAuthStateChanged(function (user) {
@@ -552,4 +579,232 @@ async function readUserInfo() {
       }
     });
   });
+}
+
+function changeColor(btn) {
+  if (btn.className.includes('tag-btn')) {
+    btn.classList.remove('tag-btn');
+    btn.classList.add('tag-selected-btn');
+  } else {
+    btn.classList.remove('tag-selected-btn');
+    btn.classList.add('tag-btn');
+  }
+}
+
+function resetSearch() {
+  document.getElementById('ingreds-input').value = '';
+  document.getElementById('cook-time-input').value = '';
+  document.getElementById('calories-input').value = '';
+  let btnSelected = document.querySelectorAll('button.tag-selected-btn');
+  for (let i = 0; i < btnSelected.length; i++) {
+    changeColor(btnSelected[i]);
+  }
+}
+
+async function searchRecipeByTag() {
+  document.querySelector('button.btn-close').click();
+  createOverlay();
+  showSpinner();
+  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&addRecipeInformation=true&number=100&sort=random&`;
+  path = getPathForTag(path);
+
+  console.log(path);
+
+  let done = await getRecipeData(path);
+  if (!done) {
+    console.log('Recipe fetch unsuccessful');
+    return;
+  }
+  console.log(recipe_data);
+  showResultTagCount(Object.keys(recipe_data['results']).length);
+  createRecipeResultCards();
+}
+
+function getPathForTag(path) {
+  let ingreds = document.getElementById('ingreds-input').value;
+  let time = document.getElementById('cook-time-input').value;
+  let cal = document.getElementById('calories-input').value;
+
+  let mealType = document
+    .getElementById('meal-type')
+    .querySelector('button.tag-selected-btn');
+  let intol = document
+    .getElementById('intolerance')
+    .querySelectorAll('button.tag-selected-btn');
+  let diet = document
+    .getElementById('diet')
+    .querySelector('button.tag-selected-btn');
+  let cuis = document
+    .getElementById('cuisine')
+    .querySelectorAll('button.tag-selected-btn');
+
+  console.log(ingreds);
+
+  if (ingreds != '') {
+    path += `includeIngredients=${ingreds}&`;
+  }
+
+  if (time != '') {
+    path += `maxReadyTime=${time}&`;
+  }
+
+  if (cal != '') {
+    path += `maxCalories=${cal}&`;
+  }
+
+  if (mealType !== null) {
+    path += `type=${mealType.innerText}&`;
+  }
+
+  if (intol.length !== 0) {
+    path += `intolerances=`;
+    for (let i = 0; i < intol.length; i++) {
+      if (i != 0) {
+        path += ',';
+      }
+      path += `${intol[i].innerText}`;
+    }
+    path += '&';
+  }
+
+  if (diet !== null) {
+    path += `diet=${diet.innerText}&`;
+  }
+
+  if (cuis.length !== 0) {
+    path += `cuisine=`;
+    for (let i = 0; i < cuis.length; i++) {
+      if (i != 0) {
+        path += ',';
+      }
+      path += `${cuis[i].innerText}`;
+    }
+  }
+  return path;
+}
+
+async function searchRecipeByName() {
+  createOverlay();
+  showSpinner();
+  let name = document.getElementById('search-by-name').value;
+  let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${name}&addRecipeInformation=true&number=100`;
+  let fetchSuccessful = await getRecipeData(url);
+  if (!fetchSuccessful) {
+    console.log('Recipe fetch unsuccessful');
+    return;
+  }
+  showResultCounts(name, Object.keys(recipe_data['results']).length);
+  createRecipeResultCards();
+}
+
+async function createRecipeResultCards() {
+  var cards = [];
+  let recipes_set = recipe_data['results'];
+  var main = document.querySelector('main');
+  for (let i = 0; i < recipes_set.length; i++) {
+    cards.push(document.createElement('recipe-main'));
+    cards[i].data = recipes_set[i];
+    main.appendChild(cards[i]);
+  }
+  removeSpinner();
+  removeOverlay();
+}
+
+async function getRecipeInfoById(id) {
+  let path = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${APIKEY}&includeNutrition=false`;
+  return new Promise((resolve, reject) => {
+    fetch(path)
+      .then((response) => response.json())
+      .then(function (data) {
+        single_recipe_info = data;
+      })
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(true);
+      });
+  });
+}
+
+function resetResultDisplay() {
+  let resSec = document.querySelector('section.result-count');
+  if (resSec != undefined) {
+    document.querySelector('main').removeChild(resSec);
+  }
+
+  let recipeCards = document.querySelectorAll('recipe-main');
+  for (let i = 0; i < recipeCards.length; i++) {
+    document.querySelector('main').removeChild(recipeCards[i]);
+  }
+}
+
+function showResultCounts(name, count) {
+  resetResultDisplay();
+  const resultSec = document.createElement('section');
+  resultSec.className = 'result-count';
+  resultSec.innerHTML = `
+  <p class="result-text">Search ${name}: ${count} Results</p>
+  `;
+  document.querySelector('main').appendChild(resultSec);
+}
+
+function showResultTagCount(count) {
+  resetResultDisplay();
+  const resultSec = document.createElement('section');
+  resultSec.className = 'result-count';
+  resultSec.innerHTML = `
+  <p class="result-text">Search By Categories: ${count} Results</p>
+  `;
+  document.querySelector('main').appendChild(resultSec);
+}
+
+function showSpinner() {
+  const spin = document.createElement('div');
+  spin.id = 'spinner';
+  const spinSelf = document.createElement('div');
+  spinSelf.className = 'spinner-border text-warning';
+  spinSelf.role = 'status';
+  const cont = document.createElement('span');
+  cont.className = 'visually-hidden';
+  cont.innerText = 'Loading...';
+  spinSelf.appendChild(cont);
+  spin.appendChild(spinSelf);
+  document.querySelector('html').appendChild(spin);
+}
+
+function removeSpinner() {
+  document
+    .querySelector('html')
+    .removeChild(document.getElementById('spinner'));
+}
+
+function removeOverlay() {
+  document
+    .querySelector('html')
+    .removeChild(document.getElementById('overlay'));
+}
+
+function createOverlay() {
+  //generate background overlay
+  const overlay = document.createElement('section');
+  const styleElem = document.createElement('style');
+  const overlayStyle = `
+    #overlay {
+        position: fixed; 
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.61);
+        z-index: 2;
+    }`;
+  overlay.id = 'overlay';
+  styleElem.innerHTML = overlayStyle;
+  overlay.appendChild(styleElem);
+  document.querySelector('html').appendChild(overlay);
 }

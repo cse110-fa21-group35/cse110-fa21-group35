@@ -253,35 +253,12 @@ function createRecipeContentElem(data, id) {
   //panel header, title, and body
   card.appendChild(createRecipeCotentPanelHeader(data, id));
   card.appendChild(
-    createRecipeContentPanelName(data['name'], data['@context'])
+    createRecipeContentPanelName(data['name'], data['sourceUrl'])
   );
   card.appendChild(createRecipeContentPanelBody(data));
 
   recipeContent.appendChild(card);
   return recipeContent;
-}
-
-function createOverlay() {
-  //generate background overlay
-  const overlay = document.createElement('section');
-  const styleElem = document.createElement('style');
-  const overlayStyle = `
-    #overlay {
-        position: fixed; 
-        display: block;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.61);
-        z-index: 2;
-    }`;
-  overlay.id = 'overlay';
-  styleElem.innerHTML = overlayStyle;
-  overlay.appendChild(styleElem);
-  document.querySelector('html').appendChild(overlay);
 }
 
 function createRecipeCotentPanelHeader(data, id) {
@@ -353,7 +330,9 @@ function createRecipeContentPanelName(title, url) {
   const name = document.createElement('div');
   name.className = 'card-body recipe-name';
   const link = document.createElement('a');
-  link.href = url;
+  if (url !== undefined) {
+    link.href = url;
+  }
   link.className = 'recipe-link';
   link.innerHTML = title;
   name.appendChild(document.createElement('span').appendChild(link));
@@ -381,10 +360,11 @@ function createLeftContent(data) {
   //nutrition label;
   const label = document.createElement('img');
   label.className = 'nutr-label';
-  if (data['nutritionLabel'] === undefined) {
+  let nutrURL = data['nutrition']['nutritionImage'];
+  if (nutrURL === undefined) {
     label.src = '/source/images/no-nutr-label-avail.jpg';
   } else {
-    label.src = `${data['nutritionLabel']}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+    label.src = `${nutrURL}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
   }
 
   left.appendChild(img);
@@ -505,6 +485,8 @@ var recipeIds = [];
 
 // starting here
 async function init() {
+  createOverlay();
+  showSpinner();
   let fetchSuccessful = await readRecipe();
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
@@ -512,6 +494,8 @@ async function init() {
   }
   createRecipeCards();
   showTotalRecipeCount();
+  removeSpinner();
+  removeOverlay();
 }
 
 // creating recipe-main element based on the data we have - data are store in "recipes"

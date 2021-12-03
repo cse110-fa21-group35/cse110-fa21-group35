@@ -80,11 +80,17 @@ function createRecipeCardElem(data) {
   // creating a recipe cutomized object
   const recipe = document.createElement('article');
   recipe.id = 'recipe-card-view';
-  recipe.onclick = function () {
+  recipe.onclick = async function () {
     createOverlay();
+    showSpinner();
+    let done = await getRecipeInfoById(data['id']);
+    if (!done) {
+      console.log('Recipe fetch unsuccessful');
+      return;
+    }
     document
       .querySelector('section.recipe-expand')
-      .appendChild(createRecipeContentElem(data));
+      .appendChild(createRecipeContentElem(single_recipe_info));
   };
 
   // creating recipe name element for recipe
@@ -97,9 +103,12 @@ function createRecipeCardElem(data) {
   // creating image element for recipe
   let recipe_img_link = document.createElement('a');
   let recipe_img = document.createElement('img');
-  recipe_img.setAttribute('src', data['image']);
+  if (data['image'] == undefined) {
+    recipe_img.setAttribute('src', '/source/images/no-img-avail.png');
+  } else {
+    recipe_img.setAttribute('src', data['image']);
+  }
   recipe_img_link.setAttribute('class', 'img');
-  // recipe_img_link.setAttribute("href", "");
   recipe_img_link.appendChild(recipe_img);
   recipe.appendChild(recipe_img_link);
   return recipe;
@@ -276,30 +285,8 @@ function createRecipeContentElem(data) {
   card.appendChild(createRecipeContentPanelBody(data));
 
   recipeContent.appendChild(card);
+  removeSpinner();
   return recipeContent;
-}
-
-function createOverlay() {
-  //generate background overlay
-  const overlay = document.createElement('section');
-  const styleElem = document.createElement('style');
-  const overlayStyle = `
-    #overlay {
-        position: fixed; 
-        display: block;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.61);
-        z-index: 2;
-    }`;
-  overlay.id = 'overlay';
-  styleElem.innerHTML = overlayStyle;
-  overlay.appendChild(styleElem);
-  document.querySelector('html').appendChild(overlay);
 }
 
 function createRecipeCotentPanelHeader() {
@@ -318,9 +305,7 @@ function createRecipeCotentPanelHeader() {
   closeBtn.className = 'close-recipe-btn';
   closeBtn.onclick = function () {
     document.querySelector('section.recipe-expand').innerHTML = '';
-    document
-      .querySelector('html')
-      .removeChild(document.getElementById('overlay'));
+    removeOverlay();
   };
   //closeBtn icon
   const closeBtnIcon = document.createElement('i');
@@ -363,6 +348,7 @@ function createAddBtn() {
       document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
       addToMyRecipe(recipeId);
       recipesAddedIDs.add(recipeId);
+      // TODO: update recipeAddedIDs in firebase
     } else {
       alert('Recipe Already Added!');
     }
@@ -514,12 +500,12 @@ function setSteps(stepContent, stepStr) {
 customElements.define('recipe-main', Recipe);
 
 // HAVE TO MANUALLY SET THE DISPLAY RECIPES AMOUNT FOR FIRST PAGE
-var recipe_length = 9;
+var recipe_length = 100;
 
 // path of json of main page
 // LAST NUMBER IS HOW MANY RECIPES WE ARE RENDERING
-const recipe_path = `https://api.spoonacular.com/recipes/random?apiKey=48efb642c0b24eb586a3ba1d81ee738e&number=${recipe_length}`;
-
+const APIKEY = '48efb642c0b24eb586a3ba1d81ee738e';
+const recipe_path = `https://api.spoonacular.com/recipes/random?apiKey=${APIKEY}&number=${recipe_length}`;
 // we store the data of recipe temporary in object
 var recipe_data = undefined;
 
@@ -528,13 +514,19 @@ window.addEventListener('DOMContentLoaded', init);
 
 // starting here
 async function init() {
-  let fetchSuccessful = await fetch_recipe();
+  // TODO: delete if backend fixed
   recipesAddedIDs = new Set();
+
+  createOverlay();
+  showSpinner();
+  let fetchSuccessful = await fetch_recipe();
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
     return;
   }
   createRecipeCards();
+  removeSpinner();
+  removeOverlay();
 }
 
 // reading the json data and store it in object array
@@ -559,9 +551,9 @@ function createRecipeCards() {
   let recipes_set = recipe_data['recipes'];
   var main = document.querySelector('main');
   for (let i = 0; i < recipe_length; i++) {
-    console.log(recipe_length);
+    // console.log(recipe_length);
     cards.push(document.createElement('recipe-main'));
-    console.log(recipe_data['recipes']);
+    // console.log(recipe_data['recipes']);
     cards[i].data = recipes_set[i];
     main.appendChild(cards[i]);
   }

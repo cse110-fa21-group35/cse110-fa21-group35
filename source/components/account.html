@@ -24,6 +24,7 @@
       rel="stylesheet"
     />
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
@@ -54,8 +55,8 @@
           </a>
         </div>
         <div class="Account">
-          <a href="/source/components/account.html">
-            <i class="material-icons">account_circle</i>
+          <a href="/source/components/account.html" style="color: #fde79b">
+            <i class="material-icons" style="color: #fde79b">account_circle</i>
             Account
           </a>
         </div>
@@ -74,7 +75,15 @@
             <span class="info-title">Recipes count:</span> XX recipes<br />
           </p>
         </div>
-        <p class="update-time">Updated By DATE</p>
+        <span class="d-inline-flex justify-content-between align-content-center"
+          ><button
+            class="btn btn-sm btn-outline-danger log-out-btn"
+            onclick="logout()"
+          >
+            Log out
+          </button>
+          <p class="update-time">Updated By DATE</p></span
+        >
       </div>
     </main>
     <div id="end"></div>
