@@ -82,6 +82,7 @@ function createRecipeCardElem(data) {
   recipe.id = 'recipe-card-view';
   recipe.onclick = async function () {
     createOverlay();
+    showSpinner();
     let done = await getRecipeInfoById(data['id']);
     if (!done) {
       console.log('Recipe fetch unsuccessful');
@@ -284,6 +285,7 @@ function createRecipeContentElem(data) {
   card.appendChild(createRecipeContentPanelBody(data));
 
   recipeContent.appendChild(card);
+  removeSpinner();
   return recipeContent;
 }
 
@@ -303,9 +305,7 @@ function createRecipeCotentPanelHeader() {
   closeBtn.className = 'close-recipe-btn';
   closeBtn.onclick = function () {
     document.querySelector('section.recipe-expand').innerHTML = '';
-    document
-      .querySelector('html')
-      .removeChild(document.getElementById('overlay'));
+    removeOverlay();
   };
   //closeBtn icon
   const closeBtnIcon = document.createElement('i');

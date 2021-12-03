@@ -15,7 +15,7 @@ div.search-box > i,
   justify-content: flex-start;
 }
 
-.search-box {
+.search-recipe-box {
   display: inline-flex;
   align-items: center;
   padding-left: -10px;
@@ -34,12 +34,13 @@ div.search-box > i,
   font-size: 1rem;
 }
 
-div.search-box > i {
+div.search-recipe-box > i {
   position: absolute;
   margin-left: 1rem;
+  color: #405262;
 }
 
-.search-box > input {
+.search-recipe-box > input {
   width: 100%;
   padding-left: 3.2rem;
   border-radius: 50px;

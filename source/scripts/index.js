@@ -557,6 +557,8 @@ async function readUserInfo() {
 }
 
 async function searchRecipeByName() {
+  createOverlay();
+  showSpinner();
   let name = document.getElementById('search-by-name').value;
   let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${name}&addRecipeInformation=true&number=100`;
   let fetchSuccessful = await getRecipeData(url);
@@ -579,6 +581,7 @@ async function createRecipeResultCards() {
     main.appendChild(cards[i]);
   }
   removeSpinner();
+  removeOverlay();
 }
 
 async function getRecipeInfoById(id) {
@@ -600,8 +603,11 @@ async function getRecipeInfoById(id) {
 }
 
 function showResultCounts(name, count) {
-  createOverlay();
-  showSpinner();
+  let resSec = document.querySelector('section.result-count');
+  if (resSec != undefined) {
+    document.querySelector('main').removeChild(resSec);
+  }
+
   let recipeCards = document.querySelectorAll('recipe-main');
   for (let i = 0; i < recipeCards.length; i++) {
     document.querySelector('main').removeChild(recipeCards[i]);
@@ -636,10 +642,13 @@ function showSpinner() {
 function removeSpinner() {
   document
     .querySelector('html')
-    .removeChild(document.getElementById('overlay'));
+    .removeChild(document.getElementById('spinner'));
+}
+
+function removeOverlay() {
   document
     .querySelector('html')
-    .removeChild(document.getElementById('spinner'));
+    .removeChild(document.getElementById('overlay'));
 }
 
 function createOverlay() {
