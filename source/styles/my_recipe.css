@@ -1,18 +1,7 @@
 /* stylelint-disable */
-div.My-Recipes > a,
-div.My-Recipes > a > i,
-div.search-box > i {
-  color: #fde79b;
-}
-
 div.search-box > i,
 #recipe-card-create-btn {
   color: #405262;
-}
-
-body > section:nth-child(2) > div > div.All > a,
-body > section:nth-child(2) > div > div.All > a > i {
-  color: white;
 }
 
 .main-action-group {

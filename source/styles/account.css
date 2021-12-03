@@ -1,14 +1,4 @@
 /* stylelint-disable */
-div.Account > a,
-div.Account > a > i {
-  color: #fde79b;
-}
-
-body > section:nth-child(2) > div > div.All > a,
-body > section:nth-child(2) > div > div.All > a > i {
-  color: white;
-}
-
 html > body {
   font-family: 'Roboto', sans-serif;
 }

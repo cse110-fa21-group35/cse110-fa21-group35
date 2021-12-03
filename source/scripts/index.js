@@ -27,9 +27,11 @@ firebase.initializeApp(firebaseConfig);
 // const database = getDatabase();
 const auth = firebase.auth();
 const database = firebase.database();
+const APIKEY = '48efb642c0b24eb586a3ba1d81ee738e';
 //const storage = firebase.stlet uid;
 var user_recipe_data = 'User Recipe Data';
 var userID = '';
+var single_recipe_info = '';
 //const storage = firebase.storage();
 // const analytics = getAnalytics(app);
 
@@ -552,4 +554,113 @@ async function readUserInfo() {
       }
     });
   });
+}
+
+async function searchRecipeByName() {
+  let name = document.getElementById('search-by-name').value;
+  let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${name}&addRecipeInformation=true&number=100`;
+  let fetchSuccessful = await getRecipeData(url);
+  if (!fetchSuccessful) {
+    console.log('Recipe fetch unsuccessful');
+    return;
+  }
+  console.log(recipe_data);
+  showResultCounts(name, Object.keys(recipe_data['results']).length);
+  createRecipeResultCards();
+}
+
+async function createRecipeResultCards() {
+  var cards = [];
+  let recipes_set = recipe_data['results'];
+  var main = document.querySelector('main');
+  for (let i = 0; i < recipes_set.length; i++) {
+    cards.push(document.createElement('recipe-main'));
+    cards[i].data = recipes_set[i];
+    main.appendChild(cards[i]);
+  }
+  removeSpinner();
+}
+
+async function getRecipeInfoById(id) {
+  let path = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${APIKEY}&includeNutrition=false`;
+  return new Promise((resolve, reject) => {
+    fetch(path)
+      .then((response) => response.json())
+      .then(function (data) {
+        single_recipe_info = data;
+      })
+      .then(() => {
+        resolve(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        reject(true);
+      });
+  });
+}
+
+function showResultCounts(name, count) {
+  createOverlay();
+  showSpinner();
+  let recipeCards = document.querySelectorAll('recipe-main');
+  for (let i = 0; i < recipeCards.length; i++) {
+    document.querySelector('main').removeChild(recipeCards[i]);
+  }
+
+  const resultSec = document.createElement('section');
+  resultSec.className = 'result-count';
+  resultSec.innerHTML = `
+  <p class="result-text">Search ${name}: ${count} Results</p>
+  `;
+  document.querySelector('main').appendChild(resultSec);
+
+  document.querySelector('p.result-text').innerHTML = `
+      Search "${name}": ${count} Results
+  `;
+}
+
+function showSpinner() {
+  const spin = document.createElement('div');
+  spin.id = 'spinner';
+  const spinSelf = document.createElement('div');
+  spinSelf.className = 'spinner-border text-warning';
+  spinSelf.role = 'status';
+  const cont = document.createElement('span');
+  cont.className = 'visually-hidden';
+  cont.innerText = 'Loading...';
+  spinSelf.appendChild(cont);
+  spin.appendChild(spinSelf);
+  document.querySelector('html').appendChild(spin);
+}
+
+function removeSpinner() {
+  document
+    .querySelector('html')
+    .removeChild(document.getElementById('overlay'));
+  document
+    .querySelector('html')
+    .removeChild(document.getElementById('spinner'));
+}
+
+function createOverlay() {
+  //generate background overlay
+  const overlay = document.createElement('section');
+  const styleElem = document.createElement('style');
+  const overlayStyle = `
+    #overlay {
+        position: fixed; 
+        display: block;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.61);
+        z-index: 2;
+    }`;
+  overlay.id = 'overlay';
+  styleElem.innerHTML = overlayStyle;
+  overlay.appendChild(styleElem);
+  document.querySelector('html').appendChild(overlay);
 }
