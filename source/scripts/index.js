@@ -93,7 +93,9 @@ function signIn() {
           uid = user.uid;
           console.log(uid);
         }
-        // alert('Successful Sign In');
+
+        //TODO: recipesAddedIDs = recipesAddedIDs from firebase;
+
         //create a greeting box for user
         let greeting = document.createElement('div');
         let cardBody = document.querySelector('div.card-body');

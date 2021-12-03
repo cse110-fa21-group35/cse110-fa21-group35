@@ -348,6 +348,7 @@ function createAddBtn() {
       document.querySelector('span.my-recipe-label').innerHTML = 'My Recipe!';
       addToMyRecipe(recipeId);
       recipesAddedIDs.add(recipeId);
+      // TODO: update recipeAddedIDs in firebase
     } else {
       alert('Recipe Already Added!');
     }
@@ -513,8 +514,10 @@ window.addEventListener('DOMContentLoaded', init);
 
 // starting here
 async function init() {
-  let fetchSuccessful = await fetch_recipe();
+  // TODO: delete if backend fixed
   recipesAddedIDs = new Set();
+
+  let fetchSuccessful = await fetch_recipe();
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
     return;
