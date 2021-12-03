@@ -500,7 +500,7 @@ function setSteps(stepContent, stepStr) {
 customElements.define('recipe-main', Recipe);
 
 // HAVE TO MANUALLY SET THE DISPLAY RECIPES AMOUNT FOR FIRST PAGE
-var recipe_length = 9;
+var recipe_length = 100;
 
 // path of json of main page
 // LAST NUMBER IS HOW MANY RECIPES WE ARE RENDERING
@@ -517,12 +517,16 @@ async function init() {
   // TODO: delete if backend fixed
   recipesAddedIDs = new Set();
 
+  createOverlay();
+  showSpinner();
   let fetchSuccessful = await fetch_recipe();
   if (!fetchSuccessful) {
     console.log('Recipe fetch unsuccessful');
     return;
   }
   createRecipeCards();
+  removeSpinner();
+  removeOverlay();
 }
 
 // reading the json data and store it in object array
