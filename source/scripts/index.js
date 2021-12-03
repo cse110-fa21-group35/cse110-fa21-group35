@@ -578,10 +578,73 @@ function resetSearch() {
   }
 }
 
-function searchRecipe() {
-  //get user inputs and call api
+async function searchRecipeByTag() {
+  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&`;
+  path = getPathForTag(path);
+
   document.querySelector('button.btn-close').click();
   //show recipe results
+}
+
+function getPathForTag(path) {
+  let ingreds = document.getElementById('ingreds-input').value;
+  let time = document.getElementById('cook-time-input').value;
+  let cal = document.getElementById('calories-input').value;
+
+  let mealType = document
+    .getElementById('meal-type')
+    .querySelector('button.tag-selected-btn');
+  let intol = document
+    .getElementById('intolerance')
+    .querySelectorAll('button.tag-selected-btn');
+  let diet = document
+    .getElementById('diet')
+    .querySelector('button.tag-selected-btn');
+  let cuis = document
+    .getElementById('cuisine')
+    .querySelectorAll('button.tag-selected-btn');
+
+  if (ingreds != '') {
+    path += `includeIngredients=${ingreds}&`;
+  }
+
+  if (time != '') {
+    path += `maxReadyTime=${time}&`;
+  }
+
+  if (cal != '') {
+    path += `maxCalories=${cal}&`;
+  }
+
+  if (mealType != undefined) {
+    path += `type=${mealType.value}&`;
+  }
+
+  if (intol != undefined) {
+    path += `intolerances=`;
+    for (let i = 0; i < intol.length; i++) {
+      if (i != 0) {
+        path += ',';
+      }
+      path += `${intol[i].value}`;
+    }
+    path += '&';
+  }
+
+  if (diet != undefined) {
+    path += `diet=${diet.value}&`;
+  }
+
+  if (cuis != undefined) {
+    path += `cuisine=`;
+    for (let i = 0; i < cuis.length; i++) {
+      if (i != 0) {
+        path += ',';
+      }
+      path += `${cuis[i].value}`;
+    }
+  }
+  return path;
 }
 
 async function searchRecipeByName() {
