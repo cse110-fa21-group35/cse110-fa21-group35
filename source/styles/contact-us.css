@@ -1,9 +1,7 @@
 /* stylelint-disable */
 html > body {
   font-family: 'Roboto', sans-serif;
-}
-
-body {
+  background-color: #dbdcd7;
   background: #dbdcd7;
 }
 
