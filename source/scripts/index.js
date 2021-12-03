@@ -115,6 +115,27 @@ function signIn() {
   });
 }
 
+function logout() {
+  auth
+    .signOut()
+    .then(() => {
+      window.location.replace('/index.html');
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+}
+
+function checkSignedIn() {
+  auth.onAuthStateChanged(function (user) {
+    if (user != null) {
+      uid = user.uid;
+      console.log(uid);
+      window.location.replace('/source/components/main.html');
+    }
+  });
+}
+
 // createRecipe is the backend function for the Creation of Recipes
 async function createRecipe() {
   // checks for authentication persistence
@@ -156,6 +177,7 @@ async function createRecipe() {
 
       // add ingredients into ingredientsData json
       let ingredientsData = {};
+      let tagsData = {};
       for (let i = 0; i < ingredients.length; i++) {
         if (
           ingredientsName[i].value == '' ||
@@ -173,6 +195,7 @@ async function createRecipe() {
           ' ' +
           String(ingredientsName[i].value);
         ingredientsData['ingredient ' + ingredNumber] = val;
+        tagsData['tag ' + ingredNumber] = ingredientsName[i].value;
       }
 
       // get today's date
@@ -208,9 +231,9 @@ async function createRecipe() {
             datePublished: date,
             // todo: add description
             description: '',
-            // todo: fix the image link
             image: imageData,
             recipeIngredient: ingredientsData,
+            tags: tagsData,
             name: recipeName,
             // todo: add nutrition
             // "nutrition": {
@@ -280,12 +303,16 @@ async function addToMyRecipe(id) {
 
       let ingredients = addRecipeInfo.extendedIngredients;
 
-      // add ingredients into ingredientsData json
+      // add ingredients into ingredientsData json and tagsData json
       let ingredientsData = {};
+      let tagsData = {};
       for (let i = 0; i < ingredients.length; i++) {
         let ingredNumber = i + 1;
         let val = ingredients[i].original;
         ingredientsData['ingredient ' + ingredNumber] = val;
+
+        let ingredName = ingredients[i].name;
+        tagsData['tag ' + ingredNumber] = ingredName;
       }
 
       let firebaseRef = database.ref();
@@ -315,6 +342,7 @@ async function addToMyRecipe(id) {
             description: '',
             image: addRecipeInfo.image,
             recipeIngredient: ingredientsData,
+            tags: tagsData,
             name: addRecipeInfo.title,
             // todo: add nutrition
             nutrition: {
