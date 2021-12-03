@@ -494,11 +494,6 @@ function getRecipeData(url) {
 }
 
 function deleteRecipe(recipeId) {
-  //obtain userId
-  // let user = auth.currentUser;
-  // if (user != null) {
-  //   var userId = user.uid;
-  // }
   var uid;
 
   auth.onAuthStateChanged(function (user) {
@@ -579,11 +574,22 @@ function resetSearch() {
 }
 
 async function searchRecipeByTag() {
-  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&`;
+  document.querySelector('button.btn-close').click();
+  createOverlay();
+  showSpinner();
+  let path = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&addRecipeInformation=true&number=100&`;
   path = getPathForTag(path);
 
-  document.querySelector('button.btn-close').click();
-  //show recipe results
+  console.log(path);
+
+  let done = await getRecipeData(path);
+  if (!done) {
+    console.log('Recipe fetch unsuccessful');
+    return;
+  }
+  console.log(recipe_data);
+  showResultTagCount(Object.keys(recipe_data['results']).length);
+  createRecipeResultCards();
 }
 
 function getPathForTag(path) {
@@ -604,6 +610,8 @@ function getPathForTag(path) {
     .getElementById('cuisine')
     .querySelectorAll('button.tag-selected-btn');
 
+  console.log(ingreds);
+
   if (ingreds != '') {
     path += `includeIngredients=${ingreds}&`;
   }
@@ -616,11 +624,11 @@ function getPathForTag(path) {
     path += `maxCalories=${cal}&`;
   }
 
-  if (mealType != undefined) {
+  if (mealType !== null) {
     path += `type=${mealType.value}&`;
   }
 
-  if (intol != undefined) {
+  if (intol.length !== 0) {
     path += `intolerances=`;
     for (let i = 0; i < intol.length; i++) {
       if (i != 0) {
@@ -631,11 +639,11 @@ function getPathForTag(path) {
     path += '&';
   }
 
-  if (diet != undefined) {
+  if (diet !== null) {
     path += `diet=${diet.value}&`;
   }
 
-  if (cuis != undefined) {
+  if (cuis.length !== 0) {
     path += `cuisine=`;
     for (let i = 0; i < cuis.length; i++) {
       if (i != 0) {
@@ -657,7 +665,6 @@ async function searchRecipeByName() {
     console.log('Recipe fetch unsuccessful');
     return;
   }
-  console.log(recipe_data);
   showResultCounts(name, Object.keys(recipe_data['results']).length);
   createRecipeResultCards();
 }
@@ -693,7 +700,7 @@ async function getRecipeInfoById(id) {
   });
 }
 
-function showResultCounts(name, count) {
+function resetResultDisplay() {
   let resSec = document.querySelector('section.result-count');
   if (resSec != undefined) {
     document.querySelector('main').removeChild(resSec);
@@ -703,17 +710,26 @@ function showResultCounts(name, count) {
   for (let i = 0; i < recipeCards.length; i++) {
     document.querySelector('main').removeChild(recipeCards[i]);
   }
+}
 
+function showResultCounts(name, count) {
+  resetResultDisplay();
   const resultSec = document.createElement('section');
   resultSec.className = 'result-count';
   resultSec.innerHTML = `
   <p class="result-text">Search ${name}: ${count} Results</p>
   `;
   document.querySelector('main').appendChild(resultSec);
+}
 
-  document.querySelector('p.result-text').innerHTML = `
-      Search "${name}": ${count} Results
+function showResultTagCount(count) {
+  resetResultDisplay();
+  const resultSec = document.createElement('section');
+  resultSec.className = 'result-count';
+  resultSec.innerHTML = `
+  <p class="result-text">Search By Categories: ${count} Results</p>
   `;
+  document.querySelector('main').appendChild(resultSec);
 }
 
 function showSpinner() {
