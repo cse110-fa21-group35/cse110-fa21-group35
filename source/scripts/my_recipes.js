@@ -360,10 +360,11 @@ function createLeftContent(data) {
   //nutrition label;
   const label = document.createElement('img');
   label.className = 'nutr-label';
-  if (data['nutritionLabel'] === undefined) {
+  let nutrURL = data['nutrition']['nutritionImage'];
+  if (nutrURL === undefined) {
     label.src = '/source/images/no-nutr-label-avail.jpg';
   } else {
-    label.src = `${data['nutritionLabel']}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
+    label.src = `${nutrURL}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;
   }
 
   left.appendChild(img);
