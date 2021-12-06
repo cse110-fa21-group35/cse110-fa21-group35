@@ -162,7 +162,7 @@ a.page-down-btn {
 
 a.page-up-btn > i,
 a.page-down-btn > i {
-  color: #fde79b;
+  color: #405262;
   font-size: 62px;
   margin-right: 0px;
 }
@@ -228,7 +228,7 @@ section.result-count {
   padding-right: 3rem;
   margin-bottom: -1.3rem;
   font-style: italic;
-  color: white;
+  color: #fde79b;
 }
 
 #spinner {

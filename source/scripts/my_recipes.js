@@ -360,8 +360,8 @@ function createLeftContent(data) {
   //nutrition label;
   const label = document.createElement('img');
   label.className = 'nutr-label';
-  let nutrURL = data['nutrition']['nutritionImage'];
-  if (nutrURL === undefined) {
+  let nutrURL = data['nutrition'];
+  if (nutrURL === undefined || nutrURL['nutritionImage'] === undefined) {
     label.src = '/source/images/no-nutr-label-avail.jpg';
   } else {
     label.src = `${nutrURL}?apiKey=48efb642c0b24eb586a3ba1d81ee738e`;

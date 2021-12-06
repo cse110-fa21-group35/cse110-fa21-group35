@@ -591,6 +591,29 @@ function changeColor(btn) {
   }
 }
 
+
+function changeColorMeal(btn) {
+    var mealDOM = document.getElementById("meal-type");
+    var mealCheck = mealDOM.getElementsByClassName('tag-selected-btn');
+    for(var i = 0; i<mealCheck.length; i=i+1){
+      mealCheck[i].classList.add('tag-btn');
+      mealCheck[i].classList.remove('tag-selected-btn');
+    }
+    btn.classList.remove('tag-btn');
+    btn.classList.add('tag-selected-btn');
+}
+
+function changeColorDiet(btn) {
+  var dietDOM = document.getElementById("diet");
+  var dietCheck = dietDOM.getElementsByClassName('tag-selected-btn');
+  for(var i = 0; i<dietCheck.length; i=i+1){
+    dietCheck[i].classList.add('tag-btn');
+    dietCheck[i].classList.remove('tag-selected-btn');
+  }
+  btn.classList.remove('tag-btn');
+  btn.classList.add('tag-selected-btn');
+}
+
 function resetSearch() {
   document.getElementById('ingreds-input').value = '';
   document.getElementById('cook-time-input').value = '';
