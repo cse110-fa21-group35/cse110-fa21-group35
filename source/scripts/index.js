@@ -592,25 +592,27 @@ function changeColor(btn) {
 }
 
 function changeColorMeal(btn) {
-  var mealDOM = document.getElementById('meal-type');
-  var mealCheck = mealDOM.getElementsByClassName('tag-selected-btn');
-  for (var i = 0; i < mealCheck.length; i = i + 1) {
-    mealCheck[i].classList.add('tag-btn');
-    mealCheck[i].classList.remove('tag-selected-btn');
+  changeColor(btn);
+  let mealDOM = document.getElementById('meal-type');
+  let mealCheck = mealDOM.getElementsByClassName('tag-selected-btn');
+  for (let i = 0; i < mealCheck.length; i++) {
+    if (mealCheck[i] !== btn) {
+      mealCheck[i].classList.add('tag-btn');
+      mealCheck[i].classList.remove('tag-selected-btn');
+    }
   }
-  btn.classList.remove('tag-btn');
-  btn.classList.add('tag-selected-btn');
 }
 
 function changeColorDiet(btn) {
-  var dietDOM = document.getElementById('diet');
-  var dietCheck = dietDOM.getElementsByClassName('tag-selected-btn');
-  for (var i = 0; i < dietCheck.length; i = i + 1) {
-    dietCheck[i].classList.add('tag-btn');
-    dietCheck[i].classList.remove('tag-selected-btn');
+  changeColor(btn);
+  let dietDOM = document.getElementById('diet');
+  let dietCheck = dietDOM.getElementsByClassName('tag-selected-btn');
+  for (let i = 0; i < dietCheck.length; i++) {
+    if (dietCheck[i] !== btn) {
+      dietCheck[i].classList.add('tag-btn');
+      dietCheck[i].classList.remove('tag-selected-btn');
+    }
   }
-  btn.classList.remove('tag-btn');
-  btn.classList.add('tag-selected-btn');
 }
 
 function resetSearch() {

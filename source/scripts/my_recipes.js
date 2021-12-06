@@ -494,7 +494,7 @@ async function init() {
     return;
   }
   createRecipeCards();
-  showTotalRecipeCount();
+  showTotalRecipeCount(recipeCounts);
   removeSpinner();
   removeOverlay();
 }
@@ -514,10 +514,10 @@ function createRecipeCards() {
   }
 }
 
-function showTotalRecipeCount() {
+function showTotalRecipeCount(rCount) {
   document.querySelector('span.total-recipe-count').innerHTML = document
     .querySelector('span.total-recipe-count')
-    .innerHTML.replace('X', recipeCounts);
+    .innerHTML.replace(new RegExp('\\d'), rCount);
 }
 
 // event listener for searching button in my recipe page
@@ -541,13 +541,16 @@ function searchRecipeByNameMyRecipe(keyword) {
   console.log(keyword);
   recipeIds = Object.keys(user_recipe_data);
   let main = document.querySelector('main');
+  let removedCount = 0;
   for (let i = 0; i < recipeIds.length; i++) {
     let recipeData = user_recipe_data[recipeIds[i]];
     let name = recipeData['name'].toLowerCase();
     if (!name.includes(keyword.toLowerCase())) {
       main.removeChild(cards[i]);
+      removedCount++;
     }
   }
+  showTotalRecipeCount(recipeIds.length - removedCount);
 }
 
 // recover the origin my recipe page
