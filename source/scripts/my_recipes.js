@@ -537,7 +537,7 @@ searchInput[0].addEventListener('keypress', function (event) {
 // searching-by-name feature in my recipe page
 // Estimated time-complexity: O(n)
 function searchRecipeByNameMyRecipe(keyword) {
-  // recoverMyRecipe();
+  recoverMyRecipe();
   console.log(keyword);
   recipeIds = Object.keys(user_recipe_data);
   let main = document.querySelector('main');
