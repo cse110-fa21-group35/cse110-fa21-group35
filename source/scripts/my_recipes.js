@@ -482,6 +482,7 @@ customElements.define('recipe-main', Recipe);
 
 var recipeCounts = 0;
 var recipeIds = [];
+var cards = [];
 
 // starting here
 async function init() {
@@ -500,10 +501,9 @@ async function init() {
 
 // creating recipe-main element based on the data we have - data are store in "recipes"
 function createRecipeCards() {
-  var cards = [];
   if (user_recipe_data != undefined) {
     recipeIds = Object.keys(user_recipe_data);
-    var main = document.querySelector('main');
+    let main = document.querySelector('main');
     recipeCounts = recipeIds.length;
     for (let i = 0; i < recipeCounts; i++) {
       cards.push(document.createElement('recipe-main'));
@@ -518,4 +518,53 @@ function showTotalRecipeCount() {
   document.querySelector('span.total-recipe-count').innerHTML = document
     .querySelector('span.total-recipe-count')
     .innerHTML.replace('X', recipeCounts);
+}
+
+// event listener for searching button in my recipe page
+let searchBox = document.getElementsByClassName('search-recipe-box');
+let searchInput = searchBox[0].getElementsByClassName('form-control');
+searchInput[0].addEventListener('keypress', function (event) {
+  // 13 is keyCode of enter
+  if (event.keyCode == 13) {
+    if (searchInput[0].value.length != 0) {
+      searchRecipeByNameMyRecipe(searchInput[0].value);
+    } else {
+      recoverMyRecipe();
+    }
+  }
+});
+
+// searching-by-name feature in my recipe page
+// Estimated time-complexity: O(n)
+function searchRecipeByNameMyRecipe(keyword) {
+  // recoverMyRecipe();
+  console.log(keyword);
+  recipeIds = Object.keys(user_recipe_data);
+  let main = document.querySelector('main');
+  for (let i = 0; i < recipeIds.length; i++) {
+    let recipeData = user_recipe_data[recipeIds[i]];
+    let name = recipeData['name'].toLowerCase();
+    if (!name.includes(keyword.toLowerCase())) {
+      main.removeChild(cards[i]);
+    }
+  }
+}
+
+// recover the origin my recipe page
+function recoverMyRecipe() {
+  let main = document.querySelector('main');
+  let mainComponent1 = main.getElementsByClassName('page-up-btn-group')[0];
+  let mainComponent2 = main.getElementsByClassName('page-down-btn-group')[0];
+  let mainComponent3 = main.getElementsByClassName('main-action-group')[0];
+  // initialize main O(n)
+  while (main.firstChild) {
+    main.removeChild(main.firstChild);
+  }
+  main.appendChild(mainComponent1);
+  main.appendChild(mainComponent2);
+  main.appendChild(mainComponent3);
+  // add all the original cards O(n)
+  for (let i = 0; i < cards.length; i++) {
+    main.appendChild(cards[i]);
+  }
 }
