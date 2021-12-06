@@ -527,16 +527,17 @@ searchInput[0].addEventListener('keypress', function (event) {
   // 13 is keyCode of enter
   if (event.keyCode == 13) {
     if (searchInput[0].value.length != 0) {
-      searchRecipeByNameMyRecipe(searchInput[0].value);
+      searchByNameAndTagsMyRecipe(searchInput[0].value);
     } else {
       recoverMyRecipe();
     }
   }
 });
 
-// searching-by-name feature in my recipe page
-// Estimated time-complexity: O(n)
-function searchRecipeByNameMyRecipe(keyword) {
+// searching-by-name and search-by-tag feature in my recipe page
+// Estimated time-complexity: O(n * m)
+// n is amount of recipes, m is amount of tags for each recipe
+function searchByNameAndTagsMyRecipe(keyword) {
   recoverMyRecipe();
   console.log(keyword);
   recipeIds = Object.keys(user_recipe_data);
@@ -545,7 +546,8 @@ function searchRecipeByNameMyRecipe(keyword) {
   for (let i = 0; i < recipeIds.length; i++) {
     let recipeData = user_recipe_data[recipeIds[i]];
     let name = recipeData['name'].toLowerCase();
-    if (!name.includes(keyword.toLowerCase())) {
+    let tags = recipeData['tags'];
+    if (!name.includes(keyword.toLowerCase()) && !hasTag(keyword, tags)) {
       main.removeChild(cards[i]);
       removedCount++;
     }
@@ -570,4 +572,16 @@ function recoverMyRecipe() {
   for (let i = 0; i < cards.length; i++) {
     main.appendChild(cards[i]);
   }
+}
+
+// search-for-tag(ingredients) feature with tags field in database
+// Estimated time-complexity: O(n) - n is length of tagsList
+function hasTag(keyword, tagsList) {
+  let keys = Object.keys(tagsList);
+  for (let i = 0; i < keys.length; i++) {
+    if (tagsList[keys[i]].toLowerCase().includes(keyword.toLowerCase())) {
+      return true;
+    }
+  }
+  return false;
 }
