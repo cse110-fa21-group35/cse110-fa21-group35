@@ -572,6 +572,7 @@ function recoverMyRecipe() {
   for (let i = 0; i < cards.length; i++) {
     main.appendChild(cards[i]);
   }
+  showTotalRecipeCount(recipeCounts);
 }
 
 // search-for-tag(ingredients) feature with tags field in database
