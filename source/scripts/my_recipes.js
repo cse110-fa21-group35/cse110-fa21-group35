@@ -578,6 +578,9 @@ function recoverMyRecipe() {
 // search-for-tag(ingredients) feature with tags field in database
 // Estimated time-complexity: O(n) - n is length of tagsList
 function hasTag(keyword, tagsList) {
+  if(tagsList == undefined) {
+    return false;
+  }
   let keys = Object.keys(tagsList);
   for (let i = 0; i < keys.length; i++) {
     if (tagsList[keys[i]].toLowerCase().includes(keyword.toLowerCase())) {
