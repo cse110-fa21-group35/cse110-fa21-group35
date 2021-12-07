@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/cse110-sp21-group35/cse110-fa21-group35#readme",
   "devDependencies": {
+    "cypress": "^9.1.1",
     "prettier": "2.4.1"
   }
 }
