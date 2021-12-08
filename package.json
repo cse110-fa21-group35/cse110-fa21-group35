@@ -8,7 +8,10 @@
   },
   "standard": {
     "ignore": [
-      "source/scripts/"
+      "source/scripts/",
+      "cypress/integration",
+      "cypress/support",
+      "cypress/plugins"
     ]
   },
   "repository": {
