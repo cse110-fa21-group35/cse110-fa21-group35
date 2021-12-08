@@ -3,7 +3,7 @@ const chance = new Chance();
 //const { iteratee } = require("lodash");
 
 describe('EggCellent Authentication System Validation', function () {
-    //generating random email and username every test
+  //generating random email and username every test
   const email = chance.email();
   const username = chance.name();
   const pass = `authentication_validation_${username}`;
@@ -34,7 +34,7 @@ describe('EggCellent Authentication System Validation', function () {
   });
 
   it('Login and Assert Data Persisted', () => {
-    //test account data persisted after logout 
+    //test account data persisted after logout
     cy.get('[id=email]').type(email);
     cy.get('[id=pass]').type(pass);
     cy.contains('Log In').click();
@@ -45,5 +45,5 @@ describe('EggCellent Authentication System Validation', function () {
     cy.contains(`User Name: ${username}`).should('be.visible');
     cy.contains(`User Email: ${email}`).should('be.visible');
     cy.contains('Log out').click();
-  })
+  });
 });
