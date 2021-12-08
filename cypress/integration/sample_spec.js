@@ -1,7 +1,7 @@
 //import Chance from 'chance';
 //const chance = new Chance();
 
-const { iteratee } = require("lodash");
+//const { iteratee } = require("lodash");
 
 describe('EggCellent E2E Test', function() {
     const email = 'kevinan@gmail.com';
