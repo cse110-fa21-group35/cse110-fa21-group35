@@ -515,9 +515,10 @@ function createRecipeCards() {
 }
 
 function showTotalRecipeCount(rCount) {
+  console.log(rCount);
   document.querySelector('span.total-recipe-count').innerHTML = document
     .querySelector('span.total-recipe-count')
-    .innerHTML.replace(new RegExp('\\d'), rCount);
+    .innerHTML.replace(new RegExp('\\d+'), rCount);
 }
 
 // event listener for searching button in my recipe page
@@ -530,6 +531,7 @@ searchInput[0].addEventListener('keypress', function (event) {
       searchByNameAndTagsMyRecipe(searchInput[0].value);
     } else {
       recoverMyRecipe();
+      showTotalRecipeCount(recipeIds.length);
     }
   }
 });
@@ -572,12 +574,12 @@ function recoverMyRecipe() {
   for (let i = 0; i < cards.length; i++) {
     main.appendChild(cards[i]);
   }
-  showTotalRecipeCount(recipeCounts);
 }
 
 // search-for-tag(ingredients) feature with tags field in database
 // Estimated time-complexity: O(n) - n is length of tagsList
 function hasTag(keyword, tagsList) {
+  // handle edge case here when tagsList is undefined
   if (tagsList == undefined) {
     return false;
   }
