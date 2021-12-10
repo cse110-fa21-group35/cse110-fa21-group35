@@ -9,7 +9,7 @@ add related logos, fonts, ppt themes, team colors.
 - Related fonts can be found in `/admin/branding/fonts` or can be pulled inline like so:
 - Feel free to add any extra fonts for the team!
 
-### Roboto Thin:
+### Roboto Thin
 
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -26,7 +26,7 @@ add related logos, fonts, ppt themes, team colors.
 </style>
 ```
 
-- Note: add the above into the <head> portion of the html doc.
+- Note: add the above into the <head> portion of the HTML doc.
 
 ### Rage Italic
 

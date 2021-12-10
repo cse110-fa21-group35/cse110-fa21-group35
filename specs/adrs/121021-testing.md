@@ -10,15 +10,17 @@
 
 1. If the recipe's ingredients include the certain word, for example, egg or beef, we could store that recipe to the certain word category
 2. Option 1: Cypress
-    - Pros: Easy to use and learn. Good GUI. Good documentations.
-    - Cons: Did not use before. First time using it.
- 
+
+   - Pros: Easy to use and learn. Good GUI. Good documentations.
+   - Cons: Did not use before. First time using it.
+
    Option 2: Jest and Puppeteer
-    - Pros: Learned how to use them during lab 8.
-    - Cons: Worse GUI. Does not have cool features that cypress has.
+
+   - Pros: Learned how to use them during lab 8.
+   - Cons: Worse GUI. Does not have cool features that cypress has.
 
 ## Decision Outcome
 
 1. Using the ingredient part, we could categorize the recipe. So we can search the recipe with the word of any ingredients.
 
-3. We chose Cypress as it has cool features and functions that would let us easier to implement various tests. For example, by running tests 'npx cypress open', we can view test running for each step on a separate cypress tab. 
+2. We chose Cypress as it has cool features and functions that would let us easier to implement various tests. For example, by running tests 'npx cypress open', we can view test running for each step on a separate cypress tab.
