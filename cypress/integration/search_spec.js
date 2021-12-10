@@ -7,76 +7,270 @@ describe('EggCellent E2E Test', function() {
     beforeEach(() => {
         cy.visit('https://app.eggcellent.cooking');
     })
-    //Log in feature & directs to the main page
-    //it('Login', () => {
-    //    cy.get('input[type=email]').type(email);
-    //    cy.get('input[type=password]').type(pass);
-    //    cy.contains('Log In').click();
-    //    cy.contains('All Recipes');
-    //    cy.contains('My Recipes');
-    //    cy.contains('Account');
-    //})
-    it('Search by Name', () => {
-        // check number of items returned is 100
-        // check each item has search term in title
-        for (let i = 0; i < search_terms.length; i ++){
-            // in the search input field, enter the search term 
-            cy.get('#search-by-name').type(search_terms[i]);
-            cy.get('.btn > .material-icons').click();
-            cy.wait(1500)
-            // keep track of how many recipes we went through
-            let counter = 0
-            cy.get('recipe-main').shadow().find('article').each(($el) => {
-                counter += 1
-                // cy.get('recipe-main').click()
-                cy.wait(2000)
-                cy.get($el).click({force: true})//
-                cy.wait(2500)
-                cy.contains('.ingred-list', search_terms[i])       
-                cy.get('.close-recipe-btn').click({force: true})
-            })
-            cy.get('[class="result-count"]').should('have.value', counter)
-            cy.get('input[id=search-by-name]').clear();
-        }    
+  
+    it('Search beef by name', () =>{
+        cy.get('#search-by-name').type('beef')
+        cy.get('.btn > .material-icons').click()
+        cy.wait(500)
+        
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search beef: 100 Results')
+
     })
-    it('Search by Ingredients', () => {
+
+    it('Search vodka by name', () =>{
+        cy.get('#search-by-name').type('vodka')
+        cy.get('.btn > .material-icons').click()
+        cy.wait(500)
+        
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search vodka: 1 Results')
+    })
+
+    it('Search crispy by name', () =>{
+        cy.get('#search-by-name').type('crispy')
+        cy.get('.btn > .material-icons').click()
+        cy.wait(500)
+        
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search crispy: 44 Results')
+    })
+
+    it('Search hot by name', () =>{
+        cy.get('#search-by-name').type('hot')
+        cy.get('.btn > .material-icons').click()
+        cy.wait(500)
+        
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search hot: 35 Results')
+    })
+
+    it('Search ucsd by name', () =>{
+        cy.get('#search-by-name').type('ucsd')
+        cy.get('.btn > .material-icons').click()
+        cy.wait(500)
+        
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search ucsd: 0 Results')
+    })
+
+    it('Search Egg by Ingredients', () => {
         // check whether the all tags selected are in the name/ingredients
-        // cy.get('').click();
-        cy.get('.All').click();
-        cy.get('input[id=ingreds-input]').type('flour')
+        
+        cy.get('.All').click()
+        cy.get('input[id=ingreds-input]').type('egg')
         cy.get('[class="btn btn-sm btn-outline-success"]').click()
         cy.wait(500)
-        cy.get('recipe-main').each(($el) => {
-            cy.get($el).click({force: true})
-            cy.wait(500)
-            cy.contains('.ingred-list', 'flour')       //.ingreds
-            cy.get('.close-recipe-btn').click({force: true})
-        })
+
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 100 Results')
+        cy.contains('Contact Us').should('be.visible')
     })
-    it('Search by Cooking Time', () => {
+
+    it('Search Water by Ingredients', () => {
+        // check whether the all tags selected are in the name/ingredients
+        
+        cy.get('.All').click()
+        cy.get('input[id=ingreds-input]').type('water')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 100 Results')
+        cy.contains('Contact Us').should('be.visible')
+    })
+
+    it('Search vodka by Ingredients', () => {
+        // check whether the all tags selected are in the name/ingredients
+        
+        cy.get('.All').click()
+        cy.get('input[id=ingreds-input]').type('vodka')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 21 Results')
+        cy.contains('Contact Us').should('be.visible')
+    })
+
+    it('Search perfect by Ingredients', () => {
+        // check whether the all tags selected are in the name/ingredients
+        
+        cy.get('.All').click()
+        cy.get('input[id=ingreds-input]').type('perfect')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
+        cy.contains('Contact Us').should('be.visible')
+    })
+
+    it('Search hot by Ingredients', () => {
+        // check whether the all tags selected are in the name/ingredients
+        
+        cy.get('.All').click()
+        cy.get('input[id=ingreds-input]').type('hot')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+
+        cy.contains('All Recipes').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
+        cy.contains('Contact Us').should('be.visible')
+    })
+    it('Search 20 by Cooking Time', () => {
         // check whether the all tags selected are in the name/ingredients
         // cy.get('').click();
-        cy.get('.All').click();
-        cy.get('input[cook-time-input]').type('20')
-        cy.get('btn btn-sm btn-outline-success').click()
-        cy.get('recipe-main').each(($el) => {
-            cy.get($el).click()
-            let time = cy.get('.recipe-info').toString().replace(/[^0-9]/g,'')
-            console.log(time)
-            cy.contains('.recipe-info', search_terms[i])       
-            cy.get('.close-recipe-btn').click({force: true})
-        })
+        cy.get('.All').click()
+        cy.get('input[id=cook-time-input]').type('20')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 100 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
     })
-    //it('Search by Cooking Time', () => {
+
+    it('Search 10 by Cooking Time', () => {
         // check whether the all tags selected are in the name/ingredients
         // cy.get('').click();
-    //    cy.get('.All').click();
-    //    cy.get('input[cook-time-input]').type('20')
-    //    cy.get('btn btn-sm btn-outline-success').click()
-    //    cy.get('recipe-main').each(($el) => {
-    //        cy.get($el).click()
-    //        cy.contains('.ingreds', search_terms[i])       
-    //        cy.get('.close-recipe-btn').click({force: true})
-    //    })
-    //})
+        cy.get('.All').click()
+        cy.get('input[id=cook-time-input]').type('10')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 72 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 5 by Cooking Time', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=cook-time-input]').type('5')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 35 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 1 by Cooking Time', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=cook-time-input]').type('1')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 000 by Cooking Time', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=cook-time-input]').type('000')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 2000 by Calories', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=calories-input]').type('2000')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 100 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 50 by Calories', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=calories-input]').type('50')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 100 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 10 by Calories', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=calories-input]').type('10')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 6 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
+
+    it('Search 0 by Calories', () => {
+        // check whether the all tags selected are in the name/ingredients
+        // cy.get('').click();
+        cy.get('.All').click()
+        cy.get('input[id=calories-input]').type('0')
+        cy.get('[class="btn btn-sm btn-outline-success"]').click()
+        cy.wait(500)
+        cy.contains('Account').should('be.visible')
+
+        cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
+        cy.contains('Contact Us').should('be.visible')
+            
+    })
 })
