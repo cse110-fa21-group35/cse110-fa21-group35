@@ -711,6 +711,7 @@ async function searchRecipeByName() {
   createOverlay();
   showSpinner();
   let name = document.getElementById('search-by-name').value;
+  document.getElementById('search-by-name').value = '';
   let url = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${APIKEY}&query=${name}&addRecipeInformation=true&number=100`;
   let fetchSuccessful = await getRecipeData(url);
   if (!fetchSuccessful) {
