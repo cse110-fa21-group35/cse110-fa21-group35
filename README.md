@@ -4,7 +4,7 @@
 
 ---
 
-<img src="/admin/branding/homepage.png" alt="Eggcellent HomePage Demo image" width="430" height="520">
+<img src="/admin/branding/homepage.png" alt="Eggcellent HomePage Demo image">
 
 
 Check out the _**Live Demo**_ of our Recipe Manager!
