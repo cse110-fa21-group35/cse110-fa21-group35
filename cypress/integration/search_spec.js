@@ -268,6 +268,7 @@ describe('EggCellent E2E Test', function() {
         cy.get('[class="btn btn-sm btn-outline-success"]').click()
         cy.wait(500)
         cy.contains('Account').should('be.visible')
+        cy.contains('My Recipes').should('be.visible')
 
         cy.get('[class="result-text"]').should('have.text', 'Search By Categories: 0 Results')
         cy.contains('Contact Us').should('be.visible')
