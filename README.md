@@ -1,16 +1,19 @@
-# cse110-fa21-group35
+# cse110-fa21-group35 - Eggcellent
 
 [![GitHub Super-Linter](https://github.com/cse110-fa21-group35/cse110-fa21-group35/workflows/Stinky%20Code%20Check/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ---
 
-_Live Demo_
+<img src="/admin/branding/homepage.png" alt="Eggcellent HomePage Demo image" width="430" height="520">
 
-[Check it out here](https://app.eggcellent.cooking)
+
+Check out the _**Live Demo**_ of our Recipe Manager!
+
+[https://home.eggcellent.cooking](https://home.eggcellent.cooking)
 
 ---
 
-_Group Page_
+_**Group Page**_
 
 [Click Here for group page](admin/team.md)
 
