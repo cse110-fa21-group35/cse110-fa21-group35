@@ -22,7 +22,7 @@ add related logos, fonts, ppt themes, team colors.
 <!-- OR you can import with css like so -->
 
 <style>
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 </style>
 ```
 
