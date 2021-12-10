@@ -4,11 +4,14 @@
   "description": "*Group Page*",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx cypress run"
   },
   "standard": {
     "ignore": [
-      "source/scripts/"
+      "source/scripts/",
+      "cypress/integration",
+      "cypress/support",
+      "cypress/plugins"
     ]
   },
   "repository": {
@@ -23,6 +26,10 @@
   },
   "homepage": "https://github.com/cse110-sp21-group35/cse110-fa21-group35#readme",
   "devDependencies": {
+    "cypress": "^9.1.1",
     "prettier": "2.4.1"
+  },
+  "dependencies": {
+    "chance": "^1.1.8"
   }
 }
