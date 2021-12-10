@@ -6,7 +6,7 @@
 
 _Live Demo_
 
-[Check it out here](https://app.eggcellent.cooking)
+[Check it out here](https://home.eggcellent.cooking)
 
 ---
 
