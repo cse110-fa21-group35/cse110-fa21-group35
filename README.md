@@ -6,7 +6,6 @@
 
 <img src="/admin/branding/homepage.png" alt="Eggcellent HomePage Demo image">
 
-
 Check out the _**Live Demo**_ of our Recipe Manager!
 
 [https://home.eggcellent.cooking](https://home.eggcellent.cooking)
