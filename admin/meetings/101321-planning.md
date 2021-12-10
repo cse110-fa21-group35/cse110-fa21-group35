@@ -56,14 +56,14 @@
    2. Name, Major, college, year, How do you like your eggs?
    3. 2.5 min max
    4. Change background to eggs
-   5. Kevin recorded video and will upload to the GitHub repository
+   5. Kevin recorded video and will upload to the GitHub repo
 3. Group Page
    1. Use google doc to plan Group Page, distribute work, and organize everyone's responses. [Group Page Planning](https://docs.google.com/document/d/1QpcOxPh-ZSgmVfeU_lFigreer1Zysl_HCeeaj-W4jb0/edit)
    2. Things needed
       1. Team name
       2. Team brand
       3. Values we think are important
-      4. GitHub page
+      4. Github page
       5. Bio
    3. Format Ideas
       1. header: team name, Branding, menu (nav)
@@ -72,7 +72,7 @@
       4. Roster of all team members — with each person’s GitHub link
    4. Delegations
       1. Vivian
-         1. Add the roster onto the page with the bio + GitHub + pic
+         1. Add the roster onto the page with the bio + github + pic
       2. Kevin
          1. Help out wherever needed, oversee group page
       3. Alice
