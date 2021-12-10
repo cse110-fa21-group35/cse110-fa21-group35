@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 17.x]
+        node-version: [14.x, 16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -24,4 +24,3 @@ jobs:
       - name: Build Check
         run: npm run build --if-present
       - name: E2E Validation
-        run: npm test
