@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 17.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -23,10 +23,5 @@ jobs:
         run: npx prettier --check '.'
       - name: Build Check
         run: npm run build --if-present
-        # Install NPM dependencies, cache them correctly
-        # and run all Cypress tests
       - name: E2E Validation
-        uses: cypress-io/github-action@v2
-        with:
-          # Specify Browser since container image is compile with Firefox
-          browser: firefox
+        run: npm test
