@@ -1,5 +1,5 @@
 const { iteratee } = require('lodash');
-describe('EggCellent E2E Test', function () {
+describe('Very Thorough Search Validation', function () {
   const email = 'kevinan@gmail.com';
   //const email = chance.email();
   const pass = '123456';
@@ -21,25 +21,6 @@ describe('EggCellent E2E Test', function () {
       'have.text',
       'Search ucsd: 0 Results'
     );
-  });
-
-  it('Search Water by Ingredients', () => {
-    // check whether the all tags selected are in the name/ingredients
-
-    cy.get('.All').click();
-    cy.get('input[id=ingreds-input]').type('water');
-    cy.get('[class="btn btn-sm btn-outline-success"]').click();
-    cy.wait(500);
-
-    cy.contains('All Recipes').should('be.visible');
-    cy.contains('My Recipes').should('be.visible');
-    cy.contains('Account').should('be.visible');
-
-    cy.get('[class="result-text"]').should(
-      'have.text',
-      'Search By Categories: 100 Results'
-    );
-    cy.contains('Contact Us').should('be.visible');
   });
 
   it('Search perfect by Ingredients', () => {
