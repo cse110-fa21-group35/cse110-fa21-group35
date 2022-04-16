@@ -382,23 +382,33 @@ async function readRecipe() {
         console.log('uid: ' + uid);
       }
 
-      try {
-        fetch(
-          `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes.json`
-        )
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            user_recipe_data = data;
-          })
-          .then(() => {
-            resolve(true);
-          });
-      } catch (error) {
-        alert(error.message);
-        return reject(true);
-      }
+      database.ref(`/${uid}/recipes`).on('value', (snapshot) => {
+        console.log(snapshot.val());
+        user_recipe_data = snapshot.val();
+        resolve(true);
+      }, (errorObject) => {
+        console.log('The read failed: ' + errorObject.name);
+        reject(true);
+      }); 
+
+      // try {
+      //   fetch(
+      //     `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes.json`,
+      //     { Method: "GET"}
+      //   )
+      //     .then((response) => {
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       user_recipe_data = data;
+      //     })
+      //     .then(() => {
+      //       resolve(true);
+      //     });
+      // } catch (error) {
+      //   alert(error.message);
+      //   return reject(true);
+      // }
     });
   });
 }
@@ -529,24 +539,34 @@ function deleteRecipe(recipeId) {
       uid = user.uid;
       console.log(uid);
     }
+
+    database.ref(`/${uid}/recipes/${recipeId}`).remove().then((snapshot) => {
+      alert('Successfully deleted recipe');
+      location.reload();
+      console.log(snapshot.val());
+      resolve(true);
+    }, (errorObject) => {
+      console.log('The delete failed: ' + errorObject.name);
+      reject(true);
+    }); 
     //issue delete to the desired recipeId under the userId.
-    fetch(
-      `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes/${recipeId}.json`,
-      {
-        method: 'DELETE',
-      }
-    ).then((response) => {
-      // The request was processed by firebase, maybe deleted.
-      if (response.ok) {
-        alert('Successfully deleted recipe');
-        location.reload();
-        return response.json();
-      } else {
-        // This will only evaluate if there's an actual failure in the request.
-        console.warn('Something went wrong.', response.status);
-        return Promise.reject(response);
-      }
-    });
+    // fetch(
+    //   `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}/recipes/${recipeId}.json`,
+    //   {
+    //     method: 'DELETE',
+    //   }
+    // ).then((response) => {
+    //   // The request was processed by firebase, maybe deleted.
+    //   if (response.ok) {
+    //     alert('Successfully deleted recipe');
+    //     location.reload();
+    //     return response.json();
+    //   } else {
+    //     // This will only evaluate if there's an actual failure in the request.
+    //     console.warn('Something went wrong.', response.status);
+    //     return Promise.reject(response);
+    //   }
+    // });
   });
 }
 
@@ -556,27 +576,37 @@ async function readUserInfo() {
     auth.onAuthStateChanged(function (user) {
       if (user != null) {
         uid = user.uid;
+        userID = uid;
         console.log('uid: ' + uid);
       }
 
-      try {
-        fetch(
-          `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}.json`
-        )
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            userInfo = data;
-            userID = uid;
-          })
-          .then(() => {
-            resolve(true);
-          });
-      } catch (error) {
-        alert(error.message);
-        return reject(true);
-      }
+      database.ref(`/${uid}`).on('value', (snapshot) => {
+        console.log(snapshot.val());
+        userInfo = snapshot.val();
+        resolve(true);
+      }, (errorObject) => {
+        console.log('The read failed: ' + errorObject.name);
+        reject(true);
+      });
+
+      // try {
+      //   fetch(
+      //     `https://eggcellent-330922-default-rtdb.firebaseio.com/${uid}.json`
+      //   )
+      //     .then((response) => {
+      //       return response.json();
+      //     })
+      //     .then((data) => {
+      //       userInfo = data;
+      //       userID = uid;
+      //     })
+      //     .then(() => {
+      //       resolve(true);
+      //     });
+      // } catch (error) {
+      //   alert(error.message);
+      //   return reject(true);
+      // }
     });
   });
 }
